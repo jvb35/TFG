@@ -43,7 +43,7 @@
             <thead>
             <tr>
                 <th></th>
-                <th class="col-md-4 col-xs-4 text-center">Nombre</th>
+                <th class="col-md-3 col-xs-3 text-center">Nombre</th>
                 <th class="col-md-4 col-xs-4 text-center">Correo</th>
                 <th class="col-md-3 col-xs-3 text-center">Teléfono</th>
                 <th class="col-md-3 col-xs-3 text-center"><em class="fa fa-cog"></em></th>

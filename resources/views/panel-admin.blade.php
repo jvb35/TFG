@@ -207,7 +207,6 @@
           <ul class="treeview-menu">
             <li><a href="/admin-menu/mascotas/ver"><i class="fa fa-circle-o"></i> Ver todas</a></li>
             <li><a href="/admin-menu/mascotas/añadir"><i class="fa fa-circle-o"></i> Dar de alta</a></li>
-            <li><a href="/admin-menu/mascotas/eliminar"><i class="fa fa-circle-o"></i> Dar de baja</a></li>
           </ul>
         </li>
 

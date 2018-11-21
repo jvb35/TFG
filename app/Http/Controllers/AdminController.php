@@ -30,10 +30,6 @@ class AdminController extends Controller
         return view('añadir_mascota');
     }
 
-    function deleteMascota(){
-        return view('eliminar_mascota');
-    }
-
     function verCitas(){
         return view('ver_citas');
     }
