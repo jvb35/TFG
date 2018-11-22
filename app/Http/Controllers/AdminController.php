@@ -37,4 +37,8 @@ class AdminController extends Controller
     function addPerson(){
         return view('añadir-persona');
     }
+
+    function editMascotas(){
+        return view('editar-mascota');
+    }
 }
