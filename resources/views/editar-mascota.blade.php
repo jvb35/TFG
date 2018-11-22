@@ -97,23 +97,24 @@
                     </tbody>
                   </table>
 
-                  <div class="row">
-                    <div class="col">
-                      <button type="button" class="btn btn-primary">Ver Historial</button>
-                    </div>
-              
-                    <div class="col">
-                      <button type="button" id="oculto" style='display:none;' class="btn btn-primary">Guardar cambios</button>
-                    </div>
-                  </div>
+                  <ul>
+                    <li style="list-style:none; float:left;">
+                    <button style="text-align:left;" class="btn btn-primary">Ver Historial</button>
+                    </li>
+                     
+                    <li style="list-style:none; float:left;">
+                      <button style="text-align:left; display:none; margin-left: 10px;" id="oculto" class="btn btn-primary">Guardar cambios</button>
+                    </li>
+                  </ul>
+
                 </div>
               </div>
             </div>
                  <div class="panel-footer">
-                        <a data-original-title="Broadcast Message" data-toggle="tooltip" type="button" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-envelope"></i></a>
+                        <a data-original-title="Volver atrás" data-toggle="tooltip" type="button" class="btn btn-sm btn-primary" href="/admin-menu/mascotas/ver"><i class="glyphicon glyphicon-circle-arrow-left"></i></a>
                         <span class="pull-right">
-                            <a data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning" onclick="bloquear()" ><i class="glyphicon glyphicon-edit"></i></a>
-                            <a data-original-title="Remove this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i></a>
+                            <a data-original-title="Editar mascota" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning" onclick="bloquear()" ><i class="glyphicon glyphicon-edit"></i></a>
+                            <a data-original-title="Eliminar mascota" data-toggle="tooltip" type="button" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i></a>
                         </span>
                 </div>
             

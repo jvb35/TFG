@@ -70,6 +70,7 @@
                         </div>
                         
                         <div class="form-group col-lg-6" style="margin-top: 30px;">
+                            
                             <label>
                                 <input id="M" type="radio" name="numero" value="1"> Macho
                             </label>
@@ -93,7 +94,13 @@
 
                             </div>
                     </div>
-                </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group col-lg-6">
+                            <button type="button" class="btn btn-primary">Añadir</button>  
+                        </div>
+                    </div>
+            </div>
 
     </section>
 

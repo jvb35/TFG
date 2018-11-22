@@ -59,7 +59,7 @@
                 <td class="text-center">Jordi Valls</td>
                 <td class="text-center">675837472</td>
                 <td class="text-center">
-                    <a class="btn btn-default"><em class="fa fa-pencil"></em></a>
+                    <a class="btn btn-default" href="/admin-menu/mascotas/edit"><em class="fa fa-pencil"></em></a>
                     <a class="btn btn-danger"><em class="fa fa-trash"></em></a>
                 </td>
             </tr>
