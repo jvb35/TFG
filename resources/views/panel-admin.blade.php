@@ -259,9 +259,8 @@
           </span>
         </a>
         <ul class="treeview-menu">
-          <li><a href="index.html"><i class="fa fa-circle-o"></i> Ver</a></li>
+          <li><a href="/admin-menu/foro/ver"><i class="fa fa-circle-o"></i> Ver</a></li>
           <li><a href="index.html"><i class="fa fa-circle-o"></i> Añadir</a></li>
-          <li><a href="index2.html"><i class="fa fa-circle-o"></i> Eliminar</a></li>
         </ul>
     </li>
 

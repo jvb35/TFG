@@ -24,3 +24,4 @@ Route::get('/admin-menu/personas/añadir', 'AdminController@addPerson');
 Route::get('/admin-menu/mascotas/añadir', 'AdminController@addMascota');
 Route::get('/admin-menu/citas/ver', 'AdminController@verCitas');
 Route::get('/admin-menu/mascotas/edit', 'AdminController@editMascotas');
+Route::get('/admin-menu/foro/ver', 'AdminController@verForo');

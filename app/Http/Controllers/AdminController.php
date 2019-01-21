@@ -41,4 +41,8 @@ class AdminController extends Controller
     function editMascotas(){
         return view('editar-mascota');
     }
+
+    function verForo(){
+        return view('ver_foro');
+    }
 }
