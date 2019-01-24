@@ -22,6 +22,7 @@ Route::get('/admin-menu/mascotas/ver', 'AdminController@ver_mascotas');
 Route::get('/admin-menu/personas/ver', 'AdminController@ver_personas');
 Route::get('/admin-menu/personas/añadir', 'AdminController@addPerson');
 Route::get('/admin-menu/mascotas/añadir', 'AdminController@addMascota');
-Route::get('/admin-menu/citas/ver', 'AdminController@verCitas');
+Route::get('/admin-menu/citas/ver', 'EventController@index');
 Route::get('/admin-menu/mascotas/edit', 'AdminController@editMascotas');
 Route::get('/admin-menu/foro/ver', 'AdminController@verForo');
+Route::post('/admin-menu/citas/añadir', 'EventController@store');
