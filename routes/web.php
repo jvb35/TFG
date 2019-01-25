@@ -26,3 +26,7 @@ Route::get('/admin-menu/citas/ver', 'EventController@index');
 Route::get('/admin-menu/mascotas/edit', 'AdminController@editMascotas');
 Route::get('/admin-menu/foro/ver', 'AdminController@verForo');
 Route::post('/admin-menu/citas/añadir', 'EventController@store');
+Route::get('/admin-menu/citas/editar', 'EventController@show');
+Route::get('/admin-menu/citas/editar/{id}', 'EventController@edit');
+Route::resource('/admin-menu/citas/editar/actualizar', 'EventController');
+Route::resource('/admin-menu/citas/editar/eliminar', 'EventController');

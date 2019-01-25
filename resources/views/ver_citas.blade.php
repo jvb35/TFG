@@ -69,7 +69,14 @@
                             <label for="">Nombre mascota</label>
                             <input type="text" class="form-control" name="nombre_mascota" placeholder="Introduza el nombre de la mascota" /><br /><br />
                             <label for="">Tipo de consulta</label>
-                            <input type="text" class="form-control" name="tipo_consulta" placeholder="Introduza el tipo de consulta" /><br /><br />
+                            <br>
+                            <select name="tipo_consulta">
+                                <option value="Consulta">Consulta</option> 
+                                <option value="Peluqueria">Peluquería</option> 
+                                <option value="Operacion">Operación</option>
+                            </select>
+                            <br>
+                            <br>
                             <label for="">Propietario</label>
                             <input type="text" class="form-control" name="propietario" placeholder="Introduza el tipo de consulta" /><br /><br />
                             <label for="">Teléfono</label>

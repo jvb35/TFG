@@ -89,7 +89,7 @@ class EventController extends Controller
 
         $events->save();
 
-        return redirect('/admin-menu/citas/ver')->with('success', 'Events Added');
+        return redirect('/admin-menu/citas/ver')->with('success', 'Cita añadida');
     }
 
     /**
@@ -98,9 +98,10 @@ class EventController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        //
+        $events = Event::orderBy('start_date', 'asc')->get();
+        return view('editar_citas')->with('events',$events);
     }
 
     /**
@@ -111,7 +112,8 @@ class EventController extends Controller
      */
     public function edit($id)
     {
-        //
+        $events = Event::find($id);
+        return view('editform')->with('events',$events);
     }
 
     /**
@@ -123,7 +125,38 @@ class EventController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request,[
+            'nombre_mascota' => 'required',
+            'tipo_consulta' => 'required',
+            'propietario' => 'required',
+            'telefono' => 'required',
+            'start_date' => 'required',
+            'end_date' => 'required',
+        ]);
+
+        $events = Event::find($id);
+
+        $events->nombre_mascota = $request->input('nombre_mascota');
+        $events->tipo_consulta = $request->input('tipo_consulta');
+        $events->propietario = $request->input('propietario');
+        $events->telefono = $request->input('telefono');
+        if($events->tipo_consulta == 'Consulta')
+        {
+            $events->color = '#87CEFA';
+        }else if($events->tipo_consulta == 'Peluqueria')
+        {
+            $events->color = '#90EE90';
+        }
+        else{
+            $events->color = '#FFA500';
+        }
+        
+        $events->start_date = $request->input('start_date');
+        $events->end_date = $request->input('end_date');
+
+        $events->save();
+
+        return redirect('/admin-menu/citas/ver')->with('success', 'Cita actualizada');
     }
 
     /**
@@ -134,6 +167,9 @@ class EventController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $events = Event::find($id);
+        $events->delete();
+
+        return redirect('/admin-menu/citas/ver')->with('success','Cita eliminada');
     }
 }
