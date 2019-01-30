@@ -99,7 +99,7 @@
 
                   <ul>
                     <li style="list-style:none; float:left;">
-                    <button style="text-align:left;" class="btn btn-primary">Ver Historial</button>
+                    <button style="text-align:left;" class="btn btn-primary" onclick="window.location.href='/admin-menu/mascotas/historial'">Ver Historial</button>
                     </li>
                      
                     <li style="list-style:none; float:left;">

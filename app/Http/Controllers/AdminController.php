@@ -45,4 +45,8 @@ class AdminController extends Controller
     function verForo(){
         return view('ver_foro');
     }
+
+    function showHistory(){
+        return view('ver-historial');
+    }
 }
