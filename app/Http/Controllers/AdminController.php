@@ -49,4 +49,8 @@ class AdminController extends Controller
     function showHistory(){
         return view('ver-historial');
     }
+
+    function addHistory(){
+        return view('añadir-historial');
+    }
 }

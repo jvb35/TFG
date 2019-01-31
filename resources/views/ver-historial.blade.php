@@ -166,7 +166,7 @@
 					<div class="panel-body">
                         <div class="pull-left">
                             <div class="btn-group">
-                                <button type="button" class="btn btn-primary">Añadir</button>
+                                <button type="button" class="btn btn-primary" onclick="window.location.href='/admin-menu/mascotas/historial/añadir'">Añadir</button>
                             </div>
                         </div>
 						<div class="pull-right">
@@ -193,7 +193,7 @@
 									<tr data-status="Realizada">
                                         <th scope="row">1</th>
                                         <td class="text-center">Vacuna lesmaniosis</td>
-                                        <td class="text-center"><a href="">Ver</a></td>
+                                        <td class="text-center"><a  data-toggle="modal" data-target="#miModal">Ver</a></td>
                                         <td class="text-center"><span class="Realizada">Realizada</span></td>
                                         <td class="text-center"><span class="media-meta pull-right">Febrero 13, 2016</span></td>
                                         <td class="text-center">
@@ -253,6 +253,36 @@
 			</div>
 		</section>
 		
+	</div>
+</div>
+
+<div class="modal fade" id="miModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<h4 class="modal-title" id="myModalLabel">Añadir cita</h4>
+			</div>
+			<div class="modal-body">
+                <label for="">Nombre mascota</label>
+                <input type="text" class="form-control" name="nombre_mascota" value="Neska" placeholder="Introduza el nombre de la mascota" /><br /><br />
+                <label for="">Consulta</label>
+                <input type="text" class="form-control" name="nombre_mascota" value="Vacuna lesmaniosis" placeholder="Introduza el nombre de la mascota" /><br /><br />
+                <label for="">Descripcion</label>
+                <input type="textarea" class="form-control" name="nombre_mascota" placeholder="Introduza el nombre de la mascota" /><br /><br />
+                <label for="">Estado</label>
+                <input type="text" class="form-control" name="nombre_mascota" value="Realizada" placeholder="Introduza el nombre de la mascota" /><br /><br />
+                <label for="">Propietario</label>
+                <input type="text" class="form-control" name="propietario" value="Jordi Valls" placeholder="Introduza el tipo de consulta" /><br /><br />
+                <label for="">Teléfono</label>
+                <input type="number" class="form-control" name="telefono" value="608550850" placeholder="Introduza el tipo de consulta" /><br /><br />
+                <label for="">Fecha</label>
+                <input type="date" class="form-control" name="start_date" value="23/02/2019" class="date" placeholder="Enter start date" /><br /><br />
+
+			</div>
+		</div>
 	</div>
 </div>
 

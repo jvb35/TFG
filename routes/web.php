@@ -31,3 +31,4 @@ Route::get('/admin-menu/citas/editar/{id}', 'EventController@edit');
 Route::resource('/admin-menu/citas/editar/actualizar', 'EventController');
 Route::resource('/admin-menu/citas/editar/eliminar', 'EventController');
 Route::get('/admin-menu/mascotas/historial' , 'AdminController@showHistory');
+Route::get('/admin-menu/mascotas/historial/añadir', 'AdminController@addHistory');
