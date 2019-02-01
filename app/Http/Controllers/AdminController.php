@@ -37,6 +37,10 @@ class AdminController extends Controller
     function addPerson(){
         return view('añadir-persona');
     }
+    
+    function editPerson(){
+        return view('editar-persona');
+    }
 
     function editMascotas(){
         return view('editar-mascota');
@@ -52,5 +56,13 @@ class AdminController extends Controller
 
     function addHistory(){
         return view('añadir-historial');
+    }
+
+    function editHistory(){
+        return view('editar-historial');
+    }
+
+    function addForo(){
+        return view('añadir-foro');
     }
 }

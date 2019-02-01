@@ -136,7 +136,30 @@
 			</div>
 
 			<button type="button" class="btn btn-primary">Generar</button>
+			<br>
+			<h3> Mascotas asociadas </h3>
+			<hr class="linea">
+			<div class="row">
+				<div class="col-sm-3">
+					<div class="profile-header-img" style="margin-top: -40px;">
+							<a href="/admin-menu"><img class="img-circle" src="/images/añadir-person.png" /></a>
+					</div>
+					
+				</div>
+				<div class="col-sm-3">
+					<div class="profile-header-img" style="margin-top: -40px;">
+							<a href="/admin-menu"><img class="img-circle" src="/images/Dalmata.png" /></a>
+					</div>
+				</div> 
+				
+				<div class="col-sm-3">
+					<div class="profile-header-img" style="margin-top: -40px;">
+							<a href="/admin-menu"><img class="img-circle" src="/images/asha.JPG" /></a>
+						</div>
+					</div> 
+				</div>
 
+			</div>
 
 		</div>
 	</div>

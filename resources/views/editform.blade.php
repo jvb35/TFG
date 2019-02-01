@@ -22,8 +22,8 @@
         <form action="{{action('EventController@update', $events['id']) }}" method="POST">
             {{ csrf_field() }}
             <div class="container">
-                <div class="jumbotron" style="margin-top: 5%;">
-                    <h1> Editar Cita </h1>
+                <div class="jumbotron" >
+                    <h2> Editar Cita </h2>
                     <hr>
                     <input type="hidden" name="_method" value="UPDATE" />
                     <div class="form-group">
@@ -52,7 +52,7 @@
                         <input type="datetime-local" class="form-control" name="end_date" class="date" placeholder="Enter End date" value="{{$events->end_date}}">
                     </div>
                     {{ method_field('PUT')}}
-                    <button type="submit" name="submit" class="btn btn-success">Update Data</button>
+                    <button type="submit" name="submit" class="btn btn-success">Actualizar</button>
 
                 </div>
             </div>

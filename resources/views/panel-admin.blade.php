@@ -18,6 +18,7 @@
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="/dist/css/skins/_all-skins.min.css">
+  
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -259,7 +260,7 @@
         </a>
         <ul class="treeview-menu">
           <li><a href="/admin-menu/foro/ver"><i class="fa fa-circle-o"></i> Ver</a></li>
-          <li><a href="index.html"><i class="fa fa-circle-o"></i> Añadir</a></li>
+          <li><a href="/admin-menu/foro/añadir"><i class="fa fa-circle-o"></i> Añadir</a></li>
         </ul>
     </li>
 
@@ -290,6 +291,7 @@
 <!-- jQuery 2.2.3 -->
 <!--script src="/plugins/jQuery/jquery-2.2.3.min.js"></script-->
 <!-- Bootstrap 3.3.6 -->
+
 <script src="/bootstrap/js/bootstrap.min.js"></script>
 <!-- SlimScroll -->
 <script src="/plugins/slimScroll/jquery.slimscroll.min.js"></script>

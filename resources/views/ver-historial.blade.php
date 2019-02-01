@@ -197,7 +197,7 @@
                                         <td class="text-center"><span class="Realizada">Realizada</span></td>
                                         <td class="text-center"><span class="media-meta pull-right">Febrero 13, 2016</span></td>
                                         <td class="text-center">
-                                            <a class="btn btn-default" href="/admin-menu/mascotas/edit"><em class="fa fa-pencil"></em></a>
+                                            <a class="btn btn-default" href="/admin-menu/mascotas/historial/editar"><em class="fa fa-pencil"></em></a>
                                             <a class="btn btn-danger"><em class="fa fa-trash"></em></a>
                                         </td>
 									</tr>

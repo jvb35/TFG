@@ -17,18 +17,18 @@
 
 <div class="container">
 	<div class="row">
-  <br>
+    <br>
 		<form class="form-horizontal">
 
       <fieldset>
 <!-- Form Name -->
-        <legend>Añadir historial</legend>
+        <legend>Editar historial</legend>
 
         <!-- Text input-->
         <div class="form-group">
           <label class="col-md-2 control-label" for="cedula">Nombre</label>  
           <div class="col-md-3">
-          <input id="cedula" name="cedula" type="text" placeholder="Solicitante" class="form-control input-md">
+          <input type="text" placeholder="Solicitante" class="form-control input-md">
             
           </div>
         </div>
@@ -37,7 +37,7 @@
         <div class="form-group">
           <label class="col-md-2 control-label" for="sistema">Estado</label>
           <div class="col-md-3">
-            <select id="sistema" name="sistema" class="form-control">
+            <select class="form-control">
               <option value="1">Realizada</option>
               <option value="2">Pendiente</option>
             </select>
@@ -48,14 +48,14 @@
         <div class="form-group">
           <label class="col-md-2 control-label" for="descripcion">Descripción</label>
           <div class="col-md-3">                     
-            <textarea class="form-control" id="descripcion" name="descripcion"></textarea>
+            <textarea class="form-control"></textarea>
           </div>
         </div>
 
         <div class="form-group">
           <label class="col-md-2 control-label" for="cedula">Fecha</label>  
           <div class="col-md-3">
-          <input id="cedula" name="cedula" type="date" class="form-control input-md">
+          <input type="date" class="form-control input-md">
             
           </div>
         </div>
@@ -63,10 +63,10 @@
 
         <!-- Button (Double) -->
         <div class="form-group">
-          <label class="col-md-2 control-label" ></label>
+          <label class="col-md-2 control-label"></label>
           <div class="col-md-8">
             <button id="enviar" name="enviar" class="btn btn-primary">Enviar</button>
-            <button id="atras" name="atras" class="btn btn-default" href="/admin-menu/mascotas/historial">Atrás</button>
+            <a data-original-title="Volver atrás" data-toggle="tooltip" type="button" class="btn btn-default" href="/admin-menu/mascotas/historial">Atrás</a>
           </div>
         </div>
 
