@@ -35,3 +35,4 @@ Route::get('/admin-menu/mascotas/historial' , 'AdminController@showHistory');
 Route::get('/admin-menu/mascotas/historial/añadir', 'AdminController@addHistory');
 Route::get('/admin-menu/mascotas/historial/editar', 'AdminController@editHistory');
 Route::get('/admin-menu/foro/añadir', 'AdminController@addForo');
+Route::get('/admin-menu/foro/ver', 'AdminController@showForo');

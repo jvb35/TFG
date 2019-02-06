@@ -65,4 +65,8 @@ class AdminController extends Controller
     function addForo(){
         return view('añadir-foro');
     }
+
+    function showForo(){
+        return view('ver-tema-foro');
+    }
 }
