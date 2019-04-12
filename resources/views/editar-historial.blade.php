@@ -21,19 +21,15 @@
 		<form class="form-horizontal">
 
       <fieldset>
-<!-- Form Name -->
         <legend>Editar historial</legend>
 
-        <!-- Text input-->
         <div class="form-group">
           <label class="col-md-2 control-label" for="cedula">Nombre</label>  
           <div class="col-md-3">
-          <input type="text" placeholder="Solicitante" class="form-control input-md">
-            
+            <input type="text" placeholder="Solicitante" class="form-control input-md">            
           </div>
         </div>
 
-        <!-- Select Basic -->
         <div class="form-group">
           <label class="col-md-2 control-label" for="sistema">Estado</label>
           <div class="col-md-3">
@@ -44,7 +40,6 @@
           </div>
         </div>
 
-        <!-- Textarea -->
         <div class="form-group">
           <label class="col-md-2 control-label" for="descripcion">Descripción</label>
           <div class="col-md-3">                     
@@ -55,13 +50,10 @@
         <div class="form-group">
           <label class="col-md-2 control-label" for="cedula">Fecha</label>  
           <div class="col-md-3">
-          <input type="date" class="form-control input-md">
-            
+            <input type="date" class="form-control input-md">
           </div>
         </div>
 
-
-        <!-- Button (Double) -->
         <div class="form-group">
           <label class="col-md-2 control-label"></label>
           <div class="col-md-8">
