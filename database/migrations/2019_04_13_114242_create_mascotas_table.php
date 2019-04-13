@@ -22,8 +22,13 @@ class CreateMascotasTable extends Migration
             $table->string('especie');
             $table->integer('num_pasaporte');
             $table->char('sexo');
+            $table->integer('peso');
+            $table->string('propietario');
+            $table->integer('persona_id')->unsigned();
+            $table->foreign('persona_id')->references('id')->on('personas');
             $table->timestamps();
         });
+
     }
 
     /**

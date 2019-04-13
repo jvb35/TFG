@@ -13,4 +13,6 @@ class Tema extends Model
     public function foro() {
         return $this->hasMany('App\Foro');
     }
+
+
 }

@@ -9,7 +9,7 @@ class Mascota extends Model
     public function persona(){
         return $this->belongsTo('App\Persona');
     }    
-    
+
     public function citas(){
         return $this->hasMany('App\Cita');
     }  
@@ -17,4 +17,5 @@ class Mascota extends Model
     public function historial(){
         return $this->hasOne('App\Historial');
     }
+
 }

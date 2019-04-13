@@ -9,4 +9,5 @@ class Foro extends Model
     public function temas() {
         return $this->belongsTo('App\Tema');
     }
+
 }

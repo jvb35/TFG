@@ -13,4 +13,5 @@ class Persona extends Model
     public function citas() {
         return $this->hasMany('App\Cita');
     }
+
 }

@@ -13,4 +13,5 @@ class Historial extends Model
     public function mascota(){
         return $this->belongsTo('App\Mascota');
     }
+
 }

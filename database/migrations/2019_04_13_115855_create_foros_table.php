@@ -19,6 +19,7 @@ class CreateForosTable extends Migration
             $table->foreign('tema_id')->references('id')->on('temas');
             $table->timestamps();
         });
+
     }
 
     /**

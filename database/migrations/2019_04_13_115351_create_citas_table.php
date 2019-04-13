@@ -29,6 +29,7 @@ class CreateCitasTable extends Migration
             $table->foreign('personal_id')->references('id')->on('personals');
             $table->timestamps();
         });
+
     }
 
     /**

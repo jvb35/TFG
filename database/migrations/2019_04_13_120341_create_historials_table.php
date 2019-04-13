@@ -21,6 +21,7 @@ class CreateHistorialsTable extends Migration
             $table->foreign('mascota_id')->references('id')->on('mascotas');
             $table->timestamps();
         });
+
     }
 
     /**

@@ -28,81 +28,101 @@
         </h1>
     </section>
       
-    <!-- Main content -->
+
     <section class="content">
+            <form class="form-horizontal" action="{{action('AdminController@addMascota')}}" method="POST">
+            {{ csrf_field()}}
+            {{ method_field('POST')}}
 
-            <div class="container-page">				
-                    <div class="col-md-6">
-                        
-                        <div class="form-group col-lg-6">
-                            <label>Nombre</label>
-                            <input type="" name="" class="form-control" id="" value="">
-                        </div>
-                        
-                        <div class="form-group col-lg-6">
-                            <label>Chip</label>
-                            <input type="password" name="" class="form-control" id="" value="">
-                        </div>
-                        
-                        <div class="form-group col-lg-6">
-                            <label>Fecha de nacimiento</label>
-                            <input type="date" class="form-control">	
-                        </div>
-                                        
-                        <div class="form-group col-lg-6">
-                            <label>Raza</label>
-                            <input type="" name="" class="form-control" id="" value="">
-                        </div>
-                        
-                        <div class="form-group col-lg-6">
-                            <label>Especie</label>
-                            <input type="" name="" class="form-control" id="" value="">
-                        </div>
-                        
-                        <div class="form-group col-lg-6">
-                            <label>Peso</label>
-                            <input type="" name="" class="form-control" id="" value="">
-                        </div>
-
-                        <div class="form-group col-lg-6">
-                            <label>Num. Pasaporte</label>
-                            <input type="" name="" class="form-control" id="" value="">
-                        </div>
-                        
-                        <div class="form-group col-lg-6" style="margin-top: 30px;">
-                            
-                            <label>
-                                <input id="M" type="radio" name="numero" value="1"> Macho
-                            </label>
-                            
-                            <label style="margin-left: 15px;">
-                                <input id="H" type="radio" name="numero" value="2"> Hembra
-                            </label>
-                            
-                        </div>
-                        
-
-                    
+            <div class="col-md-6">
+            				        
+                <div class="form-group">
+                    <label for="chip" class="col-lg-1 control-label">Chip</label>
+                    <div class="col-lg-6">
+                        <input type="name" class="form-control" name="chip" id="chip" placeholder="Insertar el número chip">
                     </div>
-                
-                    <div class="col-md-6">
-                            <div class="form-group col-xs-10 col-sm-4 col-md-4 col-lg-4">
-                                <output id="list"></output>
-                                <img id="img" class="thumb" src="/images/foto-por-defecto.png" title="Foto" style="width: 250px; height: 250px;"/>
-                                <input type="file" id="files" name="files[]" />
-                                
+                </div>
 
-                            </div>
+                <div class="form-group">
+                    <label for="nombre" class="col-lg-1 control-label">Nombre</label>
+                    <div class="col-lg-6">
+                        <input type="name" class="form-control" name="nombre" id="nombre" placeholder="Inserta un nombre">
                     </div>
+                </div>
 
-                    <div class="col-md-6">
-                        <div class="form-group col-lg-6">
-                            <button type="button" class="btn btn-primary">Añadir</button>  
-                        </div>
+                <div class="form-group">
+                    <label for="fecha_nac" class="col-lg-1 control-label">Fecha Nacimiento</label>
+                    <div class="col-lg-6" style="margin-top: 7px;">
+                        <input type="date" class="form-control" name="fecha_nac" id="fecha_nac" placeholder="Inserta la fecha de nacimiento">
                     </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="raza" class="col-lg-1 control-label">Raza</label>
+                    <div class="col-lg-6">
+                        <input type="name" class="form-control" name="raza" id="raza" placeholder="Inserta una raza">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="especie" class="col-lg-1 control-label">Especie</label>
+                    <div class="col-lg-6">
+                        <input type="name" class="form-control" name="especie" id="especie" placeholder="Inserta una especie">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="num_pasaporte" class="col-lg-1 control-label">Número pasaporte</label>
+                    <div class="col-lg-6"  style="margin-top: 7px;">
+                        <input type="name" class="form-control" name="num_pasaporte" id="num_pasaporte" placeholder="Inserta el número de pasaporte">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="sexo" class="col-lg-1 control-label">Sexo</label>
+                    <div class="col-lg-6">
+                        <input type="radio" name="masc" id="masc"> Macho
+                        <input type="radio" name="fem" id="fem"> Hembra
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="peso" class="col-lg-1 control-label">Peso</label>
+                    <div class="col-lg-6">
+                        <input type="name" class="form-control" name="peso" id="peso" placeholder="Inserta un peso">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="propietario" class="col-lg-1 control-label">Propietario</label>
+                    <div class="col-lg-6">
+                        <input type="name" class="form-control" name="propietario" id="propietario" placeholder="Inserta un propietario">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-lg-offset-2 col-lg-5">
+                        <input type="submit" class="btn btn-default" value="Crear">
+                        <input type="button" class="btn btn-default" onclick="location.href='/admin-menu/mascotas/ver';" value="Cancelar">
+                    </div>
+                </div>
+
             </div>
 
+            <div class="col-md-6">
+                <div class="form-group col-xs-10 col-sm-4 col-md-4 col-lg-4">
+                    <output id="list"></output>
+                    <img id="img" class="thumb" src="/images/foto-por-defecto.png" title="Foto" style="width: 250px; height: 250px;"/>
+                    <input type="file" id="files" name="files[]" />
+
+                </div>
+            </div>
+
+
+            
+            </form>
     </section>
+ 
 
     <script>
             function archivo(evt) {
