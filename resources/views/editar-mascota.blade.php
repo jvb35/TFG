@@ -66,30 +66,30 @@
                     <tbody>
                       <tr>
                         <td>Nombre:</td>
-                        <td><input type="text" id="name" class="form-control" value="Neska" disabled></td>
+                        <td><input type="text" id="name" class="form-control" value="{{$mascota->nombre}}" disabled></td>
                       </tr>
                       <tr>
                         <td>Fecha de nacimiento:</td>
-                        <td><input type="date" id="date" class="form-control" value="" disabled></td>
+                        <td><input type="date" id="date" class="form-control" value="{{$mascota->fecha_nac}}" disabled></td>
                       </tr>
                       <tr>
                         <td>Peso:</td>
-                        <td><input type="text" id="weight" class="form-control" value="3Kg" disabled></td>
+                        <td><input type="text" id="weight" class="form-control" value="{{$mascota->peso}}" disabled></td>
                       </tr>
                       <tr>
                         <td>Raza:</td>
-                        <td><input type="text" id="race" class="form-control" value="Yorshkire" disabled></td>
+                        <td><input type="text" id="race" class="form-control" value="{{$mascota->raza}}" disabled></td>
                       </tr>
                       <tr>
                         <td>Propietario</td>
-                        <td><input type="text" id="propierty" class="form-control" value="Jordi Valls Beneyto" disabled></td>
+                        <td><input type="text" id="propierty" class="form-control" value="{{$mascota->propietario}}" disabled></td>
                       </tr>
                       <tr>
                         <td>Correo:</td>
-                        <td><input type="text" id="email" class="form-control" value="jordivalls@hotmail.com" disabled></td>
+                        <td><input type="text" id="email" class="form-control" value="{{$persona->correo}}" disabled></td>
                       </tr>
                         <td>Teléfono</td>
-                        <td><input type="number" id="telephone" class="form-control" value="608550850" disabled></td>
+                        <td><input type="number" id="telephone" class="form-control" value="{{$persona->telefono}}" disabled></td>
                         </td>
                            
                       </tr>

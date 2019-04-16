@@ -38,49 +38,49 @@
             				        
                 <div class="form-group">
                     <label for="chip" class="col-lg-1 control-label">Chip</label>
-                    <div class="col-lg-6">
+                    <div class="col-lg-6" style="margin-left: 25px;">
                         <input type="name" class="form-control" name="chip" id="chip" placeholder="Insertar el número chip">
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label for="nombre" class="col-lg-1 control-label">Nombre</label>
-                    <div class="col-lg-6">
+                    <div class="col-lg-6" style="margin-left: 25px;">
                         <input type="name" class="form-control" name="nombre" id="nombre" placeholder="Inserta un nombre">
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label for="fecha_nac" class="col-lg-1 control-label">Fecha Nacimiento</label>
-                    <div class="col-lg-6" style="margin-top: 7px;">
+                    <div class="col-lg-6" style="margin-top: 7px; margin-left: 25px;">
                         <input type="date" class="form-control" name="fecha_nac" id="fecha_nac" placeholder="Inserta la fecha de nacimiento">
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label for="raza" class="col-lg-1 control-label">Raza</label>
-                    <div class="col-lg-6">
+                    <div class="col-lg-6" style="margin-left: 25px;">
                         <input type="name" class="form-control" name="raza" id="raza" placeholder="Inserta una raza">
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label for="especie" class="col-lg-1 control-label">Especie</label>
-                    <div class="col-lg-6">
+                    <div class="col-lg-6" style="margin-left: 25px;">
                         <input type="name" class="form-control" name="especie" id="especie" placeholder="Inserta una especie">
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label for="num_pasaporte" class="col-lg-1 control-label">Número pasaporte</label>
-                    <div class="col-lg-6"  style="margin-top: 7px;">
+                    <div class="col-lg-6"  style="margin-top: 7px; margin-left: 25px;">
                         <input type="name" class="form-control" name="num_pasaporte" id="num_pasaporte" placeholder="Inserta el número de pasaporte">
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label for="sexo" class="col-lg-1 control-label">Sexo</label>
-                    <div class="col-lg-6">
+                    <div class="col-lg-6" style="margin-left: 25px; magin-top: 15px;">
                         <input type="radio" name="masc" id="masc"> Macho
                         <input type="radio" name="fem" id="fem"> Hembra
                     </div>
@@ -88,14 +88,14 @@
 
                 <div class="form-group">
                     <label for="peso" class="col-lg-1 control-label">Peso</label>
-                    <div class="col-lg-6">
+                    <div class="col-lg-6" style="margin-left: 25px;">
                         <input type="name" class="form-control" name="peso" id="peso" placeholder="Inserta un peso">
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label for="propietario" class="col-lg-1 control-label">Propietario</label>
-                    <div class="col-lg-6">
+                    <div class="col-lg-6" style="margin-left: 25px;">
                         <input type="name" class="form-control" name="propietario" id="propietario" placeholder="Inserta un propietario">
                     </div>
                 </div>

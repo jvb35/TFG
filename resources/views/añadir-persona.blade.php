@@ -55,7 +55,10 @@
 	
 	<section class="content">
 
-	<div class="row">
+	<div class="row" style="margin-left: 5px; margin-right: 5px;">
+	<form class="form-horizontal" action="{{action('AdminController@addPersona')}}" method="POST">
+	{{ csrf_field()}}
+	{{ method_field('POST')}}
 		<div class="col-md-6">
 			<h3> Datos personales</h3>		
 			<hr class="linea">
@@ -64,7 +67,7 @@
 				<div class="cols-sm-10">
 					<div class="input-group">
 						<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-						<input type="text" class="form-control" name="name" id="name"  placeholder="Enter your Name"/>
+						<input type="text" class="form-control" name="nombre" id="nombre"  placeholder="Introduzca el nombre"/>
 					</div>
 				</div>
 			</div>
@@ -74,7 +77,7 @@
 				<div class="cols-sm-10">
 					<div class="input-group">
 						<span class="input-group-addon"><i class="fa fa-birthday-cake" ></i></span>
-						<input type="date" class="form-control" name="name" id="name"  placeholder="Enter your Name"/>
+						<input type="date" class="form-control" name="fecha_nac" id="fecha_nac"/>
 					</div>
 				</div>
 			</div>
@@ -84,7 +87,7 @@
 				<div class="cols-sm-10">
 					<div class="input-group">
 						<span class="input-group-addon"><i class="fa fa-phone" ></i></span>
-						<input type="text" class="form-control" name="name" id="name"  placeholder="Enter your Name"/>
+						<input type="text" class="form-control" name="telefono" id="telefono"  placeholder="Introduzca el número"/>
 					</div>
 				</div>
 			</div>
@@ -94,7 +97,7 @@
 				<div class="cols-sm-10">
 					<div class="input-group">
 						<span class="input-group-addon"><i class="fa fa-building" ></i></span>
-						<input type="text" class="form-control" name="name" id="name"  placeholder="Enter your Name"/>
+						<input type="text" class="form-control" name="direccion" id="direccion"  placeholder="Introduzca la dirección"/>
 					</div>
 				</div>
 			</div>
@@ -104,12 +107,17 @@
 				<div class="cols-sm-10">
 					<div class="input-group">
 						<span class="input-group-addon"><i class="fa fa-flag" ></i></span>
-						<input type="text" class="form-control" name="name" id="name"  placeholder="Enter your Name"/>
+						<input type="text" class="form-control" name="pais" id="pais"  placeholder="Introduzca el país"/>
 					</div>
 				</div>
 			</div>
 			<br>
-			<button type="button" class="btn btn-primary">Guardar</button>
+			<div class="form-group">
+				<div class="col-lg-offset-2 col-lg-5">
+					<input type="submit" class="btn btn-primary" value="Crear">
+					<input type="button" class="btn btn-default" onclick="location.href='/admin-menu/mascotas/ver';" value="Cancelar">
+				</div>
+			</div>
 
 		</div>
 		<div class="col-md-6">
@@ -120,7 +128,7 @@
 				<div class="cols-sm-10">
 					<div class="input-group">
 						<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-						<input type="text" class="form-control" name="email" id="email"  placeholder="Enter your Email"/>
+						<input type="text" class="form-control" name="correo" id="correo"  placeholder="Enter your Email"/>
 					</div>
 				</div>
 			</div>
@@ -139,6 +147,7 @@
 
 
 		</div>
+		</form>
 	</div>
 
 	</section>

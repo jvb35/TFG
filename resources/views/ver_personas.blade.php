@@ -53,50 +53,39 @@
             </tr>
             </thead>
             <tbody>
+            <?php
+                $id = 0;
+            ?>
+            @foreach ($personas as $persona)
+            <?php
+                $id++;
+            ?>
             <tr>
                 <th scope="row">1</th>
-                <td class="text-center">Jordi Valls</td>
-                <td class="text-center">jordivalls@hotmail.com</td>
-                <td class="text-center">675837472</td>
+                <td class="text-center">{{$persona->nombre}}</td>
+                <td class="text-center">{{$persona->correo}}</td>
+                <td class="text-center">{{$persona->telefono}}</td>
                 <td class="text-center">
                     <a class="btn btn-default"  href="/admin-menu/personas/editar"><em class="fa fa-pencil"></em></a>
-                    <a class="btn btn-danger"><em class="fa fa-trash"></em></a>
+                    <a class="btn btn-danger" onclick="eliminarPersona({{$persona->id}});"><em class="fa fa-trash"></em></a>
                 </td>
             </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td class="text-center">Aila Valls</td>
-                <td class="text-center">ailavalls@hotmail.com</td>
-                <td class="text-center">654332124</td>
-                <td class="text-center">
-                    <a class="btn btn-default"><em class="fa fa-pencil"></em></a>
-                    <a class="btn btn-danger"><em class="fa fa-trash"></em></a>
-                </td>
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <td class="text-center">Zaida Berenguer</td>
-                <td class="text-center">zaidaberenguer@hotmail.com</td>
-                <td class="text-center">657384098</td>
-                <td class="text-center">
-                    <a class="btn btn-default"><em class="fa fa-pencil"></em></a>
-                    <a class="btn btn-danger"><em class="fa fa-trash"></em></a>
-                </td>
-            </tr>
-            <tr>
-                <th scope="row">4</th>
-                <td class="text-center">Dani Rovira</td>
-                <td class="text-center">danirovira@hotmail.com</td>
-                <td class="text-center">687990874</td>
-                <td class="text-center">
-                    <a class="btn btn-default"><em class="fa fa-pencil"></em></a>
-                    <a class="btn btn-danger"><em class="fa fa-trash"></em></a>
-                </td>
-            </tr>
+            @endforeach
             </tbody>
         </table>
 
         
     </section>
+
+    <script>
+        function eliminarPersona(id){
+            r= confirm('¿Esta seguro de desea elmininar esto?');
+            if(r == true){
+                window.location.href="/admin-menu/personas/borrar/" + id;
+            }else{
+                window.location.href="/admin-menu/personas/ver";
+            }
+        }
+    </script>
 
 @endsection
