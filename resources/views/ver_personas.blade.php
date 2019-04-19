@@ -66,7 +66,7 @@
                 <td class="text-center">{{$persona->correo}}</td>
                 <td class="text-center">{{$persona->telefono}}</td>
                 <td class="text-center">
-                    <a class="btn btn-default"  href="/admin-menu/personas/editar"><em class="fa fa-pencil"></em></a>
+                    <a class="btn btn-default"  onclick="editarPersona({{$persona->id}});"><em class="fa fa-pencil"></em></a>
                     <a class="btn btn-danger" onclick="eliminarPersona({{$persona->id}});"><em class="fa fa-trash"></em></a>
                 </td>
             </tr>
@@ -85,6 +85,10 @@
             }else{
                 window.location.href="/admin-menu/personas/ver";
             }
+        }
+
+        function editarPersona(id){
+            window.location.href="/admin-menu/personas/editar/" + id;
         }
     </script>
 

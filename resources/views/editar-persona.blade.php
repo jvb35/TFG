@@ -64,7 +64,7 @@
 				<div class="cols-sm-10">
 					<div class="input-group">
 						<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-						<input type="text" class="form-control" name="name" id="name"  placeholder="Enter your Name"/>
+						<input type="text" class="form-control" name="nombre" id="nombre"  value="{{$persona->nombre}}" disabled/>
 					</div>
 				</div>
 			</div>
@@ -74,7 +74,7 @@
 				<div class="cols-sm-10">
 					<div class="input-group">
 						<span class="input-group-addon"><i class="fa fa-birthday-cake" ></i></span>
-						<input type="date" class="form-control" name="name" id="name"  placeholder="Enter your Name"/>
+						<input type="date" class="form-control" name="fecha_nac" id="fecha_nac" value="{{$persona->fecha_nac}}" disabled/>
 					</div>
 				</div>
 			</div>
@@ -84,7 +84,7 @@
 				<div class="cols-sm-10">
 					<div class="input-group">
 						<span class="input-group-addon"><i class="fa fa-phone" ></i></span>
-						<input type="text" class="form-control" name="name" id="name"  placeholder="Enter your Name"/>
+						<input type="text" class="form-control" name="telefono" id="telefono" value="{{$persona->telefono}}" disabled/>
 					</div>
 				</div>
 			</div>
@@ -94,7 +94,7 @@
 				<div class="cols-sm-10">
 					<div class="input-group">
 						<span class="input-group-addon"><i class="fa fa-building" ></i></span>
-						<input type="text" class="form-control" name="name" id="name"  placeholder="Enter your Name"/>
+						<input type="text" class="form-control" name="direccion" id="direccion" value="{{$persona->direccion}}" disabled/>
 					</div>
 				</div>
 			</div>
@@ -104,12 +104,20 @@
 				<div class="cols-sm-10">
 					<div class="input-group">
 						<span class="input-group-addon"><i class="fa fa-flag" ></i></span>
-						<input type="text" class="form-control" name="name" id="name"  placeholder="Enter your Name"/>
+						<input type="text" class="form-control" name="pais" id="pais" value="{{$persona->pais}}" disabled/>
 					</div>
 				</div>
 			</div>
 			<br>
-			<button type="button" class="btn btn-primary">Guardar</button>
+			<ul>
+                    <li style="list-style:none; float:left;">
+                    <button style="text-align:left;" class="btn btn-primary" onclick="editar()">Editar</button>
+                    </li>
+                     
+                    <li style="list-style:none; float:left;">
+                      <button style="text-align:left; display:none; margin-left: 10px;" id="oculto" class="btn btn-primary">Guardar cambios</button>
+                    </li>
+                  </ul>
 
 		</div>
 		<div class="col-md-6">
@@ -120,7 +128,7 @@
 				<div class="cols-sm-10">
 					<div class="input-group">
 						<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-						<input type="text" class="form-control" name="email" id="email"  placeholder="Enter your Email"/>
+						<input type="text" class="form-control" name="correo" id="correo"  value="{{$persona->correo}}" disabled/>
 					</div>
 				</div>
 			</div>
@@ -130,7 +138,7 @@
 				<div class="cols-sm-10">
 					<div class="input-group">
 						<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-						<input type="password" class="form-control" name="password" id="password"  placeholder="Enter your Password"/>
+						<input type="password" class="form-control" name="password" id="password"  value="{{$persona->password}}" disabled/>
 					</div>
 				</div>
 			</div>
@@ -140,24 +148,13 @@
 			<h3> Mascotas asociadas </h3>
 			<hr class="linea">
 			<div class="row">
+			@foreach ($mascotas as $mascota)
 				<div class="col-sm-3">
 					<div class="profile-header-img" style="margin-top: -40px;">
-							<a href="/admin-menu"><img class="img-circle" src="/images/añadir-person.png" /></a>
+							<a href="/admin-menu/mascotas/editar/{{$mascota->id}}"><img class="img-circle" src="/images/{{$mascota->nombre}}.png" /></a>
 					</div>
-					
 				</div>
-				<div class="col-sm-3">
-					<div class="profile-header-img" style="margin-top: -40px;">
-							<a href="/admin-menu"><img class="img-circle" src="/images/Dalmata.png" /></a>
-					</div>
-				</div> 
-				
-				<div class="col-sm-3">
-					<div class="profile-header-img" style="margin-top: -40px;">
-							<a href="/admin-menu"><img class="img-circle" src="/images/asha.JPG" /></a>
-						</div>
-					</div> 
-				</div>
+			@endforeach
 
 			</div>
 
@@ -165,6 +162,20 @@
 	</div>
 
 	</section>
+
+	<script>
+		function editar(){
+			document.getElementById("nombre").disabled = false;
+			document.getElementById("correo").disabled = false;
+			document.getElementById("fecha_nac").disabled = false;
+			document.getElementById("telefono").disabled = false;
+			document.getElementById("direccion").disabled = false;
+			document.getElementById("pais").disabled = false;
+			document.getElementById("password").disabled = false;
+			document.getElementById("oculto").style.display = 'block';
+		}
+		
+	</script>
 
 
 	@endsection

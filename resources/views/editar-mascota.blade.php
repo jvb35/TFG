@@ -51,6 +51,9 @@
 
 <!------ Include the above in your HEAD tag ---------->
 
+<form class="form-horizontal" action="{{url('/admin-menu/mascotas/save/{id}')}}" role="form" method="POST">
+{{ csrf_field()}}
+{{ method_field('POST')}}
 <div class="container">
         <div class="row">
           <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 col-xs-offset-0 col-sm-offset-0 toppad" >
@@ -60,36 +63,40 @@
               </div>
             <div class="panel-body">
               <div class="row">
-                <div class="col-md-3 col-lg-3" align="center"> <img alt="User Pic" src="/images/yorskhire.png" class="img-circle img-responsive"> </div>
+                <div class="col-md-3 col-lg-3" align="center"> <img alt="User Pic" src="/images/{{$mascota->nombre}}.png" class="img-circle img-responsive"> </div>
                 <div class=" col-md-9 col-lg-9 "> 
                   <table class="table table-user-information">
                     <tbody>
                       <tr>
                         <td>Nombre:</td>
-                        <td><input type="text" id="name" class="form-control" value="{{$mascota->nombre}}" disabled></td>
+                        <td><input type="text" name="nombre" id="nombre" class="form-control" value="{{$mascota->nombre}}" disabled></td>
                       </tr>
                       <tr>
                         <td>Fecha de nacimiento:</td>
-                        <td><input type="date" id="date" class="form-control" value="{{$mascota->fecha_nac}}" disabled></td>
+                        <td><input type="date" name="fecha_nac" id="fecha_nac" class="form-control" value="{{$mascota->fecha_nac}}" disabled></td>
                       </tr>
                       <tr>
                         <td>Peso:</td>
-                        <td><input type="text" id="weight" class="form-control" value="{{$mascota->peso}}" disabled></td>
+                        <td><input type="text" name="peso" id="peso" class="form-control" value="{{$mascota->peso}}" disabled></td>
                       </tr>
                       <tr>
                         <td>Raza:</td>
-                        <td><input type="text" id="race" class="form-control" value="{{$mascota->raza}}" disabled></td>
+                        <td><input type="text" name="raza" id="raza" class="form-control" value="{{$mascota->raza}}" disabled></td>
                       </tr>
                       <tr>
-                        <td>Propietario</td>
-                        <td><input type="text" id="propierty" class="form-control" value="{{$mascota->propietario}}" disabled></td>
+                        <td>Especie:</td>
+                        <td><input type="text" name="especie" id="especie" class="form-control" value="{{$mascota->especie}}" disabled></td>
                       </tr>
                       <tr>
-                        <td>Correo:</td>
-                        <td><input type="text" id="email" class="form-control" value="{{$persona->correo}}" disabled></td>
+                        <td>Propietario:</td>
+                        <td><input type="text" name="propietario" id="propietario" class="form-control" value="{{$mascota->propietario}}" disabled></td>
                       </tr>
-                        <td>Teléfono</td>
-                        <td><input type="number" id="telephone" class="form-control" value="{{$persona->telefono}}" disabled></td>
+                      <tr>
+                        <td>Chip:</td>
+                        <td><input type="text" name="chip" id="chip" class="form-control" value="{{$mascota->chip}}" disabled></td>
+                      </tr>
+                        <td>Num. Pasaporte:</td>
+                        <td><input type="number" name="num_pasaporte" id="num_pasaporte" class="form-control" value="{{$mascota->num_pasaporte}}" disabled></td>
                         </td>
                            
                       </tr>
@@ -120,20 +127,26 @@
             
           </div>
         </div>
+        
     </div>
-
+    </form>
 
     <script>
       function bloquear() {
-        document.getElementById("name").disabled = false;
-        document.getElementById("date").disabled = false;
-        document.getElementById("weight").disabled = false;
-        document.getElementById("race").disabled = false;
-        document.getElementById("propierty").disabled = false;
-        document.getElementById("email").disabled = false;
-        document.getElementById("telephone").disabled = false;
+        document.getElementById("nombre").disabled = false;
+        document.getElementById("fecha_nac").disabled = false;
+        document.getElementById("peso").disabled = false;
+        document.getElementById("raza").disabled = false;
+        document.getElementById("especie").disabled = false;
+        document.getElementById("propietario").disabled = false;
+        document.getElementById("chip").disabled = false;
+        document.getElementById("num_pasaporte").disabled = false;
         document.getElementById("oculto").style.display = 'block';
 
+      }
+
+      function actualizarMascota(id){
+        window.location.href="/admin-menu/mascotas/save/" + id;
       }
 
     </script>

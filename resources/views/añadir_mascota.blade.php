@@ -96,7 +96,7 @@
                 <div class="form-group">
                     <label for="propietario" class="col-lg-1 control-label">Propietario</label>
                     <div class="col-lg-6" style="margin-left: 25px;">
-                        <input type="name" class="form-control" name="propietario" id="propietario" placeholder="Inserta un propietario">
+                        <input type="search" class="form-control" name="propietario" list="listapersonas" placeholder="Insertar un propietario">
                     </div>
                 </div>
 
@@ -121,6 +121,14 @@
 
             
             </form>
+            
+            <datalist id="listapersonas">
+                @foreach ($personas as $persona)
+                    <option value="{{$persona->nombre}}">
+                @endforeach
+
+            </datalist>
+
     </section>
  
 

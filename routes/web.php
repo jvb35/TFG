@@ -24,13 +24,13 @@ Route::get('/admin-menu/personas/borrar/{id}','AdminController@deletePersona');
 Route::get('/admin-menu/mascotas/borrar/{id}','AdminController@deleteMascota');
 Route::post('/admin-menu/personas/añadir/nueva', 'AdminController@addPersona');
 Route::get('/admin-menu/personas/añadir', 'AdminController@showPerson');
-Route::get('/admin-menu/personas/editar', 'AdminController@editPerson');
+Route::get('/admin-menu/personas/editar/{id}', 'AdminController@editPerson');
 Route::post('/admin-menu/mascotas/añadir/nueva', 'AdminController@addMascota');
 Route::get('/admin-menu/mascotas/añadir', 'AdminController@showMascota');
 Route::get('/admin-menu/citas/ver', 'EventController@index');
 Route::get('/admin-menu/mascotas/editar/{id}', 'AdminController@editMascota');
 Route::get('/admin-menu/foro/ver', 'AdminController@verForo');
-
+Route::post('/admin-menu/mascotas/save/{id}', 'AdminController@saveMascota');
 Route::post('/admin-menu/citas/añadir', 'EventController@store');
 Route::get('/admin-menu/citas/editar', 'EventController@show');
 Route::get('/admin-menu/citas/editar/{id}', 'EventController@edit');

@@ -18,6 +18,7 @@
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="/dist/css/skins/_all-skins.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -249,7 +250,7 @@
             <li><a href="index.html"><i class="fa fa-circle-o"></i> Añadir</a></li>
             <li><a href="index2.html"><i class="fa fa-circle-o"></i> Eliminar</a></li>
           </ul>
-      </li>
+        </li>
 
       <li class="treeview">
         <a href="#">
@@ -262,7 +263,20 @@
           <li><a href="/admin-menu/foro/ver"><i class="fa fa-circle-o"></i> Ver</a></li>
           <li><a href="/admin-menu/foro/añadir"><i class="fa fa-circle-o"></i> Añadir</a></li>
         </ul>
-    </li>
+      </li>
+
+      <li class="treeview">
+        <a href="#">
+          <i class="fa fa-id-card-o"></i> <span>Personal</span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+        </a>
+        <ul class="treeview-menu">
+          <li><a href="index.html"><i class="fa fa-circle-o"></i> Ver todos</a></li>
+          <li><a href="index.html"><i class="fa fa-circle-o"></i> Añadir</a></li>
+        </ul>
+      </li>
 
       </ul>
     </section>

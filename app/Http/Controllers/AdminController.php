@@ -60,12 +60,37 @@ class AdminController extends Controller
     }
 
     function showMascota(){
-        return view('añadir_mascota');
+        $personas = \App\Persona::get();
+        return view('añadir_mascota', ['personas' => $personas]);
+    }
+
+    function saveMascota(Request $request){
+        if($_POST)
+        {
+            $originalDate = $request->input('fecha_nac');
+            $newDate = date("Y/m/d", strtotime($originalDate));
+            Mascota::where('nombre', '=', $request->input('nombre'))->update(
+                array(
+                    'chip' => $request->input('chip'),
+                    'nombre' => $request->input('nombre'),
+                    'fecha_nac' => $newDate,
+                    'raza' => $request->input('raza'),
+                    'especie' => $request->input('especie'),
+                    'num_pasaporte' => $request->input('num_pasaporte'),
+                    'peso' => $request->input('peso'),
+                    'propietario' => $request->input('propietario')
+                )
+            );
+        }
+
+        return Redirect::to('/admin-menu/mascotas/ver');
+
     }
 
     function addMascota(Request $request){
         $originalDate = $request->input('fecha_nac');
         $newDate = date("Y/m/d", strtotime($originalDate));
+
         $mascota = new Mascota;
         $mascota->chip = $request->input('chip');
         $mascota->nombre = $request->input('nombre');
@@ -76,8 +101,12 @@ class AdminController extends Controller
         $mascota->sexo = "M";
         $mascota->peso = $request->input('peso');
         $mascota->propietario = $request->input('propietario');
-        $mascota->persona_id = 2;
-  
+        $personas = \App\Persona::get();
+        foreach ($personas as $persona){
+            if($persona->nombre == $mascota->propietario){
+                $mascota->persona_id = $persona->id;
+            }
+        }
         
         $mascota->save();
         
@@ -108,8 +137,10 @@ class AdminController extends Controller
         return view('añadir-persona');
     }
     
-    function editPerson(){
-        return view('editar-persona');
+    function editPerson($id=null){
+        $persona = Persona::find($id);
+        $mascotas = Mascota::where('persona_id', '=', $id)->orderBy('nombre','desc')->get();
+        return view('editar-persona', ['persona' => $persona, 'mascotas' => $mascotas]);
     }
 
     function editMascota($id=null){
