@@ -29,47 +29,16 @@
             </tr>
           </thead>
           <tbody>
+            @foreach ($temas as $tema)
             <tr>
-                <td><a href="" target="_blank">Concurso canino</a><br/>Antonio García<br/><i class="fa fa-map-marker"></i> La Nucía<br/><i class="fa fa-phone"></i> 675847561<br/></td>
-                <td>Julio 28 - 30, 2019</td>
+                <td><a href="" target="_blank">{{$tema->nombre}}</a><br/>{{$tema->autor}}<br/><i class="fa fa-map-marker"></i>{{$tema->direccion}}<br/><i class="fa fa-phone"></i>{{$tema->telefono}}<br/></td>
+                <td>{{$tema->fecha}}</td>
                 <td>
                     <a class="btn btn-default"><em class="fa fa-pencil"></em></a>
                     <a class="btn btn-danger"><em class="fa fa-trash"></em></a>
                 </td>
             </tr>
-            <tr>
-                <td><a href="" target="_blank">Curso de adiestramiento</a><br/>Jose Gonzalez<br/><i class="fa fa-map-marker"></i> Altea<br/><i class="fa fa-phone"></i> 675847561<br/></td>
-                <td>Abril 23, 2019</td>
-                <td>
-                    <a class="btn btn-default" disabled><em class="fa fa-pencil"></em></a>
-                    <a class="btn btn-danger" disabled><em class="fa fa-trash"></em></a>
-                </td>
-            </tr>
-            <tr>
-                <td><a href="" target="_blank">Perro perdido</a><br/>Rosa Pérez<br/><i class="fa fa-map-marker"></i> Benidorm<br/><i class="fa fa-phone"></i> 675847561<br/></td>
-                <td>Marzo 24, 2019</td>
-                <td>
-                    <a class="btn btn-default"><em class="fa fa-pencil"></em></a>
-                    <a class="btn btn-danger"><em class="fa fa-trash"></em></a>
-                </td>
-            </tr>
-            <tr>
-                <td><a href="" target="_blank">Adopción de cachorros</a><br/>Rosa Pérez<br/><i class="fa fa-map-marker"></i> Albir<br/><i class="fa fa-phone"></i> 675847561<br/></td>
-                <td>Febrero 2, 2019</td>
-                <td>
-                    <a class="btn btn-default"><em class="fa fa-pencil"></em></a>
-                    <a class="btn btn-danger"><em class="fa fa-trash"></em></a>
-                </td>
-            </tr>
-            <tr>
-                <td><a href="" target="_blank">Gato perdido</a><br/>Jose Gonzalez<br/><i class="fa fa-map-marker"></i> Polop<br/><i class="fa fa-phone"></i> 675847561<br/></td>
-                <td>Enero 20, 2019</td>
-                <td>
-                    <a class="btn btn-default"><em class="fa fa-pencil"></em></a>
-                    <a class="btn btn-danger"><em class="fa fa-trash"></em></a>
-                </td>
-            </tr>
-
+            @endforeach
         </tbody>
       </table>
      </div>

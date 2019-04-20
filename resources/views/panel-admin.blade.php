@@ -273,8 +273,8 @@
           </span>
         </a>
         <ul class="treeview-menu">
-          <li><a href="index.html"><i class="fa fa-circle-o"></i> Ver todos</a></li>
-          <li><a href="index.html"><i class="fa fa-circle-o"></i> Añadir</a></li>
+          <li><a href="/admin-menu/personal/ver"><i class="fa fa-circle-o"></i> Ver todos</a></li>
+          <li><a href="/admin-menu/personal/añadir"><i class="fa fa-circle-o"></i> Añadir</a></li>
         </ul>
       </li>
 

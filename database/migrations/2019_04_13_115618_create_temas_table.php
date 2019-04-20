@@ -17,6 +17,10 @@ class CreateTemasTable extends Migration
             $table->increments('id');
             $table->string('nombre');
             $table->string('descripcion');
+            $table->string('autor');
+            $table->integer('telefono');
+            $table->string('direccion');
+            $table->date('fecha');
             $table->integer('personal_id')->unsigned();
             $table->foreign('personal_id')->references('id')->on('personals');
             $table->timestamps();

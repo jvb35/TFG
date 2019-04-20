@@ -32,21 +32,23 @@
 
                 <h1>Añadir tema</h1>
 
-                <form id="contact-form" method="post" action="" role="form">
+                <form id="contact-form" method="POST" action="{{action('AdminController@addTema')}}">
+                {{ csrf_field()}}
+	            {{ method_field('POST')}}
                     <div class="controls">
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label for="form_name">Titulo *</label>
-                                    <input id="form_name" type="text" name="name" class="form-control" placeholder="Inserte un titulo" required="required"
+                                    <label for="form_name">Titulo </label>
+                                    <input id="form_name" type="text" name="nombre" class="form-control" placeholder="Inserte un titulo" required="required"
                                         data-error="Firstname is required.">
                                     <div class="help-block with-errors"></div>
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label for="form_lastname">Lugar *</label>
-                                    <input id="form_lastname" type="text" name="surname" class="form-control" placeholder="Inserte el lugar" required="required"
+                                    <label for="form_lastname">Lugar </label>
+                                    <input id="form_lastname" type="text" name="direccion" class="form-control" placeholder="Inserte el lugar" required="required"
                                         data-error="Lastname is required.">
                                     <div class="help-block with-errors"></div>
                                 </div>
@@ -55,8 +57,8 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label for="form_email">Autor *</label>
-                                    <input id="form_email" type="text" name="text" class="form-control" placeholder="Inserte el autor" required="required"
+                                    <label for="form_email">Autor </label>
+                                    <input id="form_email" type="text" name="autor" class="form-control" placeholder="Inserte el autor" required="required"
                                         data-error="Valid email is required.">
                                     <div class="help-block with-errors"></div>
                                 </div>
@@ -64,14 +66,14 @@
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label for="form_phone">Telefono</label>
-                                    <input id="form_phone" type="tel" name="phone" class="form-control" placeholder="Inserte un teléfono">
+                                    <input id="form_phone" type="tel" name="telefono" class="form-control" placeholder="Inserte un teléfono">
                                     <div class="help-block with-errors"></div>
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="form_message">Descripcion *</label>
-                            <textarea id="form_message" name="message" class="form-control" placeholder="Inserte una descripción" rows="4" required="required"
+                            <label for="form_message">Descripcion </label>
+                            <textarea id="form_message" name="descripcion" class="form-control" placeholder="Inserte una descripción" rows="4" required="required"
                                 data-error="Please, leave us a message."></textarea>
                             <div class="help-block with-errors"></div>
                         </div>

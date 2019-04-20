@@ -6,12 +6,14 @@ use Illuminate\Http\Request;
 use App\Mascota;
 use Illuminate\Support\Facades\Redirect;
 use App\Persona;
+use App\Personal;
+use App\Tema;
 use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
 {
     private $mascotas;
-    private $personas; 
+    private $personas;
 
     function login(){
         return view('login');
@@ -33,6 +35,11 @@ class AdminController extends Controller
     function ver_personas(){
         $personas = DB::table('personas')->paginate(10);
         return view('ver_personas', ['personas' => $personas]);
+    }
+
+    function ver_personal(){
+        $personals = DB::table('personals')->paginate(10);
+        return view('ver_personal', ['personals' => $personals]);
     }
 
     function showPerson(){
@@ -57,6 +64,13 @@ class AdminController extends Controller
         $mascota->delete();
 
         return Redirect::to('/admin-menu/mascotas/ver');
+    }
+
+    function deletePersonal($id=null){
+        $personal = Personal::find($id);
+        $personal->delete();
+
+        return Redirect::to('/admin-menu/personal/ver');
     }
 
     function showMascota(){
@@ -150,7 +164,8 @@ class AdminController extends Controller
     }
 
     function verForo(){
-        return view('ver_foro');
+        $temas = \App\Tema::get();
+        return view('ver_foro', ['temas' => $temas]);
     }
 
     function showHistory(){
@@ -171,5 +186,40 @@ class AdminController extends Controller
 
     function showForo(){
         return view('ver-tema-foro');
+    }
+
+    function verPersonal(){
+        return view('añadir_personal');
+    }
+
+    function addPersonal(Request $request){
+        $originalDate = $request->input('fecha_nac');
+        $newDate = date("Y/m/d", strtotime($originalDate));
+        $personal = new Personal;
+        $personal->correo = $request->input('correo');
+        $personal->nombre = $request->input('nombre');
+        $personal->fecha_nac = $newDate;
+        $personal->telefono = $request->input('telefono');
+        $personal->direccion = $request->input('direccion');
+        $personal->especialidad = $request->input('especialidad');
+        $personal->password = $request->input('password');
+
+        $personal->save();
+        return Redirect::to('/admin-menu/personal/ver');
+
+    }
+
+    function addTema(Request $request){
+        $tema = new Tema;
+        $tema->nombre = $request->input('nombre');
+        $tema->descripcion = $request->input('descripcion');
+        $tema->autor = $request->input('autor');
+        $tema->telefono = $request->input('telefono');
+        $tema->direccion = $request->input('direccion');
+        $tema->fecha = "2019/05/02";
+        $tema->personal_id = 2;
+
+        $tema->save();
+        return Redirect::to('/admin-menu/foro/ver');
     }
 }

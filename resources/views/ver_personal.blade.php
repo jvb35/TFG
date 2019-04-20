@@ -29,7 +29,7 @@
 
     <section class="content-header">
         <h1>
-            Nuestros clientes
+            Nuestro personal
         </h1>
     </section>
       
@@ -56,7 +56,7 @@
             <?php
                 $id = 0;
             ?>
-            @foreach ($personas as $persona)
+            @foreach ($personals as $persona)
             <?php
                 $id++;
             ?>
@@ -81,9 +81,9 @@
         function eliminarPersona(id){
             r= confirm('¿Esta seguro de desea elmininar esto?');
             if(r == true){
-                window.location.href="/admin-menu/personas/borrar/" + id;
+                window.location.href="/admin-menu/personal/borrar/" + id;
             }else{
-                window.location.href="/admin-menu/personas/ver";
+                window.location.href="/admin-menu/personal/ver";
             }
         }
 
