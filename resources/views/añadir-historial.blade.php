@@ -18,17 +18,19 @@
 <div class="container">
 	<div class="row">
   <br>
-		<form class="form-horizontal">
+		<form class="form-horizontal" action="{{action('AdminController@addConsulta')}}" method="POST">
+      {{ csrf_field()}}
+      {{ method_field('POST')}}
 
       <fieldset>
 <!-- Form Name -->
-        <legend>Añadir historial</legend>
+        <legend>Añadir consulta</legend>
 
         <!-- Text input-->
         <div class="form-group">
-          <label class="col-md-2 control-label" for="cedula">Nombre</label>  
+          <label class="col-md-2 control-label" for="nombre">Nombre</label>  
           <div class="col-md-3">
-          <input id="cedula" name="cedula" type="text" placeholder="Solicitante" class="form-control input-md">
+          <input id="nombre" name="nombre" type="text" placeholder="Introduzca un nombre" class="form-control input-md">
             
           </div>
         </div>
@@ -37,7 +39,7 @@
         <div class="form-group">
           <label class="col-md-2 control-label" for="sistema">Estado</label>
           <div class="col-md-3">
-            <select id="sistema" name="sistema" class="form-control">
+            <select id="estado" name="estado" class="form-control">
               <option value="1">Realizada</option>
               <option value="2">Pendiente</option>
             </select>
@@ -53,9 +55,9 @@
         </div>
 
         <div class="form-group">
-          <label class="col-md-2 control-label" for="cedula">Fecha</label>  
+          <label class="col-md-2 control-label" for="fecha">Fecha</label>  
           <div class="col-md-3">
-          <input id="cedula" name="cedula" type="date" class="form-control input-md">
+          <input id="fecha" name="fecha" type="date" class="form-control input-md">
             
           </div>
         </div>

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateForosTable extends Migration
+class CreatePersonalsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,20 @@ class CreateForosTable extends Migration
      */
     public function up()
     {
-        Schema::create('foros', function (Blueprint $table) {
+        Schema::create('personals', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('tema_id')->unsigned();
-            $table->foreign('tema_id')->references('id')->on('temas');
+            $table->string('correo');
+            $table->string('nombre');
+            $table->date('fecha_nac');
+            $table->integer('telefono');
+            $table->string('direccion');
+            $table->string('especialidad');
+            $table->string('password');
             $table->timestamps();
         });
 
     }
+
 
     /**
      * Reverse the migrations.
@@ -29,6 +35,6 @@ class CreateForosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('foros');
+        Schema::dropIfExists('personals');
     }
 }

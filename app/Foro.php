@@ -6,8 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Foro extends Model
 {
-    public function temas() {
-        return $this->belongsTo('App\Tema');
+    public function foros() {
+        return $this->hasMany('App\Foro');
     }
-
 }

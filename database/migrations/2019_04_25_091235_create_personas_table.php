@@ -27,6 +27,7 @@ class CreatePersonasTable extends Migration
 
     }
 
+
     /**
      * Reverse the migrations.
      *

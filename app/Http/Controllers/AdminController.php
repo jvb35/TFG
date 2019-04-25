@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Redirect;
 use App\Persona;
 use App\Personal;
 use App\Tema;
+use App\Consulta;
 use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
@@ -64,6 +65,13 @@ class AdminController extends Controller
         $mascota->delete();
 
         return Redirect::to('/admin-menu/mascotas/ver');
+    }
+
+    function deleteTema($id=null){
+        $tema = Tema::find($id);
+        $tema->delete();
+
+        return Redirect::to('/admin-menu/foro/ver');
     }
 
     function deletePersonal($id=null){
@@ -163,6 +171,11 @@ class AdminController extends Controller
         return view('editar-mascota', ['mascota' => $mascota, 'persona' => $persona]);
     }
 
+    function verTema($id=null){
+        $tema = Tema::find($id);
+        return view('ver-tema-foro', ['tema' => $tema]);
+    }
+
     function verForo(){
         $temas = \App\Tema::get();
         return view('ver_foro', ['temas' => $temas]);
@@ -186,6 +199,10 @@ class AdminController extends Controller
 
     function showForo(){
         return view('ver-tema-foro');
+    }
+
+    function verHistorial(){
+        return view('ver-historial');
     }
 
     function verPersonal(){
@@ -216,10 +233,32 @@ class AdminController extends Controller
         $tema->autor = $request->input('autor');
         $tema->telefono = $request->input('telefono');
         $tema->direccion = $request->input('direccion');
+        $tema->municipio = $request->input('municipio');
+        $tema->correo = $request->input('correo');
         $tema->fecha = "2019/05/02";
         $tema->personal_id = 2;
 
         $tema->save();
         return Redirect::to('/admin-menu/foro/ver');
+    }
+
+    function addConsulta(Request $request){
+        $originalDate = $request->input('fecha');
+        $newDate = date("Y/m/d", strtotime($originalDate));
+        $consulta = new Consulta;
+        $consulta->nombre = $request->input('nombre');
+        $consulta->fecha = $newDate;
+        $consulta->descripcion = $request->input('descripcion');
+        $valor = $request->input('estado');
+        if($valor == 1){
+            $consulta->estado = "Realizada";
+        } else{
+            $consulta->estado = "Pendiente";
+        }
+        
+        $consulta->personal_id = 2;
+
+        $consulta->save();
+        return Redirect::to('/admin-menu/historial/ver');
     }
 }

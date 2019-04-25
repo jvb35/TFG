@@ -71,6 +71,23 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label for="form_email">Municipio </label>
+                                    <input id="form_email" type="text" name="municipio" class="form-control" placeholder="Inserte el municipio" required="required"
+                                        data-error="Valid email is required.">
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label for="form_phone">Correo</label>
+                                    <input id="form_phone" type="text" name="correo" class="form-control" placeholder="Inserte un correo">
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+                        </div>
                         <div class="form-group">
                             <label for="form_message">Descripcion </label>
                             <textarea id="form_message" name="descripcion" class="form-control" placeholder="Inserte una descripción" rows="4" required="required"

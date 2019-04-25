@@ -32,6 +32,7 @@ class CreateCitasTable extends Migration
 
     }
 
+
     /**
      * Reverse the migrations.
      *

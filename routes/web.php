@@ -24,6 +24,7 @@ Route::get('/admin-menu/personal/ver', 'AdminController@ver_personal');
 Route::get('/admin-menu/personas/borrar/{id}','AdminController@deletePersona');
 Route::get('/admin-menu/mascotas/borrar/{id}','AdminController@deleteMascota');
 Route::get('/admin-menu/personal/borrar/{id}', 'AdminController@deletePersonal');
+Route::get('/admin-menu/foro/borrar/{id}', 'AdminController@deleteTema');
 Route::post('/admin-menu/personas/añadir/nueva', 'AdminController@addPersona');
 Route::get('/admin-menu/personas/añadir', 'AdminController@showPerson');
 Route::get('/admin-menu/personas/editar/{id}', 'AdminController@editPerson');
@@ -49,3 +50,8 @@ Route::get('/admin-menu/personal/añadir', 'AdminController@verPersonal');
 Route::post('/admin-menu/personal/añadir/nueva', 'AdminController@addPersonal');
 
 Route::post('/admin-menu/foro/añadir/nueva', 'AdminController@addTema');
+Route::get('/admin-menu/foro/ver/{id}', 'AdminController@verTema');
+
+
+Route::get('/admin-menu/historial/ver', 'AdminController@verHistorial');
+Route::post('/admin-menu/mascotas/historial/añadir/nueva', 'AdminController@addConsulta');

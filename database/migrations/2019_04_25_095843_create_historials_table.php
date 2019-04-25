@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePersonalsTable extends Migration
+class CreateHistorialsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,19 +13,15 @@ class CreatePersonalsTable extends Migration
      */
     public function up()
     {
-        Schema::create('personals', function (Blueprint $table) {
+        Schema::create('historials', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('correo');
-            $table->string('nombre');
-            $table->date('fecha_nac');
-            $table->integer('telefono');
-            $table->string('direccion');
-            $table->string('especialidad');
-            $table->string('password');
+            $table->integer('mascota_id')->unsigned();
+            $table->foreign('mascota_id')->references('id')->on('mascotas');
             $table->timestamps();
         });
 
     }
+
 
     /**
      * Reverse the migrations.
@@ -34,6 +30,6 @@ class CreatePersonalsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('personals');
+        Schema::dropIfExists('historials');
     }
 }

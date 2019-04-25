@@ -221,25 +221,19 @@ Licensed under MIT
     <div class="profile-head">
         <!--col-md-4 col-sm-4 col-xs-12 close-->
         <div class="col-md- col-sm-4 col-xs-12">
-            <img src="http://www.newlifefamilychiropractic.net/wp-content/uploads/2014/07/300x300.gif" class="img-responsive"/>
-            <h6></h6>
             <div class="container"style="margin-left: 90px;">
-                <span class="btn btn-default uplod-file">
-                        Upload Photo <input type="file" />
-                </span>
+              <img alt="User Pic" src="/images/Domino.png">
             </div>
         </div>
         <!--col-md-4 col-sm-4 col-xs-12 close-->
 
         <div class="col-md-5 col-sm-5 col-xs-12">
-            <h5>Perro perdido</h5>
-            <p>Domino </p>
+            <h5>{{$tema->nombre}}</h5>
             <ul>
-                <li><span class="glyphicon glyphicon-briefcase"></span> 9 years</li>
-                <li><span class="glyphicon glyphicon-map-marker"></span> Altea</li>
-                <li><span class="glyphicon glyphicon-home"></span> c/lloveret nº 42 apdo.936 </li>
-                <li><span class="glyphicon glyphicon-phone"></span> <a href="#" title="call">608550850</a></li>
-                <li><span class="glyphicon glyphicon-envelope"></span><a href="#" title="mail">jordivalls_96@hotmail.com</a></li>
+                <li><span class="glyphicon glyphicon-map-marker"></span> {{$tema->municipio}}</li>
+                <li><span class="glyphicon glyphicon-home"></span> {{$tema->direccion}} </li>
+                <li><span class="glyphicon glyphicon-phone"></span> <a href="#" title="call"> {{$tema->telefono}}</a></li>
+                <li><span class="glyphicon glyphicon-envelope"></span><a href="#" title="mail"> {{$tema->correo}}</a></li>
             </ul>
         </div>
     </div>
@@ -254,9 +248,7 @@ Licensed under MIT
 <div class="container">
     <div class="col-sm-12">
         <div class="maxwidth">
-            <h4><b>Finance Analytics</b></h4>
-            <p>fdh sdfl sdlfj l sdlk j sdlkfjsñlfdjñszld fslñfj ñlsdfj lsjf ñlsdfj ñlsdjf ñlsjf ñ lszñslfj szdñfj sdñlfj ñlOver fact all son tell this any his. Insisted  confined of weddings to returned debating  rendered. Keeps order fully so do party.</p>
-            <a href="single-service-2.html" class="button-2">See details </a>
+            <p>{{$tema->descripcion}}</p>
         </div>
     </div>
 </div>

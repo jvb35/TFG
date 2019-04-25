@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateHistorialsTable extends Migration
+class CreateForosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,10 @@ class CreateHistorialsTable extends Migration
      */
     public function up()
     {
-        Schema::create('historials', function (Blueprint $table) {
+        Schema::create('foros', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('consulta_id')->unsigned();
-            $table->foreign('consulta_id')->references('id')->on('consultas');
-            $table->integer('mascota_id')->unsigned();
-            $table->foreign('mascota_id')->references('id')->on('mascotas');
             $table->timestamps();
         });
-
     }
 
     /**
@@ -31,6 +26,6 @@ class CreateHistorialsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('historials');
+        Schema::dropIfExists('foros');
     }
 }
