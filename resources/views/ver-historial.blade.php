@@ -166,7 +166,7 @@
 					<div class="panel-body">
                         <div class="pull-left">
                             <div class="btn-group">
-                                <button type="button" class="btn btn-primary" onclick="window.location.href='/admin-menu/mascotas/historial/añadir'">Añadir</button>
+                                <button type="button" class="btn btn-primary" onclick="window.location.href='/admin-menu/mascotas/historial/añadir/{{$id}}'">Añadir</button>
                             </div>
                         </div>
 						<div class="pull-right">
@@ -190,61 +190,19 @@
                             </tr>
                             </thead>
 								<tbody>
-									<tr data-status="Realizada">
+                                    @foreach ($consultas as $consulta)
+									<tr data-status="{{$consulta->estado}}">
                                         <th scope="row">1</th>
-                                        <td class="text-center">Vacuna lesmaniosis</td>
+                                        <td class="text-center">{{$consulta->nombre}}</td>
                                         <td class="text-center"><a  data-toggle="modal" data-target="#miModal">Ver</a></td>
-                                        <td class="text-center"><span class="Realizada">Realizada</span></td>
-                                        <td class="text-center"><span class="media-meta pull-right">Febrero 13, 2016</span></td>
+                                        <td class="text-center"><span class="{{$consulta->estado}}">{{$consulta->estado}}</span></td>
+                                        <td class="text-center"><span class="media-meta pull-right">{{$consulta->fecha}}</span></td>
                                         <td class="text-center">
                                             <a class="btn btn-default" href="/admin-menu/mascotas/historial/editar"><em class="fa fa-pencil"></em></a>
                                             <a class="btn btn-danger"><em class="fa fa-trash"></em></a>
                                         </td>
 									</tr>
-									<tr data-status="Pendiente">
-                                        <th scope="row">2</th>
-                                        <td class="text-center">Peluqueria</td>
-                                        <td class="text-center"><a href="">Ver</a></td>
-                                        <td class="text-center"><span class="Pendiente">Pendiente</span></td>
-                                        <td class="text-center"><span class="media-meta pull-right">Febrero 13, 2016</span></td>
-                                        <td class="text-center">
-                                            <a class="btn btn-default" href="/admin-menu/mascotas/edit"><em class="fa fa-pencil"></em></a>
-                                            <a class="btn btn-danger"><em class="fa fa-trash"></em></a>
-                                        </td>
-									</tr>
-									<tr data-status="Cancelada">
-                                        <th scope="row">3</th>
-                                        <td class="text-center">Vacuna lesmaniosis</td>
-                                        <td class="text-center"><a href="">Ver</a></td>
-                                        <td class="text-center"><span class="Cancelada">Cancelada</span></td>
-                                        <td class="text-center"><span class="media-meta pull-right">Febrero 13, 2016</span></td>
-                                        <td class="text-center">
-                                            <a class="btn btn-default" href="/admin-menu/mascotas/edit"><em class="fa fa-pencil"></em></a>
-                                            <a class="btn btn-danger"><em class="fa fa-trash"></em></a>
-                                        </td>
-									</tr>
-									<tr data-status="Realizada">
-                                        <th scope="row">4</th>
-                                        <td class="text-center">Vacuna rabia</td>
-                                        <td class="text-center"><a href="">Ver</a></td>
-                                        <td class="text-center"><span class="Realizada">Realizada</span></td>
-                                        <td class="text-center"><span class="media-meta pull-right">Febrero 13, 2016</span></td>
-                                        <td class="text-center">
-                                            <a class="btn btn-default" href="/admin-menu/mascotas/edit"><em class="fa fa-pencil"></em></a>
-                                            <a class="btn btn-danger"><em class="fa fa-trash"></em></a>
-                                        </td>
-									</tr>
-									<tr data-status="Pendiente">
-                                        <th scope="row">5</th>
-                                        <td class="text-center">Revisión</td>
-                                        <td class="text-center"><a href="">Ver</a></td>
-                                        <td class="text-center"><span class="Pendiente">Pendiente</span></td>
-                                        <td class="text-center"><span class="media-meta pull-right">Febrero 13, 2016</span></td>
-                                        <td class="text-center">
-                                            <a class="btn btn-default" href="/admin-menu/mascotas/edit"><em class="fa fa-pencil"></em></a>
-                                            <a class="btn btn-danger"><em class="fa fa-trash"></em></a>
-                                        </td>
-									</tr>
+									@endforeach
 								</tbody>
 							</table>
 						</div>

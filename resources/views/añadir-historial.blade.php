@@ -18,7 +18,7 @@
 <div class="container">
 	<div class="row">
   <br>
-		<form class="form-horizontal" action="{{action('AdminController@addConsulta')}}" method="POST">
+    <form class="form-horizontal" action="{{action('AdminController@addConsulta')}}" method="POST">
       {{ csrf_field()}}
       {{ method_field('POST')}}
 
@@ -62,6 +62,13 @@
           </div>
         </div>
 
+        <div class="form-group" style="display: none">
+          <label class="col-md-2 control-label" for="fecha">Fecha</label>  
+          <div class="col-md-3">
+          <input id="fecha" name="id" type="text" class="form-control input-md" value="{{$id}}">
+            
+          </div>
+        </div>
 
         <!-- Button (Double) -->
         <div class="form-group">

@@ -9,12 +9,14 @@ use App\Persona;
 use App\Personal;
 use App\Tema;
 use App\Consulta;
+use App\Historial;
 use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
 {
     private $mascotas;
     private $personas;
+    private $identificador;
 
     function login(){
         return view('login');
@@ -131,6 +133,11 @@ class AdminController extends Controller
         }
         
         $mascota->save();
+
+        $historial = new Historial;
+        $historial->mascota_id = $mascota->id;
+
+        $historial->save();
         
         return Redirect::to('/admin-menu/mascotas/ver');
     }
@@ -181,12 +188,13 @@ class AdminController extends Controller
         return view('ver_foro', ['temas' => $temas]);
     }
 
-    function showHistory(){
-        return view('ver-historial');
+    function showHistory($id=null){
+        $consultas = Consulta::where('historial_id', '=', $id)->orderBy('fecha','desc')->get();
+        return view('ver-historial', ['consultas' => $consultas, 'id' => $id]);
     }
 
-    function addHistory(){
-        return view('añadir-historial');
+    function addHistory($id=null){
+        return view('añadir-historial', ['id' => $id]);
     }
 
     function editHistory(){
@@ -199,10 +207,6 @@ class AdminController extends Controller
 
     function showForo(){
         return view('ver-tema-foro');
-    }
-
-    function verHistorial(){
-        return view('ver-historial');
     }
 
     function verPersonal(){
@@ -255,10 +259,11 @@ class AdminController extends Controller
         } else{
             $consulta->estado = "Pendiente";
         }
-        
-        $consulta->personal_id = 2;
+
+        $consulta->historial_id = $request->input('id');
+        $consulta->personal_id = 1;
 
         $consulta->save();
-        return Redirect::to('/admin-menu/historial/ver');
+        return Redirect::to('/admin-menu/mascotas/historial/{{$consulta->historial_id}}');
     }
 }

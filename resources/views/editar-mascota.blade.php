@@ -59,7 +59,7 @@
           <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 col-xs-offset-0 col-sm-offset-0 toppad" >
             <div class="panel panel-info" style="margin-left: 40px;">
               <div class="panel-heading">
-                <h3 class="panel-title">Neska</h3>
+                <h3 class="panel-title">{{$mascota->nombre}}</h3>
               </div>
             <div class="panel-body">
               <div class="row">
@@ -106,7 +106,7 @@
 
                   <ul>
                     <li style="list-style:none; float:left;">
-                    <button style="text-align:left;" class="btn btn-primary" onclick="window.location.href='/admin-menu/mascotas/historial'">Ver Historial</button>
+                    <button style="text-align:left;" class="btn btn-primary" onclick="historial({{$mascota->id}})">Ver Historial</button>
                     </li>
                      
                     <li style="list-style:none; float:left;">
@@ -122,6 +122,7 @@
                         <span class="pull-right">
                             <a data-original-title="Editar mascota" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning" onclick="bloquear()" ><i class="glyphicon glyphicon-edit"></i></a>
                             <a data-original-title="Eliminar mascota" data-toggle="tooltip" type="button" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i></a>
+                            <a data-original-title="Eliminar mascota" data-toggle="tooltip" type="button" class="btn btn-sm btn-danger" onclick="historial({{$mascota->id}})"><i class="glyphicon glyphicon-remove"></i></a>
                         </span>
                 </div>
             
@@ -147,6 +148,10 @@
 
       function actualizarMascota(id){
         window.location.href="/admin-menu/mascotas/save/" + id;
+      }
+
+      function historial(id){
+        window.location.href="/admin-menu/mascotas/historial/" + id;
       }
 
     </script>
