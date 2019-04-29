@@ -75,12 +75,13 @@
           <label class="col-md-2 control-label" ></label>
           <div class="col-md-8">
             <button id="enviar" name="enviar" class="btn btn-primary">Enviar</button>
-            <button id="atras" name="atras" class="btn btn-default" href="/admin-menu/mascotas/historial">Atrás</button>
+            <input type="button" class="btn btn-default" onclick="location.href='/admin-menu/mascotas/historial/{{$id}}';" value="Cancelar">
           </div>
         </div>
 
       </fieldset>
     </form>
+
 
 	</div>
 </div>

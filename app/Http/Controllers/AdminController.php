@@ -111,6 +111,36 @@ class AdminController extends Controller
 
     }
 
+    function saveHistorial(Request $request){
+        if($_POST)
+        {
+            $originalDate = $request->input('fecha');
+            $newDate = date("Y/m/d", strtotime($originalDate));
+            $valor = $request->input('estado');
+            $estado = "Ninguno";
+            if($valor == 1){
+                $estado = "Realizada";
+            } else if ($valor == 2){
+                $estado = "Pendiente";
+            }
+            else{
+                $estado = "Cancelada";
+            }
+    
+            Consulta::where('nombre', '=', $request->input('nombre'))->update(
+                array(
+                    'nombre' => $request->input('nombre'),
+                    'fecha' => $newDate,
+                    'descripcion' => $request->input('descripcion'),
+                    'estado' => $estado
+                )
+            );
+        }
+
+        return Redirect::to('/admin-menu/mascotas/ver');
+
+    }
+
     function addMascota(Request $request){
         $originalDate = $request->input('fecha_nac');
         $newDate = date("Y/m/d", strtotime($originalDate));
@@ -190,15 +220,17 @@ class AdminController extends Controller
 
     function showHistory($id=null){
         $consultas = Consulta::where('historial_id', '=', $id)->orderBy('fecha','desc')->get();
-        return view('ver-historial', ['consultas' => $consultas, 'id' => $id]);
+        $mascota = Mascota::find($id);
+        return view('ver-historial', ['consultas' => $consultas, 'id' => $id, 'mascota' => $mascota]);
     }
 
     function addHistory($id=null){
         return view('añadir-historial', ['id' => $id]);
     }
 
-    function editHistory(){
-        return view('editar-historial');
+    function editConsulta($id=null){
+        $consulta = Consulta::find($id);
+        return view('editar-historial', ['consulta' => $consulta]);
     }
 
     function addForo(){

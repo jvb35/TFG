@@ -15,10 +15,13 @@
 @extends('panel-admin')
 @section('content')
 
+
+<form class="form-horizontal" action="{{url('/admin-menu/historial/save/{id}')}}" role="form" method="POST">
+{{ csrf_field()}}
+{{ method_field('POST')}}
 <div class="container">
 	<div class="row">
     <br>
-		<form class="form-horizontal">
 
       <fieldset>
         <legend>Editar historial</legend>
@@ -26,16 +29,17 @@
         <div class="form-group">
           <label class="col-md-2 control-label" for="cedula">Nombre</label>  
           <div class="col-md-3">
-            <input type="text" placeholder="Solicitante" class="form-control input-md">            
+            <input type="text" name="nombre" value="{{$consulta->nombre}}" class="form-control input-md">            
           </div>
         </div>
 
         <div class="form-group">
           <label class="col-md-2 control-label" for="sistema">Estado</label>
           <div class="col-md-3">
-            <select class="form-control">
+            <select class="form-control" name="estado">
               <option value="1">Realizada</option>
               <option value="2">Pendiente</option>
+              <option value="3">Cancelada</option>
             </select>
           </div>
         </div>
@@ -43,21 +47,21 @@
         <div class="form-group">
           <label class="col-md-2 control-label" for="descripcion">Descripción</label>
           <div class="col-md-3">                     
-            <textarea class="form-control"></textarea>
+            <textarea class="form-control" name="descripcion">{{$consulta->descripcion}}</textarea>
           </div>
         </div>
 
         <div class="form-group">
           <label class="col-md-2 control-label" for="cedula">Fecha</label>  
           <div class="col-md-3">
-            <input type="date" class="form-control input-md">
+            <input type="date" name="fecha" value="{{$consulta->fecha}}" class="form-control input-md">
           </div>
         </div>
 
         <div class="form-group">
           <label class="col-md-2 control-label"></label>
           <div class="col-md-8">
-            <button id="enviar" name="enviar" class="btn btn-primary">Enviar</button>
+            <button id="enviar" name="enviar" class="btn btn-primary">Guardar</button>
             <a data-original-title="Volver atrás" data-toggle="tooltip" type="button" class="btn btn-default" href="/admin-menu/mascotas/historial">Atrás</a>
           </div>
         </div>

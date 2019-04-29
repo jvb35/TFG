@@ -34,6 +34,7 @@ Route::get('/admin-menu/citas/ver', 'EventController@index');
 Route::get('/admin-menu/mascotas/editar/{id}', 'AdminController@editMascota');
 Route::get('/admin-menu/foro/ver', 'AdminController@verForo');
 Route::post('/admin-menu/mascotas/save/{id}', 'AdminController@saveMascota');
+Route::post('/admin-menu/historial/save/{id}', 'AdminController@saveHistorial');
 Route::post('/admin-menu/citas/añadir', 'EventController@store');
 Route::get('/admin-menu/citas/editar', 'EventController@show');
 Route::get('/admin-menu/citas/editar/{id}', 'EventController@edit');
@@ -52,5 +53,5 @@ Route::post('/admin-menu/personal/añadir/nueva', 'AdminController@addPersonal')
 Route::post('/admin-menu/foro/añadir/nueva', 'AdminController@addTema');
 Route::get('/admin-menu/foro/ver/{id}', 'AdminController@verTema');
 
-
+Route::get('/admin-menu/mascotas/historial/editar/{id}', 'AdminController@editConsulta');
 Route::post('/admin-menu/mascotas/historial/añadir/nueva', 'AdminController@addConsulta');

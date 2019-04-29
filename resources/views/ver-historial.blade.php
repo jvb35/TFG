@@ -190,16 +190,49 @@
                             </tr>
                             </thead>
 								<tbody>
+                                <?php
+                                    $id1 = 0;
+                                ?>
                                     @foreach ($consultas as $consulta)
+                                    <?php
+                                        $id1++;
+                                    ?>
 									<tr data-status="{{$consulta->estado}}">
-                                        <th scope="row">1</th>
+                                        <th scope="row">{{$id1}}</th>
                                         <td class="text-center">{{$consulta->nombre}}</td>
                                         <td class="text-center"><a  data-toggle="modal" data-target="#miModal">Ver</a></td>
+
+                                        <div class="modal fade" id="miModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                        <h4 class="modal-title" id="myModalLabel">Detalles</h4>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <label for="">Nombre mascota</label>
+                                                        <input type="text" class="form-control" name="nombre_mascota" value="{{$mascota->nombre}}" readonly="readonly" /><br /><br />
+                                                        <label for="">Consulta</label>
+                                                        <input type="text" class="form-control" name="nombre_mascota" value="{{$consulta->nombre}}" readonly="readonly" /><br /><br />
+                                                        <label for="">Descripcion</label>
+                                                        <input type="textarea" class="form-control" name="nombre_mascota" value="{{$consulta->descripcion}}" readonly="readonly" /><br /><br />
+                                                        <label for="">Estado</label>
+                                                        <input type="text" class="form-control" name="nombre_mascota" value="{{$consulta->estado}}" readonly="readonly" /><br /><br />
+                                                        <label for="">Propietario</label>
+                                                        <input type="text" class="form-control" name="propietario" value="{{$mascota->propietario}}" readonly="readonly" /><br /><br />
+                                                        <label for="">Fecha</label>
+                                                        <input type="date" class="form-control" name="start_date" value="{{$consulta->fecha}}" class="date" readonly="readonly" /><br /><br />
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                         <td class="text-center"><span class="{{$consulta->estado}}">{{$consulta->estado}}</span></td>
                                         <td class="text-center"><span class="media-meta pull-right">{{$consulta->fecha}}</span></td>
                                         <td class="text-center">
-                                            <a class="btn btn-default" href="/admin-menu/mascotas/historial/editar"><em class="fa fa-pencil"></em></a>
-                                            <a class="btn btn-danger"><em class="fa fa-trash"></em></a>
+                                            <a class="btn btn-default" onclick="editarConsulta({{$consulta->id}});"><em class="fa fa-pencil"></em></a>
                                         </td>
 									</tr>
 									@endforeach
@@ -214,35 +247,16 @@
 	</div>
 </div>
 
-<div class="modal fade" id="miModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-	<div class="modal-dialog" role="document">
-		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-				</button>
-				<h4 class="modal-title" id="myModalLabel">Añadir cita</h4>
-			</div>
-			<div class="modal-body">
-                <label for="">Nombre mascota</label>
-                <input type="text" class="form-control" name="nombre_mascota" value="Neska" placeholder="Introduza el nombre de la mascota" /><br /><br />
-                <label for="">Consulta</label>
-                <input type="text" class="form-control" name="nombre_mascota" value="Vacuna lesmaniosis" placeholder="Introduza el nombre de la mascota" /><br /><br />
-                <label for="">Descripcion</label>
-                <input type="textarea" class="form-control" name="nombre_mascota" placeholder="Introduza el nombre de la mascota" /><br /><br />
-                <label for="">Estado</label>
-                <input type="text" class="form-control" name="nombre_mascota" value="Realizada" placeholder="Introduza el nombre de la mascota" /><br /><br />
-                <label for="">Propietario</label>
-                <input type="text" class="form-control" name="propietario" value="Jordi Valls" placeholder="Introduza el tipo de consulta" /><br /><br />
-                <label for="">Teléfono</label>
-                <input type="number" class="form-control" name="telefono" value="608550850" placeholder="Introduza el tipo de consulta" /><br /><br />
-                <label for="">Fecha</label>
-                <input type="date" class="form-control" name="start_date" value="23/02/2019" class="date" placeholder="Enter start date" /><br /><br />
+<script>
 
-			</div>
-		</div>
-	</div>
-</div>
+    function editarConsulta(id){
+        window.location.href="/admin-menu/mascotas/historial/editar/" + id;
+    }
+
+
+</script>
+
+
 
 
 @endsection
