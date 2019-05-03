@@ -10,6 +10,7 @@ use App\Personal;
 use App\Tema;
 use App\Consulta;
 use App\Historial;
+use App\Cita;
 use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
@@ -20,6 +21,29 @@ class AdminController extends Controller
 
     function login(){
         return view('login');
+    }
+
+    function comprobarDatos(Request $request){
+        $correo = $request->input('email');
+        $password = $request->input('contra');
+
+        $persona = Persona::where('correo', '=', $correo)->count();
+        $personal = Personal::where('correo', '=', $correo)->count();
+        if($persona > 0){
+            $per = Persona::where('correo', '=', $correo)->first();
+            if($per->password == $password){
+                $mascotas = Mascota::where('propietario', '=', $per->nombre)->get();
+                return view('elegir-mascota', ['mascotas' => $mascotas]);
+            }
+        } else if ($personal > 0){
+            return view('añadir-persona');
+        } else{
+            return view('panel-admin');
+        }
+    }
+
+    function verHisto($id=null){
+        return view('Cliente.historial', ['id' => $id]);
     }
 
     function elegir_mascota(){
@@ -124,7 +148,7 @@ class AdminController extends Controller
                 $estado = "Pendiente";
             }
             else{
-                $estado = "Cancelada";
+                $estados = "Cancelada";
             }
     
             Consulta::where('nombre', '=', $request->input('nombre'))->update(
@@ -297,5 +321,119 @@ class AdminController extends Controller
 
         $consulta->save();
         return Redirect::to('/admin-menu/mascotas/historial/{{$consulta->historial_id}}');
+    }
+
+    public function addCita(Request $request)
+    {
+        $this->validate($request,[
+            'nombre_mascota' => 'required',
+            'tipo_consulta' => 'required',
+            'propietario' => 'required',
+            'telefono' => 'required',
+            'start_date' => 'required',
+            'end_date' => 'required',
+        ]);
+
+        $cita = new Cita;
+
+        $cita->nombre_mascota = $request->input('nombre_mascota');
+        $cita->tipo_consulta = $request->input('tipo_consulta');
+        $cita->propietario = $request->input('propietario');
+        $cita->telefono = $request->input('telefono');
+        if($cita->tipo_consulta == 'Consulta')
+        {
+            $cita->color = '#87CEFA';
+        }else if($cita->tipo_consulta == 'Peluqueria')
+        {
+            $cita->color = '#90EE90';
+        }
+        else{
+            $cita->color = '#FFA500';
+        }
+        
+        $cita->inicio_consulta = $request->input('start_date');
+        $cita->fin_consulta = $request->input('end_date');
+
+        
+        $cita->persona_id = 1;
+        $cita->mascota_id = 1;
+        $cita->personal_id = 1;
+        $cita->save();
+
+        return redirect('/admin-menu/citas/ver')->with('success', 'Cita añadida');
+    }
+
+    public function updateCita(Request $request)
+    {
+        if($_POST)
+        {
+            Cita::where('nombre_mascota', '=', $request->input('nombre_mascota'))->update(
+                array(
+                    'nombre_mascota' => $request->input('nombre_mascota'),
+                    'tipo_consulta' => $request->input('tipo_consulta'),
+                    'propietario' => $request->input('propietario'),
+                    'telefono' => $request->input('telefono'),
+                    'inicio_consulta' => $request->input('start_date'),
+                    'fin_consulta' => $request->input('end_date'),
+                    'color' => '#FFA500'
+                )
+            );
+        }
+
+        return redirect('/admin-menu/citas/ver')->with('success', 'Cita actualizada');
+    }
+
+    public function showCitas()
+    {
+        $citas = Cita::orderBy('start_date', 'asc')->get();
+        return view('editar_citas')->with('citas',$citas);
+    }
+
+    public function index()
+    {
+        $citas = Cita::all();
+        $cita = [];
+        
+        foreach($citas as $row){
+            
+            $cita[] = \Calendar::event(
+                $row->nombre_mascota, //event title
+                false, //full day event?
+                new \DateTime($row->inicio_consulta), //start time, must be a DateTime object or valid DateTime format (http://bit.ly/1z7QWbg)
+                new \DateTime($row->fin_consulta), //end time, must be a DateTime object or valid DateTime format (http://bit.ly/1z7QWbg),
+                $row->id, //optional event ID
+                [
+                    $row->tipo_consulta,
+                    $row->propietario,
+                    $row->telefono,
+                    'color' => $row->color,
+                    //any other full-calendar supported parameters
+                ]
+            );
+        }
+
+        $calendar = \Calendar::addEvents($cita);
+        return view('ver_citas', compact('citas','calendar'));
+    }
+
+    public function editCitas()
+    {
+        $citas = Cita::orderBy('inicio_consulta', 'asc')->get();
+        return view('editar_citas')->with('citas',$citas);
+    }
+
+    public function edit($id)
+    {
+        $events = Cita::find($id);
+        return view('editform')->with('events',$events);
+    }
+
+    public function prueba(){
+        return view('template');
+    }
+
+    public function infoMascota($id=null){
+        $mascota = Mascota::find($id);
+        return view('Cliente.ver_info_mascota', ['mascota' => $mascota]);
     }
 }

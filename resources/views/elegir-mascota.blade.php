@@ -9,40 +9,18 @@
 <div class="container">
     <h1 class="titulo"> ¿Qué mascota desea consultar? </h1>
 	<div class="row">
+        @foreach($mascotas as $mascota)
 	    <div class="col-sm-3">
-        <div class="profile-header-container">   
-    		<div class="profile-header-img">
-                <a href="/admin-menu"><img class="img-circle" src="/images/Dalmata.png" /></a>
-                <!-- badge -->
-                <div class="rank-label-container">
-                    <span class="label label-default rank-label">Domino</span>
-                </div>
-            </div>
-        </div> 
-        </div>
-        <div class="col-sm-3">
-        <div class="profile-header-container">   
-    		<div class="profile-header-img">
-                <a href="/admin-menu"><img class="img-circle" src="/images/yorskhire.png" /></a>
-                <!-- badge -->
-                <div class="rank-label-container">
-                    <span class="label label-default rank-label">Neska</span>
-                </div>
-            </div>
-        </div> 
-        </div>
-
-        <div class="col-sm-3">
             <div class="profile-header-container">   
                 <div class="profile-header-img">
-                    <a href="/admin-menu"><img class="img-circle" src="/images/asha.JPG" /></a>
+                    <a href="/info/{{$mascota->id}}"><img class="img-circle" src="/images/{{$mascota->nombre}}.png" /></a>
                     <!-- badge -->
                     <div class="rank-label-container">
-                        <span class="label label-default rank-label">Asha</span>
+                        <span class="label label-default rank-label">{{$mascota->nombre}}</span>
                     </div>
                 </div>
             </div> 
         </div>
-
+        @endforeach
 	</div>
 </div>

@@ -19,8 +19,9 @@
 <div class="container">
     <div class="jumbotron">
 
-        <form action="{{action('EventController@update', $events['id']) }}" method="POST">
+        <form action="{{url('/admin-menu/citas/editar/actualizar')}}" method="POST">
             {{ csrf_field() }}
+            {{ method_field('POST')}}
             <div class="container">
                 <div class="jumbotron" >
                     <h2> Editar Cita </h2>
@@ -44,14 +45,18 @@
                     </div>
                     <div class="form-group">
                         <label>Inicio cita </label>
-                        <input type="datetime-local" class="form-control" name="start_date" class="date" placeholder="Enter Start date" value="{{$events->start_date}}">
+                        <input type="datetime-local" class="form-control" name="start_date" class="date" placeholder="Enter Start date" value="{{$events->inicio_consulta}}">
 
                     </div>
                     <div class="form-group">
                         <label>Fin cita</label>
-                        <input type="datetime-local" class="form-control" name="end_date" class="date" placeholder="Enter End date" value="{{$events->end_date}}">
+                        <input type="datetime-local" class="form-control" name="end_date" class="date" placeholder="Enter End date" value="{{$events->fin_consulta}}">
                     </div>
-                    {{ method_field('PUT')}}
+                    <div class="form-group" style="display: none">
+                        <label>ID</label>
+                        <input type="text" class="form-control" name="id" class="date" placeholder="Enter End date" value="{{$events->id}}">
+                    </div>
+
                     <button type="submit" name="submit" class="btn btn-success">Actualizar</button>
 
                 </div>

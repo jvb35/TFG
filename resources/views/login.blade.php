@@ -116,6 +116,9 @@
 
     
     <div class="panel-login">
+    <form class="form-horizontal" action="{{action('AdminController@comprobarDatos')}}" method="POST">
+    {{ csrf_field()}}
+    {{ method_field('POST')}}
         <div class="foto"> <img src="/images/gato.png" class="gato"> </div>
         <div class="row">
             <div class="col-md-4 col-md-offset-7">
@@ -128,14 +131,14 @@
                             <label for="inputEmail3" class="col-sm-3 control-label">
                                 Email</label>
                             <div class="col-sm-9">
-                                <input type="email" class="form-control" id="inputEmail3" placeholder="Email" required>
+                                <input type="email" class="form-control" name="email" id="inputEmail3" placeholder="Email" required>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="inputPassword3" class="col-sm-3 control-label">
                                 Password</label>
                             <div class="col-sm-9">
-                                <input type="password" class="form-control" id="inputPassword3" placeholder="Password" required>
+                                <input type="password" class="form-control" name="contra" id="inputPassword3" placeholder="Password" required>
                             </div>
                         </div>
                         <div class="form-group">
@@ -150,7 +153,7 @@
                         </div>
                         <div class="form-group last">
                             <div class="col-sm-offset-3 col-sm-9">
-                                <button type="submit" class="btn btn-success btn-sm" onclick="location.href='/login/mascota';">
+                                <button type="submit" class="btn btn-success btn-sm">
                                     Sign in</button>
                                      <button type="reset" class="btn btn-default btn-sm">
                                     Reset</button>
@@ -163,6 +166,7 @@
                 </div>
             </div>
         </div>
+    </form>
     </div>
 
           

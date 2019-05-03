@@ -31,20 +31,20 @@
                     <th> Borrar </th>
                 </tr>
             </thead>
-            @foreach($events as $event)
+            @foreach($citas as $cita)
                 <tbody>
                     <tr>
-                        <td>{{ $event->nombre_mascota }}</td>
-                        <td>{{ $event->tipo_consulta }}</td>
-                        <td>{{ $event->propietario }}</td>
-                        <td>{{ $event->telefono }}</td>
-                        <td>{{ $event->start_date }}</td>
-                        <td>{{ $event->end_date }}</td>
+                        <td>{{ $cita->nombre_mascota }}</td>
+                        <td>{{ $cita->tipo_consulta }}</td>
+                        <td>{{ $cita->propietario }}</td>
+                        <td>{{ $cita->telefono }}</td>
+                        <td>{{ $cita->inicio_consulta }}</td>
+                        <td>{{ $cita->fin_consulta }}</td>
 
-                        <th><a href="{{action('EventController@edit', $event['id']) }}" class="btn btn-success"> Editar </a></th>
+                        <th><a onclick="editarCita({{$cita->id}});" class="btn btn-success"> Editar </a></th>
 
                         <th>
-                        <a href="{{action('EventController@destroy', $event['id']) }}" class="btn btn-danger"> Eliminar </a>
+                        <a href="" class="btn btn-danger"> Eliminar </a>
                         </th>
                     </tr>
                 </tbody>
@@ -53,7 +53,20 @@
     </div>
 </div>
 
+<script>
+        function eliminarMascota(id){
+            r= confirm('¿Esta seguro de desea elmininar esto?');
+            if(r == true){
+                window.location.href="/admin-menu/mascotas/borrar/" + id;
+            }else{
+                window.location.href="/admin-menu/personas/ver";
+            }
+        }
 
+        function editarCita(id){
+            window.location.href="/admin-menu/citas/editar/" + id;
+        }
+    </script>
 
 
 

@@ -19,6 +19,7 @@ class CreateCitasTable extends Migration
             $table->string('tipo_consulta');
             $table->string('propietario');
             $table->integer('telefono');
+            $table->string('color');
             $table->dateTime('inicio_consulta');
             $table->dateTime('fin_consulta');
             $table->integer('persona_id')->unsigned();
