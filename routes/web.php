@@ -44,6 +44,7 @@ Route::post('/login/autenticacion', 'AdminController@comprobarDatos');
 Route::get('/prueba', 'AdminController@prueba');
 Route::get('/info/{id}', 'AdminController@infoMascota');
 Route::get('/historial/{id}', 'AdminController@verHisto');
+Route::get('/foro/{id}', 'AdminController@verForo');
 Route::get('/admin-menu/mascotas/historial/{id}' , 'AdminController@showHistory');
 Route::get('/admin-menu/mascotas/historial/añadir/{id}', 'AdminController@addHistory');
 Route::get('/admin-menu/mascotas/historial/editar', 'AdminController@editHistory');

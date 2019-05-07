@@ -43,7 +43,15 @@ class AdminController extends Controller
     }
 
     function verHisto($id=null){
-        return view('Cliente.historial', ['id' => $id]);
+        $consultas = Consulta::where('historial_id', '=', $id)->orderBy('fecha','asc')->get();
+        $mascota = Mascota::find($id);
+        return view('Cliente.historial', ['consultas' => $consultas, 'mascota' => $mascota]);
+    }
+
+    function verForo($id=null){
+        $consultas = Consulta::where('historial_id', '=', $id)->orderBy('fecha','asc')->get();
+        $mascota = Mascota::find($id);
+        return view('Cliente.historial', ['consultas' => $consultas, 'mascota' => $mascota]);
     }
 
     function elegir_mascota(){
