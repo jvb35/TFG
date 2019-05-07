@@ -6,6 +6,16 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script>
+ 
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/locales/bootstrap-datepicker.es.min.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script> 
 </head>
 
 <style>
@@ -154,67 +164,50 @@ html, body {
 </nav>
 
 
- <div class="container">
+<div class="container">
     <div class="row">
-        <div class="col-md-6  offset-md-0  toppad" >
-            <div class="card">
-                <div class="card-body">
-                    <h2 class="card-title">Información</h2>
-                    <table class="table table-user-information ">
-                        <tbody>
-                            <tr>
-                                <td>Nombre</td>
-                                <td>{{$mascota->nombre}}</td>
-                            </tr>
-                            <tr>
-                                <td>Chip</td>
-                                <td>{{$mascota->chip}}</td>
-                            </tr>
-                            <tr>
-                                <td>Fecha Nacimiento</td>
-                                <td>{{$mascota->fecha_nac}}</td>
-                            </tr>
-                            <tr>
-                                <td>Raza</td>
-                                <td>{{$mascota->raza}}</td>
-                            </tr>
-                            <tr>
-                                <td>Especie</td>
-                                <td>{{$mascota->especie}}</td>
-                            </tr>                                                
-                            <tr>
-                                <td>Número pasaporte</td>
-                                <td>{{$mascota->num_pasaporte}}</td>
-                            </tr>
-                            <tr>
-                                <td>Sexo</td>
-                                <td>{{$mascota->sexo}}</td>
-                            </tr>
-                            <tr>
-                                <td>Peso</td>
-                                <td>{{$mascota->peso}}</td>                                                        
-                            </tr>
-                            <tr>
-                                <td>Propietario</td>
-                                <td>{{$mascota->propietario}}</td>                                                        
-                            </tr>
-                        </tbody>
-                    </table>
+        <div class='col-sm-3'>
+            <div class="form-group">
+                <div class='input-group date' id='datetimepicker1'>
+                    <input type='text' class="form-control" />
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
                 </div>
             </div>
-        </div>
-        <div class="col-md-6  offset-md-0  toppad">
-            <div class="col-md-6">
-                <div class="form-group col-xs-10 col-sm-4 col-md-4 col-lg-4">
-                    <output id="list"></output>
-                    <img id="img" class="thumb" src="/images/{{$mascota->nombre}}.png" title="Foto" style="width: 250px; height: 250px; margin-top: 70px; border:1px solid black;"/>
-
+            <div class="form-group">
+                <div class='input-group date' id='datetimepicker3'>
+                    <input type='text' class="form-control" />
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-time"></span>
+                    </span>
                 </div>
             </div>
-        </div>
+        </div>       
+            
     </div>
 </div>
 
 
+
 </body>
+
+<script >
+    $(function () {
+        $('#datetimepicker1').datepicker({
+            format: "dd/mm/yyyy",
+            language: "es",
+            autoclose: true,
+            todayHighlight: true
+        });
+
+        $('#datetimepicker3').datetimepicker({
+            format: 'HH:mm'
+        });
+    });
+
+
+</script>
 </html>
+
+

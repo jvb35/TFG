@@ -48,7 +48,7 @@
    </div>
 
     <script>
-        function eliminarMascota(id){
+        function eliminarTema(id){
             r= confirm('¿Esta seguro de desea elmininar esto?');
             if(r == true){
                 window.location.href="/admin-menu/foro/borrar/" + id;
@@ -57,7 +57,7 @@
             }
         }
 
-        function editarMascota(id){
+        function editarTema(id){
             window.location.href="/admin-menu/foro/editar/" + id;
         }
     </script>

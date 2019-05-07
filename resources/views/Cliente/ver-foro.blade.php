@@ -153,67 +153,33 @@ html, body {
   </div>
 </nav>
 
+<div class="container">
+	<div class="row">   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 
- <div class="container">
-    <div class="row">
-        <div class="col-md-6  offset-md-0  toppad" >
-            <div class="card">
-                <div class="card-body">
-                    <h2 class="card-title">Información</h2>
-                    <table class="table table-user-information ">
-                        <tbody>
-                            <tr>
-                                <td>Nombre</td>
-                                <td>{{$mascota->nombre}}</td>
-                            </tr>
-                            <tr>
-                                <td>Chip</td>
-                                <td>{{$mascota->chip}}</td>
-                            </tr>
-                            <tr>
-                                <td>Fecha Nacimiento</td>
-                                <td>{{$mascota->fecha_nac}}</td>
-                            </tr>
-                            <tr>
-                                <td>Raza</td>
-                                <td>{{$mascota->raza}}</td>
-                            </tr>
-                            <tr>
-                                <td>Especie</td>
-                                <td>{{$mascota->especie}}</td>
-                            </tr>                                                
-                            <tr>
-                                <td>Número pasaporte</td>
-                                <td>{{$mascota->num_pasaporte}}</td>
-                            </tr>
-                            <tr>
-                                <td>Sexo</td>
-                                <td>{{$mascota->sexo}}</td>
-                            </tr>
-                            <tr>
-                                <td>Peso</td>
-                                <td>{{$mascota->peso}}</td>                                                        
-                            </tr>
-                            <tr>
-                                <td>Propietario</td>
-                                <td>{{$mascota->propietario}}</td>                                                        
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6  offset-md-0  toppad">
-            <div class="col-md-6">
-                <div class="form-group col-xs-10 col-sm-4 col-md-4 col-lg-4">
-                    <output id="list"></output>
-                    <img id="img" class="thumb" src="/images/{{$mascota->nombre}}.png" title="Foto" style="width: 250px; height: 250px; margin-top: 70px; border:1px solid black;"/>
+    <table class="table table-striped">
+        <thead>
+          <tr>
+              <th>Temas</th>
+              <th>Fecha publicación</th>       
+            </tr>
+          </thead>
+          <tbody>
+            @foreach ($temas as $tema)
+            <tr>
+                <td><a href="/foro/{{$mascota->id}}/ver/{{$tema->id}}">{{$tema->nombre}}</a><br/>{{$tema->autor}}<br/><i class="fa fa-map-marker"></i>{{$tema->direccion}}<br/><i class="fa fa-phone"></i>{{$tema->telefono}}<br/></td>
+                <td>{{$tema->fecha}}</td>
+            </tr>
+            @endforeach
+        </tbody>
+      </table>
+     </div>
 
-                </div>
-            </div>
-        </div>
     </div>
-</div>
+
+   </div>
+
+
+
 
 
 </body>

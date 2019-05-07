@@ -48,10 +48,21 @@ class AdminController extends Controller
         return view('Cliente.historial', ['consultas' => $consultas, 'mascota' => $mascota]);
     }
 
-    function verForo($id=null){
-        $consultas = Consulta::where('historial_id', '=', $id)->orderBy('fecha','asc')->get();
+    function show_Foro($id=null){
+        $temas = DB::table('temas')->paginate(10);
         $mascota = Mascota::find($id);
-        return view('Cliente.historial', ['consultas' => $consultas, 'mascota' => $mascota]);
+        return view('Cliente.ver-foro', ['temas' => $temas, 'mascota' => $mascota]);
+    }
+
+    function ver_Tema($id=null, $idTema=null){
+        $tema = Tema::find($idTema);
+        $mascota = Mascota::find($id);
+        return view('Cliente.ver-tema', ['tema' => $tema, 'mascota' => $mascota]);
+    }
+
+    function pedirCita($id=null){
+        $mascota = Mascota::find($id);
+        return view('Cliente.pedir-cita', ['mascota' => $mascota]);
     }
 
     function elegir_mascota(){
@@ -304,7 +315,8 @@ class AdminController extends Controller
         $tema->municipio = $request->input('municipio');
         $tema->correo = $request->input('correo');
         $tema->fecha = "2019/05/02";
-        $tema->personal_id = 2;
+        $tema->personal_id = 1;
+        $tema->foro_id = 1;
 
         $tema->save();
         return Redirect::to('/admin-menu/foro/ver');
