@@ -69,12 +69,12 @@ class AdminController extends Controller
     function addCitaCliente(Request $request){
         $cita = new Cita;
         $fecha = $request->input('fecha');
-        $newDate = date("Y/m/d", strtotime($fecha));
         $hora = $request->input('hora');
         $cita->nombre_mascota = $request->input('nombre_mascota');
         $cita->propietario = $request->input('nombre_persona');
         $cita->telefono = $request->input('telefono');
         $cita->tipo_consulta = $request->input('tipo_consulta');
+
         if($cita->tipo_consulta == 'Consulta')
         {
             $cita->color = '#87CEFA';
@@ -85,21 +85,30 @@ class AdminController extends Controller
         else{
             $cita->color = '#FFA500';
         }
-        $fecha_inicial =  $newDate." ".$hora.":00";
+        $fecha_inicial =  $fecha." ".$hora.":00";
         $cita->inicio_consulta = $fecha_inicial;
         $minutoAnadir=60;       
         $segundos_horaInicial=strtotime($hora);       
         $segundos_minutoAnadir=$minutoAnadir*60;
         $nuevaHora=date("H:i",$segundos_horaInicial+$segundos_minutoAnadir);
-        $cita->fin_consulta = $newDate." ".$nuevaHora.":00";
+        $cita->fin_consulta = $fecha." ".$nuevaHora.":00";
 
-        
-        $cita->persona_id = 1;
-        $cita->mascota_id = 1;
+        $personas = DB::table('personas')->get();
+        foreach($personas as $persona){
+            if($persona->nombre == $request->input('nombre_persona')){
+                $cita->persona_id = $persona->id;
+            }
+        }
+        $mascotas = DB::table('mascotas')->get();
+        foreach($mascotas as $mascota){
+            if($mascota->nombre == $request->input('nombre_mascota')){
+                $cita->mascota_id = $mascota->id;
+            }
+        }
         $cita->personal_id = 1;
         $cita->save();
 
-        return back()->with('success', 'Cita añadida');;
+        return back()->with('success', 'Cita añadida');
     }
 
     function elegir_mascota(){
@@ -491,6 +500,8 @@ class AdminController extends Controller
 
     public function infoMascota($id=null){
         $mascota = Mascota::find($id);
-        return view('Cliente.ver_info_mascota', ['mascota' => $mascota]);
+        $fecha_actual = getdate();
+        $cita = Cita::where('mascota_id', '=', $id)->where('inicio_consulta', '>=',$fecha_actual)->first();
+        return view('Cliente.ver_info_mascota', ['mascota' => $mascota, 'cita' => $cita]);
     }
 }

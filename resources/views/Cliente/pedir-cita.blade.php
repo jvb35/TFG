@@ -237,14 +237,15 @@ html, body {
     $(function () {
         
         $('#datetimepicker1').datepicker({
-            format: "dd/mm/yyyy",
+            format: "yyyy/mm/dd",
             language: "es",
             autoclose: true,
             todayHighlight: true
         });
 
         $('#datetimepicker3').datetimepicker({
-            format: 'HH:mm'
+            format: 'HH:mm',
+            enabledHours: [9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21]
         });
     });
 

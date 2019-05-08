@@ -114,6 +114,22 @@ html, body {
   }
 } /* END Media Query */
 
+.date-body{
+  background-color: #228B22;padding-bottom: 5px;
+}
+.date-body .date-title{
+  color: white;
+}
+
+.date-body .date-content{
+  background-color: white;margin-left: 5px;margin-right: 5px;
+}
+.date-body .date-content p.dia{
+  margin: 0; font-size: 45px; font-weight: bold;
+}
+.nomargin{
+  margin: 0;
+}
 
 </style>
 <body>
@@ -203,7 +219,7 @@ html, body {
                 </div>
             </div>
         </div>
-        <div class="col-md-6  offset-md-0  toppad">
+        <div class="col-md-3  offset-md-0  toppad">
             <div class="col-md-6">
                 <div class="form-group col-xs-10 col-sm-4 col-md-4 col-lg-4">
                     <output id="list"></output>
@@ -212,6 +228,51 @@ html, body {
                 </div>
             </div>
         </div>
+        <?php
+          $dato = $cita->inicio_consulta;
+          $fecha = date('Y-m-d',strtotime($dato));
+          $dia = date("d", strtotime($fecha));
+          $mes = date("m", strtotime($fecha));
+          $mes_escrito= "Hola";
+          
+          if($mes == 01){
+            $mes_escrito = "Enero";
+          } else if($mes == 02){
+            $mes_escrito = "Febrero";
+          } else if($mes == 03){
+            $mes_escrito = "Marzo";
+          } else if($mes == 04){
+            $mes_escrito = "Abril";
+          } else if($mes == 05){
+            $mes_escrito = "Mayo";
+          } else if($mes == 06){
+            $mes_escrito = "Junio";
+          } else if($mes == 07){
+            $mes_escrito = "Julio";
+          } else if($mes == 8){
+            $mes_escrito = "Agosto";
+          } else if($mes == 9){
+            $mes_escrito = "Septiembre";
+          } else if($mes == 10){
+            $mes_escrito = "Octubre";
+          } else if($mes == 11){
+            $mes_escrito = "Noviembre";
+          } else{
+            $mes_escrito = "Diciembre";
+          }
+          $hora = date('H:i:s',strtotime($dato));
+          $horas = substr($hora,0,2); 
+        ?>
+        <div class="col-md-3" style="margin-left:0px;">
+            <div class="text-center date-body" style="width:150px">
+              <label for="" class="date-title">Próxima cita</label>
+              <div class="date-content">
+                <p class="dia">{{$dia}}</p>
+                <hr class="nomargin"/>
+                <p class="nomargin"><strong>{{$mes_escrito}}</strong></p>
+                <p class="nomargin"><strong>{{$horas}}:00</strong></p>
+              </div>
+          </div>
     </div>
 </div>
 
