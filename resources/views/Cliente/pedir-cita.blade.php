@@ -165,11 +165,27 @@ html, body {
 
 
 <div class="container">
+<form class="form-horizontal" action="{{action('AdminController@addCitaCliente')}}" method="POST">
+{{ csrf_field()}}
+{{ method_field('POST')}}
+
+  @if(\Session::has('success'))
+    <div class="alert alert-success">
+        <p>{{ \Session::get('success')}}</p>
+    </div>
+  @endif
+  <h1> Gestor de citas </h1>
+  <div class="col-md-6" style="margin-top:30px; margin-right: -20px;">
+    <div class="form-group col-xs-10 col-sm-4 col-md-4 col-lg-4">
+        <img id="img" class="thumb" src="/images/cita-consulta.jpg" title="Foto" style="width: 350px; height: 250px;"/>
+    </div>
+  </div>
+  <div class="col-md-6" style="margin-top:30px; margin-left: -30px;">
     <div class="row">
-        <div class='col-sm-3'>
+        <div class='col-sm-9'>
             <div class="form-group">
                 <div class='input-group date' id='datetimepicker1'>
-                    <input type='text' class="form-control" />
+                    <input type='text' class="form-control" name="fecha"/>
                     <span class="input-group-addon">
                         <span class="glyphicon glyphicon-calendar"></span>
                     </span>
@@ -177,15 +193,40 @@ html, body {
             </div>
             <div class="form-group">
                 <div class='input-group date' id='datetimepicker3'>
-                    <input type='text' class="form-control" />
+                    <input type='text' class="form-control" name="hora" />
                     <span class="input-group-addon">
                         <span class="glyphicon glyphicon-time"></span>
                     </span>
                 </div>
             </div>
+            <div class="form-group">
+              <select class="form-control" name="tipo_consulta">
+                <option value="Consulta">Consulta</option>
+                <option value="Peluqueria">Peluqueria</option>
+                <option value="Operacion">Operacion</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control" name="nombre_mascota" value="{{$mascota->nombre}}" readonly="readonly" />
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control" name="nombre_persona" value="{{$persona->nombre}}" readonly="readonly" />
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control" name="telefono" value="{{$persona->telefono}}" readonly="readonly" />
+            </div>
+
+            <div class="form-group">
+                <div class="col-lg-offset-0 col-lg-10">
+                    <input type="submit" class="btn btn-primary" value="Enviar">
+                    <input type="button" class="btn btn-default" onclick="location.href='/admin-menu/mascotas/ver';" value="Cancelar">
+                </div>
+            </div>
         </div>       
             
     </div>
+  </div>
+  </form>
 </div>
 
 
@@ -194,6 +235,7 @@ html, body {
 
 <script >
     $(function () {
+        
         $('#datetimepicker1').datepicker({
             format: "dd/mm/yyyy",
             language: "es",

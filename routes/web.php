@@ -48,6 +48,7 @@ Route::get('/historial/{id}', 'AdminController@verHisto');
 Route::get('/foro/{id}', 'AdminController@show_Foro');
 Route::get('/foro/{id}/ver/{idTema}', 'AdminController@ver_Tema');
 Route::get('/cita/{id}', 'AdminController@pedirCita');
+Route::post('/cita/guardar', 'AdminController@addCitaCliente');
 
 Route::get('/admin-menu/mascotas/historial/{id}' , 'AdminController@showHistory');
 Route::get('/admin-menu/mascotas/historial/añadir/{id}', 'AdminController@addHistory');

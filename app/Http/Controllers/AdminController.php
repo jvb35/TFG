@@ -62,7 +62,44 @@ class AdminController extends Controller
 
     function pedirCita($id=null){
         $mascota = Mascota::find($id);
-        return view('Cliente.pedir-cita', ['mascota' => $mascota]);
+        $persona = Persona::where('nombre', '=', $mascota->propietario)->first();
+        return view('Cliente.pedir-cita', ['mascota' => $mascota, 'persona' => $persona]);
+    }
+
+    function addCitaCliente(Request $request){
+        $cita = new Cita;
+        $fecha = $request->input('fecha');
+        $newDate = date("Y/m/d", strtotime($fecha));
+        $hora = $request->input('hora');
+        $cita->nombre_mascota = $request->input('nombre_mascota');
+        $cita->propietario = $request->input('nombre_persona');
+        $cita->telefono = $request->input('telefono');
+        $cita->tipo_consulta = $request->input('tipo_consulta');
+        if($cita->tipo_consulta == 'Consulta')
+        {
+            $cita->color = '#87CEFA';
+        }else if($cita->tipo_consulta == 'Peluqueria')
+        {
+            $cita->color = '#90EE90';
+        }
+        else{
+            $cita->color = '#FFA500';
+        }
+        $fecha_inicial =  $newDate." ".$hora.":00";
+        $cita->inicio_consulta = $fecha_inicial;
+        $minutoAnadir=60;       
+        $segundos_horaInicial=strtotime($hora);       
+        $segundos_minutoAnadir=$minutoAnadir*60;
+        $nuevaHora=date("H:i",$segundos_horaInicial+$segundos_minutoAnadir);
+        $cita->fin_consulta = $newDate." ".$nuevaHora.":00";
+
+        
+        $cita->persona_id = 1;
+        $cita->mascota_id = 1;
+        $cita->personal_id = 1;
+        $cita->save();
+
+        return back()->with('success', 'Cita añadida');;
     }
 
     function elegir_mascota(){
@@ -325,9 +362,10 @@ class AdminController extends Controller
     function addConsulta(Request $request){
         $originalDate = $request->input('fecha');
         $newDate = date("Y/m/d", strtotime($originalDate));
+
         $consulta = new Consulta;
         $consulta->nombre = $request->input('nombre');
-        $consulta->fecha = $newDate;
+        $consulta->fecha = $request->input('fecha');
         $consulta->descripcion = $request->input('descripcion');
         $valor = $request->input('estado');
         if($valor == 1){
@@ -355,7 +393,6 @@ class AdminController extends Controller
         ]);
 
         $cita = new Cita;
-
         $cita->nombre_mascota = $request->input('nombre_mascota');
         $cita->tipo_consulta = $request->input('tipo_consulta');
         $cita->propietario = $request->input('propietario');
