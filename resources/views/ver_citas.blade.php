@@ -10,7 +10,8 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.js"></script>
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.css"/>
-
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
 </head>
 
 @extends('panel-admin')
@@ -70,21 +71,31 @@
                             <input type="text" class="form-control" name="nombre_mascota" placeholder="Introduza el nombre de la mascota" /><br /><br />
                             <label for="">Tipo de consulta</label>
                             <br>
-                            <select name="tipo_consulta">
-                                <option value="Consulta">Consulta</option> 
-                                <option value="Peluqueria">Peluquería</option> 
-                                <option value="Operacion">Operación</option>
+                            <div class="form-group">
+                            <select class="form-control" name="tipo_consulta">
+                                <option value="Consulta">Consulta</option>
+                                <option value="Peluqueria">Peluqueria</option>
+                                <option value="Operacion">Operacion</option>
                             </select>
+                            </div>
                             <br>
+                            <label for="">Fecha</label>
+                            <input type="date" class="form-control" name="fecha" class="date" placeholder="Enter start date" /><br /><br />
+                            <label for="">Hora</label>
+                            <div class="form-group">
+                                <div class='input-group date' id='datetimepicker3'>
+                                    <input type='text' class="form-control" name="hora" />
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-time"></span>
+                                    </span>
+                                </div>
+                            </div>
                             <br>
                             <label for="">Propietario</label>
-                            <input type="text" class="form-control" name="propietario" placeholder="Introduza el tipo de consulta" /><br /><br />
+                            <input type="text" class="form-control" name="propietario" placeholder="Introduza el propietario" /><br /><br />
                             <label for="">Teléfono</label>
-                            <input type="number" class="form-control" name="telefono" placeholder="Introduza el tipo de consulta" /><br /><br />
-                            <label for="">Fecha comienzo</label>
-                            <input type="datetime-local" class="form-control" name="start_date" class="date" placeholder="Enter start date" /><br /><br />
-                            <label for="">Fecha fin</label>
-                            <input type="datetime-local" class="form-control" name="end_date" class="date" placeholder="Enter end date" /><br /><br />
+                            <input type="number" class="form-control" name="telefono" placeholder="Introduza el telefono" /><br /><br />
+
 
                             <input type="submit" name="submit" class="btn btn-primary" value="Guardar" />
 
@@ -94,6 +105,16 @@
 	</div>
 </div>
 
+<script >
+    $(function () {
+        $('#datetimepicker3').datetimepicker({
+            format: 'HH:mm',
+            enabledHours: [9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21]
+        });
+    });
+
+
+</script>
 
 
 

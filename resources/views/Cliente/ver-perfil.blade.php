@@ -2,20 +2,10 @@
 <html>
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
-
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
-
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script>
- 
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/locales/bootstrap-datepicker.es.min.js"></script>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script> 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <style>
@@ -124,10 +114,51 @@ html, body {
   }
 } /* END Media Query */
 
+.linea {
+    height: 5px;
+    background-color: blue;
+}
+
+
+
+.profile-header-container{
+    margin: 0 auto;
+    text-align: center;
+}
+
+.profile-header-img {
+    padding: 54px;
+}
+
+.profile-header-img > a > img.img-circle {
+    width: 100px;
+    height: 100px;
+    border: 2px solid #51D2B7;
+}
+
+.profile-header {
+    margin-top: 43px;
+}
+
+/**
+* Ranking component
+*/
+.rank-label-container {
+    margin-top: -19px;
+    /* z-index: 1000; */
+    text-align: center;
+}
+
+.label.label-default.rank-label {
+    background-color: rgb(81, 210, 183);
+    padding: 5px 10px 5px 10px;
+    border-radius: 27px;
+}
 
 </style>
 <body>
- <nav class="navbar navbar-default">
+
+<nav class="navbar navbar-default">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -163,94 +194,96 @@ html, body {
   </div>
 </nav>
 
-
 <div class="container">
-<form class="form-horizontal" action="{{action('AdminController@addCitaCliente')}}" method="POST">
-{{ csrf_field()}}
-{{ method_field('POST')}}
 
-  @if(\Session::has('success'))
-    <div class="alert alert-success">
-        <p>{{ \Session::get('success')}}</p>
-    </div>
-  @endif
-  <h1> Gestor de citas </h1>
-  <div class="col-md-6" style="margin-top:30px; margin-right: -20px;">
-    <div class="form-group col-xs-10 col-sm-4 col-md-4 col-lg-4">
-        <img id="img" class="thumb" src="/images/cita-consulta.jpg" title="Foto" style="width: 350px; height: 250px;"/>
-    </div>
-  </div>
-  <div class="col-md-6" style="margin-top:30px; margin-left: -30px;">
-    <div class="row">
-        <div class='col-sm-9'>
-            <div class="form-group">
-                <div class='input-group date' id='datetimepicker1'>
-                    <input type='text' class="form-control" name="fecha"/>
-                    <span class="input-group-addon">
-                        <span class="glyphicon glyphicon-calendar"></span>
-                    </span>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class='input-group date' id='datetimepicker3'>
-                    <input type='text' class="form-control" name="hora" />
-                    <span class="input-group-addon">
-                        <span class="glyphicon glyphicon-time"></span>
-                    </span>
-                </div>
-            </div>
-            <div class="form-group">
-              <select class="form-control" name="tipo_consulta">
-                <option value="Consulta">Consulta</option>
-                <option value="Peluqueria">Peluqueria</option>
-                <option value="Operacion">Operacion</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <input type="text" class="form-control" name="nombre_mascota" value="{{$mascota->nombre}}" readonly="readonly" />
-            </div>
-            <div class="form-group">
-              <input type="text" class="form-control" name="nombre_persona" value="{{$persona->nombre}}" readonly="readonly" />
-            </div>
-            <div class="form-group">
-              <input type="text" class="form-control" name="telefono" value="{{$persona->telefono}}" readonly="readonly" />
-            </div>
+	<div class="row">
+		<div class="col-md-6">
+			<h3> Datos personales</h3>		
+			<hr class="linea">
+			<div class="form-group">
+				<label for="name" class="cols-sm-2 control-label">Nombre</label>
+				<div class="cols-sm-10">
+					<div class="input-group">
+						<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+						<input type="text" class="form-control" name="nombre" id="nombre"  value="{{$persona->nombre}}" disabled/>
+					</div>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label for="name" class="cols-sm-2 control-label">Fecha de Nacimiento</label>
+				<div class="cols-sm-10">
+					<div class="input-group">
+						<span class="input-group-addon"><i class="fa fa-birthday-cake" ></i></span>
+						<input type="date" class="form-control" name="fecha_nac" id="fecha_nac" value="{{$persona->fecha_nac}}" disabled/>
+					</div>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label for="name" class="cols-sm-2 control-label">Teléfono</label>
+				<div class="cols-sm-10">
+					<div class="input-group">
+						<span class="input-group-addon"><i class="fa fa-phone" ></i></span>
+						<input type="text" class="form-control" name="telefono" id="telefono" value="{{$persona->telefono}}" disabled/>
+					</div>
+				</div>
+			</div>
 
             <div class="form-group">
-                <div class="col-lg-offset-0 col-lg-10">
-                    <input type="submit" class="btn btn-primary" value="Enviar">
-                    <input type="button" class="btn btn-default" onclick="location.href='/admin-menu/mascotas/ver';" value="Cancelar">
-                </div>
-            </div>
-        </div>       
-            
-    </div>
-  </div>
-  </form>
+				<label for="email" class="cols-sm-2 control-label">Correo</label>
+				<div class="cols-sm-10">
+					<div class="input-group">
+						<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+						<input type="text" class="form-control" name="correo" id="correo"  value="{{$persona->correo}}" disabled/>
+					</div>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label for="name" class="cols-sm-2 control-label">Dirección</label>
+				<div class="cols-sm-10">
+					<div class="input-group">
+						<span class="input-group-addon"><i class="fa fa-building" ></i></span>
+						<input type="text" class="form-control" name="direccion" id="direccion" value="{{$persona->direccion}}" disabled/>
+					</div>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label for="name" class="cols-sm-2 control-label">País</label>
+				<div class="cols-sm-10">
+					<div class="input-group">
+						<span class="input-group-addon"><i class="fa fa-flag" ></i></span>
+						<input type="text" class="form-control" name="pais" id="pais" value="{{$persona->pais}}" disabled/>
+					</div>
+				</div>
+			</div>
+
+
+			<br>
+
+		</div>
+		<div class="col-md-6">
+			<h3> Mascotas asociadas </h3>
+			<hr class="linea">
+			<div class="row">
+			@foreach ($mascotas as $mascota)
+				<div class="col-sm-3">
+					<div class="profile-header-img" style="margin-top: -40px;">
+							<a href="/admin-menu/mascotas/editar/{{$mascota->id}}"><img class="img-circle" src="/images/{{$mascota->nombre}}.png" /></a>
+					</div>
+				</div>
+			@endforeach
+
+			</div>
+
+		</div>
+	</div>
 </div>
 
 
 
+
 </body>
-
-<script >
-    $(function () {
-        
-        $('#datetimepicker1').datepicker({
-            format: "yyyy/mm/dd",
-            language: "es",
-            autoclose: true,
-            todayHighlight: true
-        });
-
-        $('#datetimepicker3').datetimepicker({
-            format: 'HH:mm',
-            enabledHours: [9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21]
-        });
-    });
-
-
-</script>
 </html>
-
-

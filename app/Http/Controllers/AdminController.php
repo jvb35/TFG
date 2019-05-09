@@ -111,6 +111,21 @@ class AdminController extends Controller
         return back()->with('success', 'Cita añadida');
     }
 
+    function verPerfilPersona($id=null){
+        $mascot = DB::table('mascotas')->get();
+        $nombre = "Prueba";
+        foreach($mascot as $mascota){
+            if($mascota->id == $id){
+                $nombre = $mascota->propietario;
+            }
+        }
+        $persona = Persona::where('nombre', '=', $nombre)->first();
+        $mascotas = Mascota::where('propietario', '=', $nombre)->orderBy('nombre','desc')->get();
+        $mascota = Mascota::find($id);
+
+        return view('Cliente.ver-perfil', ['persona' => $persona, 'mascotas' => $mascotas, 'mascota' => $mascota]);
+    }
+
     function elegir_mascota(){
         return view('elegir-mascota');
     }
@@ -397,8 +412,8 @@ class AdminController extends Controller
             'tipo_consulta' => 'required',
             'propietario' => 'required',
             'telefono' => 'required',
-            'start_date' => 'required',
-            'end_date' => 'required',
+            'fecha' => 'required',
+            'hora' => 'required',
         ]);
 
         $cita = new Cita;
@@ -416,13 +431,28 @@ class AdminController extends Controller
         else{
             $cita->color = '#FFA500';
         }
-        
-        $cita->inicio_consulta = $request->input('start_date');
-        $cita->fin_consulta = $request->input('end_date');
+        $fecha = $request->input('fecha');
+        $hora = $request->input('hora');
+        $fecha_inicial =  $fecha." ".$hora.":00";
+        $cita->inicio_consulta = $fecha_inicial;
+        $minutoAnadir=60;       
+        $segundos_horaInicial=strtotime($hora);       
+        $segundos_minutoAnadir=$minutoAnadir*60;
+        $nuevaHora=date("H:i",$segundos_horaInicial+$segundos_minutoAnadir);
+        $cita->fin_consulta = $fecha." ".$nuevaHora.":00";
 
-        
-        $cita->persona_id = 1;
-        $cita->mascota_id = 1;
+        $personas = DB::table('personas')->get();
+        foreach($personas as $persona){
+            if($persona->nombre == $request->input('propietario')){
+                $cita->persona_id = $persona->id;
+            }
+        }
+        $mascotas = DB::table('mascotas')->get();
+        foreach($mascotas as $mascota){
+            if($mascota->nombre == $request->input('nombre_mascota')){
+                $cita->mascota_id = $mascota->id;
+            }
+        }
         $cita->personal_id = 1;
         $cita->save();
 
