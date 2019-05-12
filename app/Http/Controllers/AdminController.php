@@ -20,7 +20,15 @@ class AdminController extends Controller
     private $identificador;
 
     function login(){
-        return view('login');
+        return view('Publico.login');
+    }
+
+    function home(){
+        return view('Publico.home');
+    }
+
+    function prova(){
+        return view('Publico.prueba');
     }
 
     function comprobarDatos(Request $request){

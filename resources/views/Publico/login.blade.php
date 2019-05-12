@@ -12,7 +12,7 @@
         .panel-default {
             opacity: 0.9;
             margin-top:170px;
-
+            margin-left: 200px;
         }
         .form-group.last { margin-bottom:0px; }
 
@@ -79,8 +79,7 @@
                 -webkit-background-size: cover;
                 -moz-background-size: cover;
                 -o-background-size: cover;
-                background-size: 80% 90%;
-                margin-top: 150px;
+                background-size: 90% 73%;
             }
             
 
@@ -89,21 +88,10 @@
                 height: 120px;
                 float: right;
                 margin-right: 200px;
-                margin-top: -60px;
+                margin-top: 5px;
             
             }
 
-            
-            .row{
-                margin-right: 100px;
-                padding-bottom: 60px;
-            }
-
-            .panel-default {
-                margin-top: 70px;
-                margin-right: 50px;
-                margin-left: 0px;
-            }
         }
 
     </style>
@@ -120,35 +108,19 @@
     {{ csrf_field()}}
     {{ method_field('POST')}}
         <div class="foto"> <img src="/images/gato.png" class="gato"> </div>
-        <div class="row">
-            <div class="col-md-4 col-md-offset-7">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <span class="glyphicon glyphicon-lock"></span> Login</div>
+        <div class="row" style="width: 1200px;">
+            <div class="col-md-12 col-md-offset-7">
+                <div class="panel panel-default" style="margin-left: 650px; margin-right: 100px; margin-bottom: 200px;">
                     <div class="panel-body">
                         <form class="form-horizontal" role="form">
                         <div class="form-group">
-                            <label for="inputEmail3" class="col-sm-3 control-label">
-                                Email</label>
                             <div class="col-sm-9">
                                 <input type="email" class="form-control" name="email" id="inputEmail3" placeholder="Email" required>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="inputPassword3" class="col-sm-3 control-label">
-                                Password</label>
                             <div class="col-sm-9">
                                 <input type="password" class="form-control" name="contra" id="inputPassword3" placeholder="Password" required>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-sm-offset-3 col-sm-9">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox"/>
-                                        Remember me
-                                    </label>
-                                </div>
                             </div>
                         </div>
                         <div class="form-group last">
@@ -161,8 +133,6 @@
                         </div>
                         </form>
                     </div>
-                    <div class="panel-footer">
-                        Not Registred? <a href="http://www.jquery2dotnet.com">Register here</a></div>
                 </div>
             </div>
         </div>

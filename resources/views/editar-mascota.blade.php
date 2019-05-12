@@ -104,11 +104,7 @@
                     </tbody>
                   </table>
 
-                  <ul>
-                    <li style="list-style:none; float:left;">
-                    <button style="text-align:left;" class="btn btn-primary" onclick="historial({{$mascota->id}})">Ver Historial</button>
-                    </li>
-                     
+                  <ul>                     
                     <li style="list-style:none; float:left;">
                       <button style="text-align:left; display:none; margin-left: 10px;" id="oculto" class="btn btn-primary">Guardar cambios</button>
                     </li>
@@ -122,7 +118,7 @@
                         <span class="pull-right">
                             <a data-original-title="Editar mascota" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning" onclick="bloquear()" ><i class="glyphicon glyphicon-edit"></i></a>
                             <a data-original-title="Eliminar mascota" data-toggle="tooltip" type="button" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i></a>
-                            <a data-original-title="Eliminar mascota" data-toggle="tooltip" type="button" class="btn btn-sm btn-danger" onclick="historial({{$mascota->id}})"><i class="glyphicon glyphicon-remove"></i></a>
+                            <a data-original-title="Historial mascota" data-toggle="tooltip" type="button" class="btn btn-info" onclick="historial({{$mascota->id}})"><i class="glyphicon glyphicon-folder-open"></i></a>
                         </span>
                 </div>
             
