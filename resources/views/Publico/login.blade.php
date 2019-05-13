@@ -142,9 +142,9 @@
           
 
 
-    <script>
+	<script>
         window.onload = function() {
-            document.getElementById('zona-clientes').className = 'active';
+            document.getElementById('login').className = 'nav-item active';
         };
     </script>
 

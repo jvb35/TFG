@@ -89,34 +89,34 @@
 						<div class="row ml-0 w-100">
 							<div class="col-lg-12 pr-0">
 								<ul class="nav navbar-nav center_nav pull-right">
-									<li class="nav-item active">
+									<li class="nav-item" id="home">
 										<a class="nav-link" href="/home">Home</a>
 									</li>
-									<li class="nav-item ">
-										<a class="nav-link" href="departments.html">Quienes somos</a>
+									<li class="nav-item " id="quienes-somos">
+										<a class="nav-link" href="/quienes-somos">Quienes somos</a>
 									</li>
 
-									<li class="nav-item submenu dropdown">
+									<li class="nav-item submenu dropdown" id="servicios">
 										<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Servicios</a>
 										<ul class="dropdown-menu">
 											<li class="nav-item">
-												<a class="nav-link" href="about.html">Cirugia</a>
+												<a class="nav-link" href="/servicios">Cirugia</a>
 											</li>
 											<li class="nav-item">
-												<a class="nav-link" href="services.html">Peluqueria</a>
+												<a class="nav-link" href="/servicios">Peluqueria</a>
 											</li>
 											<li class="nav-item">
-												<a class="nav-link" href="elements.html">Consulta</a>
+												<a class="nav-link" href="/servicios">Consulta</a>
 											</li>
 										</ul>
 									</li>
-									<li class="nav-item ">
-										<a class="nav-link" href="doctors.html">Hotel</a>
+									<li class="nav-item " id="hotel">
+										<a class="nav-link" href="/hotel">Hotel</a>
 									</li>
-									<li class="nav-item">
-										<a class="nav-link" href="contact.html">Contacto</a>
+									<li class="nav-item" id="contacto">
+										<a class="nav-link" href="/contacto">Contacto</a>
 									</li>
-									<li class="nav-item">
+									<li class="nav-item" id="login">
 										<a class="nav-link" href="/login">Zona clientes</a>
 									</li>
 								</ul>

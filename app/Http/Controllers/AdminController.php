@@ -31,6 +31,22 @@ class AdminController extends Controller
         return view('Publico.prueba');
     }
 
+    function quienes(){
+        return view('Publico.quienes-somos');
+    }
+
+    function servicios(){
+        return view('Publico.servicios');
+    }
+
+    function contacto(){
+        return view('Publico.contacto');
+    }
+
+    function hotel(){
+        return view('Publico.hotel');
+    }
+
     function comprobarDatos(Request $request){
         $correo = $request->input('email');
         $password = $request->input('contra');

@@ -68,3 +68,7 @@ Route::post('/admin-menu/mascotas/historial/añadir/nueva', 'AdminController@add
 
 Route::get('/home', 'AdminController@home');
 Route::get('/prova', 'AdminController@prova');
+Route::get('/quienes-somos', 'AdminController@quienes');
+Route::get('/servicios', 'AdminController@servicios');
+Route::get('/contacto', 'AdminController@contacto');
+Route::get('/hotel', 'AdminController@hotel');
