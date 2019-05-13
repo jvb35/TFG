@@ -141,67 +141,60 @@
 		<div class="container">
 			<div class="row justify-content-center section-title-wrap">
 				<div class="col-lg-12">
-					<h1>Our Recent Blogs</h1>
+					<h1>Últimas Noticias</h1>
 					<p>
-						Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+						Toda la información actualizada!
 					</p>
 				</div>
 			</div>
 			<div class="row">
 				<div class="single-recent-blog col-lg-4 col-md-4">
 					<div class="thumb">
-						<img class="f-img img-fluid mx-auto" src="img/b1.jpg" alt="">
+						<img class="f-img img-fluid mx-auto" src="img/obesidad.jpg" alt="" style="height: 190px;">
 					</div>
 					<a href="#">
-						<h4>Portable Fashion for women</h4>
+						<h4>La obesidad, una patología silenciosa.</h4>
 					</a>
 					<p>
-						Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-						Ut enim ad minim veniam, quis nostrud.
+						Cada día visitamos a multitud de pacientes, perros y gatos que acuden a su visita veterinaria por diferentes motivos.
 					</p>
 					<div class="bottom d-flex justify-content-between align-items-center flex-wrap">
 						<div class="meta">
-							<span class="lnr lnr-calendar-full"></span> 13th Dec
-							<span class="lnr lnr-heart"></span> 15
-							<span class="lnr lnr-bubble"></span> 04
+							<span class="lnr lnr-calendar-full"></span> 13 Abril
 						</div>
 					</div>
 				</div>
 				<div class="single-recent-blog col-lg-4 col-md-4">
 					<div class="thumb">
-						<img class="f-img img-fluid mx-auto" src="img/b2.jpg" alt="">
+						<img class="f-img img-fluid mx-auto" src="img/leishmania.jpg" alt="" style="height: 190px;">
 					</div>
 					<a href="#">
-						<h4>Summer ware are coming</h4>
+						<h4>Leishmania</h4>
 					</a>
 					<p>
-						Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-						Ut enim ad minim veniam, quis nostrud.
+						Este enfermedad está en auge desde los últimos años. Es una enfermedad muy típica en animales de raza pura, por tanto es recomendable 
+						hacer varias pruebas anuales para captar su enfermedad lo más temprano posible.
 					</p>
 					<div class="bottom d-flex justify-content-between align-items-center flex-wrap">
 						<div class="meta">
-							<span class="lnr lnr-calendar-full"></span> 13th Dec
-							<span class="lnr lnr-heart"></span> 15
-							<span class="lnr lnr-bubble"></span> 04
+							<span class="lnr lnr-calendar-full"></span> 25 Mayo
 						</div>
 					</div>
 				</div>
 				<div class="single-recent-blog col-lg-4 col-md-4">
 					<div class="thumb">
-						<img class="f-img img-fluid mx-auto" src="img/b3.jpg" alt="">
+						<img class="f-img img-fluid mx-auto" src="img/congreso.jpg" alt="" style="height: 190px;">
 					</div>
 					<a href="#">
-						<h4>Summer ware are coming</h4>
+						<h4>Congreso Valencia 2019</h4>
 					</a>
 					<p>
-						Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-						Ut enim ad minim veniam, quis nostrud.
+						El próximo mes de Julio, el equipo profesional de veterinarios de nuestra empresa acudirá al evento anual sobre nuevas enfermedades que se celebra este
+						año en Valencia, donde nuestros compañeros podrán adquirir conocimientos sobre posibles futuras enfermedades.
 					</p>
 					<div class="bottom d-flex justify-content-between align-items-center flex-wrap">
 						<div class="meta">
-							<span class="lnr lnr-calendar-full"></span> 13th Dec
-							<span class="lnr lnr-heart"></span> 15
-							<span class="lnr lnr-bubble"></span> 04
+							<span class="lnr lnr-calendar-full"></span> 10 Junio
 						</div>
 					</div>
 				</div>
