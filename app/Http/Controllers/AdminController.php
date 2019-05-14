@@ -12,6 +12,7 @@ use App\Consulta;
 use App\Historial;
 use App\Cita;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Crypt;
 
 class AdminController extends Controller
 {
@@ -55,12 +56,22 @@ class AdminController extends Controller
         $personal = Personal::where('correo', '=', $correo)->count();
         if($persona > 0){
             $per = Persona::where('correo', '=', $correo)->first();
-            if($per->password == $password){
+            $desencriptado = Crypt::decrypt($per->password);
+            if($desencriptado == $password){
                 $mascotas = Mascota::where('propietario', '=', $per->nombre)->get();
                 return view('elegir-mascota', ['mascotas' => $mascotas]);
             }
+            else{
+                return view('Publico.login');
+            }
         } else if ($personal > 0){
-            return view('añadir-persona');
+
+            $per = Personal::where('correo', '=', $correo)->first();
+            $desencriptado = Crypt::decrypt($per->password);
+            if($desencriptado == $password){
+                $mascotas = DB::table('mascotas')->paginate(10);
+                return view('ver_mascotas', ['mascotas' => $mascotas]);
+            }
         } else{
             return view('panel-admin');
         }
@@ -151,7 +162,8 @@ class AdminController extends Controller
     }
 
     function elegir_mascota(){
-        return view('elegir-mascota');
+        $mascotas = Mascota::where('propietario', '=', 'Jordi Valls')->get();
+        return view('elegir-mascota', ['mascotas' => $mascotas]);
     }
 
     function admin_menu(){
@@ -310,9 +322,10 @@ class AdminController extends Controller
         $persona->direccion = $request->input('direccion');
         $persona->pais = $request->input('pais');
         $persona->correo = $request->input('correo');
-        $persona->password = $request->input('password');
-
+        $contraseñaEncriptada = Crypt::encrypt($request->input('password'));
+        $persona->password = $contraseñaEncriptada;
         $persona->save();
+
         return Redirect::to('/admin-menu/personas/ver');
     }
 
@@ -383,7 +396,8 @@ class AdminController extends Controller
         $personal->telefono = $request->input('telefono');
         $personal->direccion = $request->input('direccion');
         $personal->especialidad = $request->input('especialidad');
-        $personal->password = $request->input('password');
+        $contraseñaEncriptada = Crypt::encrypt($request->input('password'));
+        $personal->password = $contraseñaEncriptada;
 
         $personal->save();
         return Redirect::to('/admin-menu/personal/ver');
