@@ -11,8 +11,13 @@ use App\Tema;
 use App\Consulta;
 use App\Historial;
 use App\Cita;
+use App\User;
+use Illuminate\Support\Str;
+use Validator;
+use Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Crypt;
+use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {
@@ -29,8 +34,9 @@ class AdminController extends Controller
     }
 
     function prova(){
-        return view('Publico.prueba');
+        return view('main');
     }
+
 
     function quienes(){
         return view('Publico.quienes-somos');
@@ -140,7 +146,8 @@ class AdminController extends Controller
                 $cita->mascota_id = $mascota->id;
             }
         }
-        $cita->personal_id = 1;
+        $cita->personal_id = 1; 
+
         $cita->save();
 
         return back()->with('success', 'Cita añadida');
@@ -322,9 +329,17 @@ class AdminController extends Controller
         $persona->direccion = $request->input('direccion');
         $persona->pais = $request->input('pais');
         $persona->correo = $request->input('correo');
-        $contraseñaEncriptada = Crypt::encrypt($request->input('password'));
+        $contraseñaEncriptada = Hash::make($request->input('password'));
         $persona->password = $contraseñaEncriptada;
         $persona->save();
+
+        $user = new User;
+        $user->name = $request->input('nombre');
+        $user->email = $request->input('correo');
+        $user->password = $contraseñaEncriptada;
+        $user->rol = "cliente";
+        $user->remember_token = Str::random(10);
+        $user->save();
 
         return Redirect::to('/admin-menu/personas/ver');
     }
@@ -396,10 +411,19 @@ class AdminController extends Controller
         $personal->telefono = $request->input('telefono');
         $personal->direccion = $request->input('direccion');
         $personal->especialidad = $request->input('especialidad');
-        $contraseñaEncriptada = Crypt::encrypt($request->input('password'));
+        $contraseñaEncriptada = Hash::make($request->input('password'));
         $personal->password = $contraseñaEncriptada;
 
         $personal->save();
+
+        $user = new User;
+        $user->name = $request->input('nombre');
+        $user->email = $request->input('correo');
+        $user->password = $contraseñaEncriptada;
+        $user->rol = "veterinario";
+        $user->remember_token = Str::random(10);
+        $user->save();
+
         return Redirect::to('/admin-menu/personal/ver');
 
     }
@@ -435,12 +459,18 @@ class AdminController extends Controller
         } else{
             $consulta->estado = "Pendiente";
         }
-
         $consulta->historial_id = $request->input('id');
-        $consulta->personal_id = 1;
+        $personales = "Hola";
+        $personales = Auth::user()->name;
+        $personals = DB::table('personals')->get();
+        foreach($personals as $personal){
+            if($personal->nombre == $personales){
+                $consulta->personal_id = $personal->id;
+            }
+        }
 
         $consulta->save();
-        return Redirect::to('/admin-menu/mascotas/historial/{{$consulta->historial_id}}');
+        return back()->with('success','Consulta añadida');
     }
 
     public function addCita(Request $request)
@@ -491,7 +521,15 @@ class AdminController extends Controller
                 $cita->mascota_id = $mascota->id;
             }
         }
-        $cita->personal_id = 1;
+        $personales = "Hola";
+        $personales = Auth::user()->name;
+        $personals = DB::table('personals')->get();
+        foreach($personals as $personal){
+            if($personal->nombre == $personales){
+                $cita->personal_id = $personal->id;
+            }
+        }
+
         $cita->save();
 
         return redirect('/admin-menu/citas/ver')->with('success', 'Cita añadida');

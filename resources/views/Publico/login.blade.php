@@ -104,7 +104,26 @@
 
     
     <div class="panel-login">
-    <form class="form-horizontal" action="{{action('AdminController@comprobarDatos')}}" method="POST">
+        @if(isset(Auth::user()->email))  
+          <script>window.location="/main/successlogin";</script>
+        @endif
+        @if ($message = Session::get('error'))
+        <div class="alert alert-danger alert-block">
+          <button type="button" class="close" data-dismiss="alert">x</button>
+          <strong>{{ $message }} </strong>
+        </div>
+        @endif
+        @if(count($errors) > 0)
+          <div class="alert alert-danger">
+            <ul>
+            @foreach($errors->all() as $error)
+              <li>{{ $error }}</li>
+            @endforeach
+            </ul>
+
+          </div>
+        @endif
+    <form class="form-horizontal" action="{{url('/main/checklogin')}}" method="POST">
     {{ csrf_field()}}
     {{ method_field('POST')}}
         <div class="foto"> <img src="/images/gato.png" class="gato"> </div>
@@ -114,22 +133,17 @@
                     <div class="panel-body">
                         <form class="form-horizontal" role="form">
                         <div class="form-group">
-                            <div class="col-sm-9">
-                                <input type="email" class="form-control" name="email" id="inputEmail3" placeholder="Email" required>
-                            </div>
+                            <label>Enter Email</label>
+                            <input type="email" name="email" class="form-control"/>
                         </div>
+
                         <div class="form-group">
-                            <div class="col-sm-9">
-                                <input type="password" class="form-control" name="contra" id="inputPassword3" placeholder="Password" required>
-                            </div>
+                            <label>Enter Password</label>
+                            <input type="password" name="password" class="form-control"/>
                         </div>
-                        <div class="form-group last">
-                            <div class="col-sm-offset-3 col-sm-9">
-                                <button type="submit" class="btn btn-success btn-sm">
-                                    Sign in</button>
-                                     <button type="reset" class="btn btn-default btn-sm">
-                                    Reset</button>
-                            </div>
+
+                        <div class="from-group">
+                            <input type="submit" name="login" class="btn btn-primary" value="Login" />
                         </div>
                         </form>
                     </div>

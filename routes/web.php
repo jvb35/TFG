@@ -41,8 +41,12 @@ Route::get('/admin-menu/citas/editar/{id}', 'AdminController@edit');
 Route::post('/admin-menu/citas/editar/actualizar', 'AdminController@updateCita');
 Route::resource('/admin-menu/citas/editar/eliminar', 'EventController');
 
+Route::get('/main', 'LoginController@prova');
+Route::post('/main/checklogin', 'LoginController@checklogin');
+Route::get('/main/successlogin', 'LoginController@successlogin');
+Route::get('/logout', 'LoginController@logout');
+
 Route::post('/login/autenticacion', 'AdminController@comprobarDatos');
-Route::get('/prueba', 'AdminController@prueba');
 Route::get('/info/{id}', 'AdminController@infoMascota');
 Route::get('/historial/{id}', 'AdminController@verHisto');
 Route::get('/foro/{id}', 'AdminController@show_Foro');
