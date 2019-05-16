@@ -182,7 +182,7 @@ html, body {
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <div class="dropdown">
-          <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">{{$mascota->propietario}}
+          <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">{{Auth::user()->name}}
           <span class="caret"></span></button>
           <ul class="dropdown-menu">
             <li><a href="/perfil/{{$mascota->id}}"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span>Perfil</a></li>
@@ -271,7 +271,7 @@ html, body {
 			@foreach ($mascotas as $mascota)
 				<div class="col-sm-3">
 					<div class="profile-header-img" style="margin-top: -40px;">
-							<a href="/admin-menu/mascotas/editar/{{$mascota->id}}"><img class="img-circle" src="/images/{{$mascota->nombre}}.png" /></a>
+							<a href="/admin-menu/mascotas/editar/{{$mascota->id}}"><img class="img-circle" src="/images/mascotas/{{$mascota->filename}}" /></a>
 					</div>
 				</div>
 			@endforeach

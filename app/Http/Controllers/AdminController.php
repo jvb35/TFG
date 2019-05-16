@@ -15,6 +15,8 @@ use App\User;
 use Illuminate\Support\Str;
 use Validator;
 use Auth;
+use Illuminate\Support\Facades\Input;
+use Intervention\Image\ImageManagerStatic as Image;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Hash;
@@ -37,7 +39,6 @@ class AdminController extends Controller
         return view('main');
     }
 
-
     function quienes(){
         return view('Publico.quienes-somos');
     }
@@ -52,35 +53,6 @@ class AdminController extends Controller
 
     function hotel(){
         return view('Publico.hotel');
-    }
-
-    function comprobarDatos(Request $request){
-        $correo = $request->input('email');
-        $password = $request->input('contra');
-
-        $persona = Persona::where('correo', '=', $correo)->count();
-        $personal = Personal::where('correo', '=', $correo)->count();
-        if($persona > 0){
-            $per = Persona::where('correo', '=', $correo)->first();
-            $desencriptado = Crypt::decrypt($per->password);
-            if($desencriptado == $password){
-                $mascotas = Mascota::where('propietario', '=', $per->nombre)->get();
-                return view('elegir-mascota', ['mascotas' => $mascotas]);
-            }
-            else{
-                return view('Publico.login');
-            }
-        } else if ($personal > 0){
-
-            $per = Personal::where('correo', '=', $correo)->first();
-            $desencriptado = Crypt::decrypt($per->password);
-            if($desencriptado == $password){
-                $mascotas = DB::table('mascotas')->paginate(10);
-                return view('ver_mascotas', ['mascotas' => $mascotas]);
-            }
-        } else{
-            return view('panel-admin');
-        }
     }
 
     function verHisto($id=null){
@@ -308,7 +280,24 @@ class AdminController extends Controller
                 $mascota->persona_id = $persona->id;
             }
         }
-        
+          // ruta de las imagenes guardadas
+        $ruta = public_path().'/images/mascotas/';
+
+        // recogida del form
+        $imagenOriginal = $request->file('photo');
+
+        // crear instancia de imagen
+        $imagen = Image::make($imagenOriginal);
+
+        // generar un nombre aleatorio para la imagen
+        $temp_name = $mascota->nombre . '.' . $imagenOriginal->getClientOriginalExtension();
+
+        $imagen->resize(300,300);
+
+        // guardar imagen
+        // save( [ruta], [calidad])
+        $imagen->save($ruta . $temp_name, 100);
+        $mascota->filename = $temp_name;
         $mascota->save();
 
         $historial = new Historial;
@@ -339,6 +328,8 @@ class AdminController extends Controller
         $user->password = $contraseñaEncriptada;
         $user->rol = "cliente";
         $user->remember_token = Str::random(10);
+        $user->filename ="";
+        $user->localizador = $persona->id;
         $user->save();
 
         return Redirect::to('/admin-menu/personas/ver');
@@ -414,6 +405,24 @@ class AdminController extends Controller
         $contraseñaEncriptada = Hash::make($request->input('password'));
         $personal->password = $contraseñaEncriptada;
 
+        $ruta = public_path().'/images/personal/';
+
+        // recogida del form
+        $imagenOriginal = $request->file('photo');
+
+        // crear instancia de imagen
+        $imagen = Image::make($imagenOriginal);
+
+        // generar un nombre aleatorio para la imagen
+        $temp_name = $personal->nombre . '.' . $imagenOriginal->getClientOriginalExtension();
+
+        $imagen->resize(300,300);
+
+        // guardar imagen
+        // save( [ruta], [calidad])
+        $imagen->save($ruta . $temp_name, 100);
+        $personal->filename = $temp_name;
+
         $personal->save();
 
         $user = new User;
@@ -422,6 +431,8 @@ class AdminController extends Controller
         $user->password = $contraseñaEncriptada;
         $user->rol = "veterinario";
         $user->remember_token = Str::random(10);
+        $user->filename = $temp_name;
+        $user->localizador = $personal->id;
         $user->save();
 
         return Redirect::to('/admin-menu/personal/ver');
@@ -438,7 +449,7 @@ class AdminController extends Controller
         $tema->municipio = $request->input('municipio');
         $tema->correo = $request->input('correo');
         $tema->fecha = "2019/05/02";
-        $tema->personal_id = 1;
+        $tema->personal_id = Auth::user()->localizador;
         $tema->foro_id = 1;
 
         $tema->save();
@@ -460,15 +471,7 @@ class AdminController extends Controller
             $consulta->estado = "Pendiente";
         }
         $consulta->historial_id = $request->input('id');
-        $personales = "Hola";
-        $personales = Auth::user()->name;
-        $personals = DB::table('personals')->get();
-        foreach($personals as $personal){
-            if($personal->nombre == $personales){
-                $consulta->personal_id = $personal->id;
-            }
-        }
-
+        $consulta->personal_id = Auth::user()->localizador;
         $consulta->save();
         return back()->with('success','Consulta añadida');
     }
@@ -521,14 +524,7 @@ class AdminController extends Controller
                 $cita->mascota_id = $mascota->id;
             }
         }
-        $personales = "Hola";
-        $personales = Auth::user()->name;
-        $personals = DB::table('personals')->get();
-        foreach($personals as $personal){
-            if($personal->nombre == $personales){
-                $cita->personal_id = $personal->id;
-            }
-        }
+        $cita->personal_id = Auth::user()->localizador;
 
         $cita->save();
 

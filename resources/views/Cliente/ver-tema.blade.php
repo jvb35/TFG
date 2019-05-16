@@ -342,7 +342,7 @@ Licensed under MIT
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <div class="dropdown">
-          <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">{{$mascota->propietario}}
+          <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">{{Auth::user()->name}}
           <span class="caret"></span></button>
           <ul class="dropdown-menu">
             <li><a href="/perfil/{{$mascota->id}}"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span>Perfil</a></li>

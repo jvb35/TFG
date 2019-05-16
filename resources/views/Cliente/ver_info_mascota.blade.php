@@ -157,11 +157,11 @@ html, body {
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <div class="dropdown">
-          <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">{{$mascota->propietario}}
+          <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">{{Auth::user()->name}}
           <span class="caret"></span></button>
           <ul class="dropdown-menu">
             <li><a href="/perfil/{{$mascota->id}}"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span>Perfil</a></li>
-            <li><a href="/login"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> Cerrar Sesión</a></li>
+            <li><a href="/logout"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> Cerrar Sesión</a></li>
           </ul>
         </div>
       </ul>
@@ -223,7 +223,7 @@ html, body {
             <div class="col-md-6">
                 <div class="form-group col-xs-10 col-sm-4 col-md-4 col-lg-4">
                     <output id="list"></output>
-                    <img id="img" class="thumb" src="/images/{{$mascota->nombre}}.png" title="Foto" style="width: 250px; height: 250px; margin-top: 70px; border:1px solid black;"/>
+                    <img id="img" class="thumb" src="/images/mascotas/{{$mascota->filename}}" title="Foto" style="width: 250px; height: 250px; margin-top: 70px; border:1px solid black;"/>
 
                 </div>
             </div>
@@ -272,8 +272,8 @@ html, body {
                 <p class="nomargin"><strong>{{$mes_escrito}}</strong></p>
                 <p class="nomargin"><strong>{{$horas}}:00</strong></p>
               </div>
-          </div>
-    </div>
+            </div>
+        </div>
 </div>
 
 

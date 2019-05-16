@@ -137,17 +137,17 @@
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+              <img src="/images/personal/{{ Auth::user()->filename}}" class="user-image" alt="User Image">
               <span class="hidden-xs">{{ Auth::user()->name}}</span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
-                <img src="/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                <img src="/images/personal/{{ Auth::user()->filename}}" class="img-circle" alt="User Image">
 
                 <p>
                 {{ Auth::user()->name}}
-                  <small>Member since Nov. 2012</small>
+                  <small>Veterinario</small>
                 </p>
               </li>
               <!-- Menu Body -->
@@ -177,23 +177,14 @@
       <!-- Sidebar user panel -->
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="/images/asha.JPG" class="img-circle" alt="User Image">
+          <img src="/images/personal/{{ Auth::user()->filename}}" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
           <p>{{ Auth::user()->name}}</p>
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
       </div>
-      <!-- search form -->
-      <form action="#" method="get" class="sidebar-form">
-        <div class="input-group">
-          <input type="text" name="q" class="form-control" placeholder="Search...">
-              <span class="input-group-btn">
-                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
-                </button>
-              </span>
-        </div>
-      </form>
+      <!-- search form -->>
       <!-- /.search form -->
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu">
@@ -236,20 +227,6 @@
               <li><a href="/admin-menu/citas/ver"><i class="fa fa-circle-o"></i> Ver todas</a></li>
               <li><a href="/admin-menu/citas/editar"><i class="fa fa-circle-o"></i> Editar cita</a></li>
             </ul>
-        </li>
-
-        <li class="treeview">
-          <a href="#">
-            <i class="fa fa-folder-open"></i> <span>Historiales</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="index.html"><i class="fa fa-circle-o"></i> Ver todas</a></li>
-            <li><a href="index.html"><i class="fa fa-circle-o"></i> Añadir</a></li>
-            <li><a href="index2.html"><i class="fa fa-circle-o"></i> Eliminar</a></li>
-          </ul>
         </li>
 
       <li class="treeview">

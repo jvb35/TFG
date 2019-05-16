@@ -85,7 +85,7 @@
 	    <div class="col-sm-3">
             <div class="profile-header-container">   
                 <div class="profile-header-img">
-                    <a href="/info/{{$mascota->id}}"><img class="img-circle" src="/images/{{$mascota->nombre}}.png" style="width: 150px;height: 150px;border: 2px solid #51D2B7;"/></a>
+                    <a href="/info/{{$mascota->id}}"><img class="img-circle" src="/images/mascotas/{{$mascota->filename}}" style="width: 150px;height: 150px;border: 2px solid #51D2B7;"/></a>
                     <!-- badge -->
                     <div class="rank-label-container">
                         <span class="label label-default rank-label" style="background-color: rgb(81, 210, 183);padding: 5px 10px 5px 10px;border-radius: 27px;">{{$mascota->nombre}}</span>

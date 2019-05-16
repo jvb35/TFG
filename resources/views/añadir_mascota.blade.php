@@ -30,7 +30,7 @@
       
 
     <section class="content">
-            <form class="form-horizontal" action="{{action('AdminController@addMascota')}}" method="POST">
+            <form class="form-horizontal" action="{{action('AdminController@addMascota')}}" method="POST" name="subida-imagenes" enctype="multipart/form-data">
             {{ csrf_field()}}
             {{ method_field('POST')}}
 
@@ -113,11 +113,11 @@
                 <div class="form-group col-xs-10 col-sm-4 col-md-4 col-lg-4">
                     <output id="list"></output>
                     <img id="img" class="thumb" src="/images/foto-por-defecto.png" title="Foto" style="width: 250px; height: 250px;"/>
-                    <input type="file" id="files" name="files[]" />
+                    <input type="file" id="files" name="photo" />
 
                 </div>
             </div>
-
+    </div>
 
             
             </form>

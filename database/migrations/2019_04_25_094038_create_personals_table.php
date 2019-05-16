@@ -22,6 +22,7 @@ class CreatePersonalsTable extends Migration
             $table->string('direccion');
             $table->string('especialidad');
             $table->string('password');
+            $table->string('filename');
             $table->timestamps();
         });
 
