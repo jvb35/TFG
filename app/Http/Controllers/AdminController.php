@@ -15,6 +15,8 @@ use App\User;
 use Illuminate\Support\Str;
 use Validator;
 use Auth;
+use Mail;
+use Session;
 use Illuminate\Support\Facades\Input;
 use Intervention\Image\ImageManagerStatic as Image;
 use Illuminate\Support\Facades\DB;
@@ -605,5 +607,25 @@ class AdminController extends Controller
         $fecha_actual = getdate();
         $cita = Cita::where('mascota_id', '=', $id)->where('inicio_consulta', '>=',$fecha_actual)->first();
         return view('Cliente.ver_info_mascota', ['mascota' => $mascota, 'cita' => $cita]);
+    }
+
+    public function sendmail(Request $request){
+        Mail::send('Publico.correo', $request->all(), function($msj){
+            $msj->subject('Información');
+            $msj->to('jordivalls9610@gmail.com');
+        });
+
+        return redirect('/contacto')->with('success', 'Mensaje enviado');
+    }
+
+    public function verPerfil(){
+        $persona = Personal::find(Auth::user()->localizador);
+        return view('ver-perfil', ['persona' => $persona]);
+    }
+
+    public function contact($id=null){
+        $mascota = Mascota::find($id);
+        $personals = DB::table('personals')->get();
+        return view('Cliente.contacto', ['mascota' => $mascota, 'personals' => $personals]);
     }
 }

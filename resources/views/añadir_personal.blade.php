@@ -109,11 +109,17 @@
                     <label class="label" for="message">Especialidad</label>
                 </div>
                 <div class="form-field col-lg-6">
-                    <input name="password" class="input-text js-input" type="password" required>
-                    <label class="label" for="message">Contraseña</label>
-                </div>
+				<label class="label" for="message">Contraseña</label>
+				<div class="cols-sm-10">
+					<div class="input-group">
+						<input type="password" class="input-text js-input" name="password" id="password" required/>
+						<span class="input-group-addon" onClick="mostrarPassword();"><i class="fa fa-eye-slash icon"></i></span>
+					</div>
+				</div>
+			</div>
                 <div class="form-field col-lg-6">
-                    <button type="button" class="btn btn-primary">Generar</button>
+                    <button type="button" class="btn btn-primary" onClick="generar(6);">Generar</button>
+                    
                 </div>
                 <div class="form-field col-lg-12">
                     <input class="submit-btn" type="submit" value="Insertar">
@@ -158,6 +164,27 @@
         }
         
         document.getElementById('files').addEventListener('change', archivo, false);
+
+        function generar(longitud)
+		{
+			var caracteres = "abcdefghijkmnpqrtuvwxyzABCDEFGHIJKLMNPQRTUVWXYZ2346789";
+			var contraseña = "";
+			for (i=0; i<longitud; i++) contraseña += caracteres.charAt(Math.floor(Math.random()*caracteres.length));
+			document.getElementById('password').value = contraseña;
+		}
+
+	
+		
+		function mostrarPassword(){
+			var cambio = document.getElementById("password");
+			if(cambio.type == "password"){
+				cambio.type = "text";
+				$('.icon').removeClass('fa fa-eye-slash').addClass('fa fa-eye');
+			}else{
+				cambio.type = "password";
+				$('.icon').removeClass('fa fa-eye').addClass('fa fa-eye-slash');
+			}
+		}
 
     </script>
 

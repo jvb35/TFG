@@ -175,7 +175,7 @@ html, body {
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="margin-left: 20px;">
       <ul class="nav navbar-nav">
          <li><a href="/info/{{$mascota->id}}"><span class="glyphicon glyphicon-th" aria-hidden="true"></span> Mascota</a></li>
-         <li><a href="#"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> Consultorio</a></li> 
+         <li><a href="/contacto/{{$mascota->id}}"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> Consultorio</a></li> 
          <li><a href="/cita/{{$mascota->id}}"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> Pedir Cita</a></li> 
          <li><a href="/historial/{{$mascota->id}}"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Historial</a></li>
          <li><a href="/foro/{{$mascota->id}}"><span class="glyphicon glyphicon-user"></span> Foro</a></li>
@@ -186,7 +186,7 @@ html, body {
           <span class="caret"></span></button>
           <ul class="dropdown-menu">
             <li><a href="/perfil/{{$mascota->id}}"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span>Perfil</a></li>
-            <li><a href="/login"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> Cerrar Sesión</a></li>
+            <li><a onclick="location.href='/logout';"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> Cerrar Sesión</a></li>
           </ul>
         </div>
       </ul>
@@ -271,7 +271,10 @@ html, body {
 			@foreach ($mascotas as $mascota)
 				<div class="col-sm-3">
 					<div class="profile-header-img" style="margin-top: -40px;">
-							<a href="/admin-menu/mascotas/editar/{{$mascota->id}}"><img class="img-circle" src="/images/mascotas/{{$mascota->filename}}" /></a>
+							<a><img class="img-circle" src="/images/mascotas/{{$mascota->filename}}" /></a>
+              <div class="rank-label-container" style="margin-left: 15px;">
+                    <span class="label label-default rank-label">{{$mascota->nombre}}</span>
+                </div>
 					</div>
 				</div>
 			@endforeach

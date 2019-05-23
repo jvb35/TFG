@@ -88,7 +88,7 @@
                 height: 120px;
                 float: right;
                 margin-right: 200px;
-                margin-top: 5px;
+                margin-top: 18px;
             
             }
 
@@ -133,12 +133,12 @@
                     <div class="panel-body">
                         <form class="form-horizontal" role="form">
                         <div class="form-group">
-                            <label>Enter Email</label>
+                            <label><strong>Enter Email</strong></label>
                             <input type="email" name="email" class="form-control"/>
                         </div>
 
                         <div class="form-group">
-                            <label>Enter Password</label>
+                            <label><strong>Enter Password</strong></label>
                             <input type="password" name="password" class="form-control"/>
                         </div>
 

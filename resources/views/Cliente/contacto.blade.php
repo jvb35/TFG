@@ -6,16 +6,6 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
-
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
-
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script>
- 
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/locales/bootstrap-datepicker.es.min.js"></script>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script> 
 </head>
 
 <style>
@@ -124,6 +114,22 @@ html, body {
   }
 } /* END Media Query */
 
+.date-body{
+  background-color: #228B22;padding-bottom: 5px;
+}
+.date-body .date-title{
+  color: white;
+}
+
+.date-body .date-content{
+  background-color: white;margin-left: 5px;margin-right: 5px;
+}
+.date-body .date-content p.dia{
+  margin: 0; font-size: 45px; font-weight: bold;
+}
+.nomargin{
+  margin: 0;
+}
 
 </style>
 <body>
@@ -163,94 +169,71 @@ html, body {
   </div>
 </nav>
 
-
-<div class="container">
-<form class="form-horizontal" action="{{action('AdminController@addCitaCliente')}}" method="POST">
-{{ csrf_field()}}
-{{ method_field('POST')}}
-
-  @if(\Session::has('success'))
-    <div class="alert alert-success">
-        <p>{{ \Session::get('success')}}</p>
-    </div>
-  @endif
-  <h1> Gestor de citas </h1>
-  <div class="col-md-6" style="margin-top:30px; margin-right: -20px;">
-    <div class="form-group col-xs-10 col-sm-4 col-md-4 col-lg-4">
-        <img id="img" class="thumb" src="/images/cita-consulta.jpg" title="Foto" style="width: 350px; height: 250px;"/>
-    </div>
-  </div>
-  <div class="col-md-6" style="margin-top:30px; margin-left: -30px;">
+<div class="container" style="margin-top:100px;">
     <div class="row">
-        <div class='col-sm-9'>
-            <div class="form-group">
-                <div class='input-group date' id='datetimepicker1'>
-                    <input type='text' class="form-control" name="fecha"/>
-                    <span class="input-group-addon">
-                        <span class="glyphicon glyphicon-calendar"></span>
-                    </span>
+        <div class="col-md-8">
+            <div class="well well-sm">
+                <form>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="name">
+                                Nombre</label>
+                            <input type="text" class="form-control" id="name" placeholder="Introduzca el nombre" required="required" />
+                        </div>
+                        <div class="form-group">
+                            <label for="email">
+                                Correo</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span>
+                                </span>
+                                <input type="email" class="form-control" id="email" placeholder="Introduzca el correo" required="required" /></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">
+                                Veterinario</label>
+                            <select id="subject" name="subject" class="form-control" required="required">
+                                <option value="na" selected="">Elige uno:</option>
+                                @foreach ($personals as $personal)
+                                    <option value="{{$personal->nombre}}">{{$personal->nombre}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="name">
+                                Mensaje</label>
+                            <textarea name="message" id="message" class="form-control" rows="11" cols="25" required="required"
+                                placeholder="Introduzca un mensaje"></textarea>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <button type="submit" class="btn btn-primary pull-right" id="btnContactUs">
+                            Enviar</button>
+                    </div>
                 </div>
+                </form>
             </div>
-            <div class="form-group">
-                <div class='input-group date' id='datetimepicker3'>
-                    <input type='text' class="form-control" name="hora" />
-                    <span class="input-group-addon">
-                        <span class="glyphicon glyphicon-time"></span>
-                    </span>
-                </div>
-            </div>
-            <div class="form-group">
-              <select class="form-control" name="tipo_consulta">
-                <option value="Consulta">Consulta</option>
-                <option value="Peluqueria">Peluqueria</option>
-                <option value="Operacion">Operacion</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <input type="text" class="form-control" name="nombre_mascota" value="{{$mascota->nombre}}" readonly="readonly" />
-            </div>
-            <div class="form-group">
-              <input type="text" class="form-control" name="nombre_persona" value="{{$persona->nombre}}" readonly="readonly" />
-            </div>
-            <div class="form-group">
-              <input type="text" class="form-control" name="telefono" value="{{$persona->telefono}}" readonly="readonly" />
-            </div>
-
-            <div class="form-group">
-                <div class="col-lg-offset-0 col-lg-10">
-                    <input type="submit" class="btn btn-primary" value="Enviar">
-                    <input type="button" class="btn btn-default" onclick="location.href='/admin-menu/mascotas/ver';" value="Cancelar">
-                </div>
-            </div>
-        </div>       
-            
+        </div>
+        <div class="col-md-4">
+            <form>
+            <legend><span class="glyphicon glyphicon-globe"></span> Nuestra oficina</legend>
+            <address>
+                <strong>ClinicaVeter</strong><br>
+                Calle los Almendros 10<br>
+                Altea, Alicante<br>
+                <abbr title="Phone">
+                    P:</abbr>
+                965847685
+            </address>
+            <address>
+                <strong>Correo</strong><br>
+                <a href="mailto:#">clinicaveter@hotmail.com</a>
+            </address>
+            </form>
+        </div>
     </div>
-  </div>
-  </form>
 </div>
-
-
-
 </body>
-
-<script >
-    $(function () {
-        
-        $('#datetimepicker1').datepicker({
-            format: "yyyy/mm/dd",
-            language: "es",
-            autoclose: true,
-            todayHighlight: true
-        });
-
-        $('#datetimepicker3').datetimepicker({
-            format: 'HH:mm',
-            enabledHours: [9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21]
-        });
-    });
-
-
-</script>
 </html>
-
-

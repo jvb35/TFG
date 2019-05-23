@@ -155,7 +155,7 @@
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="/login" class="btn btn-default btn-flat">Ver Perfil</a>
+                  <a href="/admin-menu/ver-perfil" class="btn btn-default btn-flat">Ver Perfil</a>
                 </div>
                 <div class="pull-right">
                   <a onclick="location.href='/logout';" class="btn btn-default btn-flat">Cerrar Sesión</a>

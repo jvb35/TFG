@@ -2,6 +2,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
         <script type="text/javascript" src="/js/codigo.js"></script>
 		<script src="js/bootstrap-table-pagination.js"></script>
+
 		
 
         <style>
@@ -139,11 +140,12 @@
 					<div class="input-group">
 						<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
 						<input type="password" class="form-control" name="password" id="password"  placeholder="Enter your Password"/>
+						<span class="input-group-addon" onClick="mostrarPassword();"><i class="fa fa-eye-slash icon"></i></span>
 					</div>
 				</div>
 			</div>
 
-			<button type="button" class="btn btn-primary">Generar</button>
+			<button type="button" class="btn btn-primary" onClick="generar(6);">Generar</button>
 
 
 		</div>
@@ -151,6 +153,39 @@
 	</div>
 
 	</section>
+
+	<script>
+	
+		function generar(longitud)
+		{
+			var caracteres = "abcdefghijkmnpqrtuvwxyzABCDEFGHIJKLMNPQRTUVWXYZ2346789";
+			var contraseña = "";
+			for (i=0; i<longitud; i++) contraseña += caracteres.charAt(Math.floor(Math.random()*caracteres.length));
+			document.getElementById('password').value = contraseña;
+		}
+
+	
+		
+		function mostrarPassword(){
+			var cambio = document.getElementById("password");
+			if(cambio.type == "password"){
+				cambio.type = "text";
+				$('.icon').removeClass('fa fa-eye-slash').addClass('fa fa-eye');
+			}else{
+				cambio.type = "password";
+				$('.icon').removeClass('fa fa-eye').addClass('fa fa-eye-slash');
+			}
+		} 
+		
+		$(document).ready(function () {
+		//CheckBox mostrar contraseña
+			$('#ShowPassword').click(function () {
+				$('#Password').attr('type', $(this).is(':checked') ? 'text' : 'password');
+			});
+		});
+
+
+	</script>
 
 
 	@endsection

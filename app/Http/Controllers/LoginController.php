@@ -47,10 +47,6 @@ class LoginController extends Controller
         }
     }
 
-    function successlogin(){
-        return view('successlogin');
-    }
-
     function logout(){
         Auth::logout();
         return redirect('/login');

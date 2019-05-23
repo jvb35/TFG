@@ -41,9 +41,8 @@ Route::get('/admin-menu/citas/editar/{id}', 'AdminController@edit');
 Route::post('/admin-menu/citas/editar/actualizar', 'AdminController@updateCita');
 Route::resource('/admin-menu/citas/editar/eliminar', 'EventController');
 
-Route::get('/main', 'LoginController@prova');
 Route::post('/main/checklogin', 'LoginController@checklogin');
-Route::get('/main/successlogin', 'LoginController@successlogin');
+
 Route::get('/logout', 'LoginController@logout');
 
 Route::post('/login/autenticacion', 'AdminController@comprobarDatos');
@@ -54,12 +53,14 @@ Route::get('/foro/{id}/ver/{idTema}', 'AdminController@ver_Tema');
 Route::get('/cita/{id}', 'AdminController@pedirCita');
 Route::post('/cita/guardar', 'AdminController@addCitaCliente');
 Route::get('/perfil/{id}', 'AdminController@verPerfilPersona');
+Route::get('/contacto/{id}', 'AdminController@contact');
 
 Route::get('/admin-menu/mascotas/historial/{id}' , 'AdminController@showHistory');
 Route::get('/admin-menu/mascotas/historial/añadir/{id}', 'AdminController@addHistory');
 Route::get('/admin-menu/mascotas/historial/editar', 'AdminController@editHistory');
 Route::get('/admin-menu/foro/añadir', 'AdminController@addForo');
 Route::get('/admin-menu/foro/ver', 'AdminController@verForo');
+Route::get('/admin-menu/ver-perfil', 'AdminController@verPerfil');
 
 Route::get('/admin-menu/personal/añadir', 'AdminController@verPersonal');
 Route::post('/admin-menu/personal/añadir/nueva', 'AdminController@addPersonal');
@@ -76,3 +77,17 @@ Route::get('/quienes-somos', 'AdminController@quienes');
 Route::get('/servicios', 'AdminController@servicios');
 Route::get('/contacto', 'AdminController@contacto');
 Route::get('/hotel', 'AdminController@hotel');
+Route::post('/mail', 'AdminController@sendmail');
+
+Route::get('/email', function() {
+    $data = array(
+        'name' => "Curso laravel",
+    );
+
+    Mail::send('email', $data, function ($message){
+        $message->from('jordivalls9610@gmail.com', 'Curso Laravel');
+        $message->to('jordivalls9610@gmail.com')->subject('Test');
+    });
+
+    return "Tu email ha sido enviado correctamente";
+});
