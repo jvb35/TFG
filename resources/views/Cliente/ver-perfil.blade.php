@@ -194,6 +194,12 @@ html, body {
   </div>
 </nav>
 
+@if(\Session::has('success'))
+    <div class="alert alert-success">
+        <p>{{ \Session::get('success')}}</p>
+    </div>
+@endif
+
 <div class="container">
 
 	<div class="row">
@@ -274,7 +280,7 @@ html, body {
 							<a><img class="img-circle" src="/images/mascotas/{{$mascota->filename}}" /></a>
               <div class="rank-label-container" style="margin-left: 15px;">
                     <span class="label label-default rank-label">{{$mascota->nombre}}</span>
-                </div>
+              </div>
 					</div>
 				</div>
 			@endforeach
@@ -282,7 +288,55 @@ html, body {
 			</div>
 
 		</div>
+    <div class="col-md-6">
+      <h3> Cambiar contraseña </h3>
+      <hr class="linea">
+
+      <form class="form-horizontal" action="{{url('/perfil/cambiar')}}" method="POST">
+      {{ csrf_field()}}
+      {{ method_field('POST')}}
+      <div class="form-group">
+				<div class="col-lg-6">
+					<div class="input-group">
+          <span class="input-group-addon"><i class="fa fa-key" ></i></span>
+						<input type="password" class="form-control" name="password_actual" id="password_actual" placeholder="Contraseña actual"/>
+					</div>
+				</div>
+			</div>
+
+      <div class="form-group">
+				<div class="col-lg-6">
+					<div class="input-group">
+          <span class="input-group-addon"><i class="fa fa-key" ></i></span>
+						<input type="password" class="form-control" name="password1" id="password1" placeholder="Contaseña nueva"/>
+					</div>
+				</div>
+			</div>
+
+      <div class="form-group">
+				<div class="col-lg-6">
+					<div class="input-group">
+          <span class="input-group-addon"><i class="fa fa-key" ></i></span>
+						<input type="password" class="form-control" name="password2" id="password2" placeholder="Repita contraseña"/>
+					</div>
+				</div>
+			</div>
+
+      <div class="form-group">
+				<div class="col-lg-6">
+          <input type="submit" class="btn btn-primary" value="Crear">
+				</div>
+			</div>
+
+      </form>             
+
+
+
+    </div>
 	</div>
+ 
+
+
 </div>
 
 

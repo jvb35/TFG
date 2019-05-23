@@ -143,7 +143,7 @@ class AdminController extends Controller
     }
 
     function elegir_mascota(){
-        $mascotas = Mascota::where('propietario', '=', 'Jordi Valls')->get();
+        $mascotas = Mascota::where('propietario', '=', Auth::user()->name)->get();
         return view('elegir-mascota', ['mascotas' => $mascotas]);
     }
 
@@ -627,5 +627,59 @@ class AdminController extends Controller
         $mascota = Mascota::find($id);
         $personals = DB::table('personals')->get();
         return view('Cliente.contacto', ['mascota' => $mascota, 'personals' => $personals]);
+    }
+
+    public function changePassword(Request $request){
+        $persona = Personal::find(Auth::user()->localizador);
+
+        $contra1 = $request->input('password1');
+        $contra2 = $request->input('password2');
+        if($contra1 == $contra2){
+            $contraseñaEncriptada = Hash::make($request->input('password1'));
+            Personal::where('nombre', '=', $persona->nombre)->update(
+                array(
+                    'password' => $contraseñaEncriptada
+                )
+            );
+
+            User::where('name', '=', $persona->nombre)->update(
+                array(
+                    'password' => $contraseñaEncriptada
+                )
+            );
+            return back()->with('success', 'Contraseña cambiada correctamente');
+        }
+        else{
+            return back()->with('error', 'Las contraseñas no coinciden');
+        }
+        return back()->with('error', 'Las contraseñas no coinciden');
+           
+    }
+
+    public function changePass(Request $request){
+        $persona = Persona::find(Auth::user()->localizador);
+
+        $contra1 = $request->input('password1');
+        $contra2 = $request->input('password2');
+        if($contra1 == $contra2){
+            $contraseñaEncriptada = Hash::make($request->input('password1'));
+            Persona::where('nombre', '=', $persona->nombre)->update(
+                array(
+                    'password' => $contraseñaEncriptada
+                )
+            );
+
+            User::where('name', '=', $persona->nombre)->update(
+                array(
+                    'password' => $contraseñaEncriptada
+                )
+            );
+            return back()->with('success', 'Contraseña cambiada correctamente');
+        }
+        else{
+            return back()->with('error', 'Las contraseñas no coinciden');
+        }
+        return back()->with('error', 'Las contraseñas no coinciden');
+           
     }
 }

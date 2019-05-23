@@ -1,6 +1,4 @@
 <head>
-
-
     <style>
         .title {
             text-align: center;
@@ -80,7 +78,7 @@
 
     <section class="content">
     <h1 class="title">Añadir personal</h1>
-        <form class="contact-form row"action="{{action('AdminController@addPersonal')}}" method="POST" name="subida-imagenes" enctype="multipart/form-data">
+        <form class="contact-form row" action="{{action('AdminController@addPersonal')}}" method="POST" name="subida-imagenes" enctype="multipart/form-data">
             {{ csrf_field()}}
             {{ method_field('POST')}}
             <div class="col-md-6">

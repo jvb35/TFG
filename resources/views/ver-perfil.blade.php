@@ -27,6 +27,12 @@
 @extends('panel-admin')
 @section('content')
 
+@if(\Session::has('success'))
+    <div class="alert alert-success">
+        <p>{{ \Session::get('success')}}</p>
+    </div>
+@endif
+
 <div class="container">
 	<div class="row">
     <br>
@@ -83,41 +89,43 @@
             </div>
         </div>
         <div class="col-md-6">
-            <div id="passwordreset" style="margin-top:50px" class="mainbox col-md-10 col-md-offset-3 col-sm-8 col-sm-offset-2">
-                <div class="panel panel-info">
-                    <div class="panel-heading">
-                        <div class="panel-title">Crear nueva contraseña</div>
-                    </div>                     
-                    <div class="panel-body">
-                        <form id="signupform" class="form-horizontal" role="form">
-                            <div class="form-group">
-                                <label for="email" class=" control-label col-sm-3">Contraseña actual</label>
-                                <div class="col-sm-9">
-                                    <input type="password" class="form-control" name="password" placeholder="">
+            <form class="form-horizontal" action="{{url('/admin-menu/ver-perfil/cambiar')}}" method="POST">
+            {{ csrf_field()}}
+            {{ method_field('POST')}}
+                <div id="passwordreset" style="margin-top:50px" class="mainbox col-md-10 col-md-offset-3 col-sm-8 col-sm-offset-2">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            <div class="panel-title">Crear nueva contraseña</div>
+                        </div>                     
+                        <div class="panel-body">
+                                <div class="form-group">
+                                    <label for="email" class=" control-label col-sm-3">Contraseña actual</label>
+                                    <div class="col-sm-9">
+                                        <input type="password" class="form-control" name="password_actual" placeholder="">
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="email" class=" control-label col-sm-3">Nueva contraseña</label>
-                                <div class="col-sm-9">
-                                    <input type="password" class="form-control" name="password" placeholder="">
+                                <div class="form-group">
+                                    <label for="email" class=" control-label col-sm-3">Nueva contraseña</label>
+                                    <div class="col-sm-9">
+                                        <input type="password" class="form-control" name="password1" placeholder="">
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="email" class=" control-label col-sm-3">Repita contraseña</label>
-                                <div class="col-sm-9">
-                                    <input type="password" class="form-control" name="password_confirmation" placeholder="">
+                                <div class="form-group">
+                                    <label for="email" class=" control-label col-sm-3">Repita contraseña</label>
+                                    <div class="col-sm-9">
+                                        <input type="password" class="form-control" name="password2" placeholder="">
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-group">
-                                <!-- Button -->                                 
-                                <div class="  col-sm-offset-3 col-sm-9">
-                                    <button id="btn-signup" type="button" class="btn btn-success">Guardar</button>
-                                </div>
-                            </div>                             
-                        </form>
+                                <div class="form-group">
+                                    <!-- Button -->                                 
+                                    <div class="  col-sm-offset-3 col-sm-9">
+                                    <input type="submit" class="btn btn-primary" value="Crear">
+                                    </div>
+                                </div>                             
+                        </div>
                     </div>
                 </div>
-            </div>             
+            </form>             
         </div>
     </div>
 </div>

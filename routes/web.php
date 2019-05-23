@@ -70,6 +70,8 @@ Route::get('/admin-menu/foro/ver/{id}', 'AdminController@verTema');
 
 Route::get('/admin-menu/mascotas/historial/editar/{id}', 'AdminController@editConsulta');
 Route::post('/admin-menu/mascotas/historial/añadir/nueva', 'AdminController@addConsulta');
+Route::post('/admin-menu/ver-perfil/cambiar', 'AdminController@changePassword');
+Route::post('/perfil/cambiar', 'AdminController@changePass');
 
 Route::get('/home', 'AdminController@home');
 Route::get('/prova', 'AdminController@prova');
