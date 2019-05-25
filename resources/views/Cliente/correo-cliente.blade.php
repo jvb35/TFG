@@ -7,7 +7,6 @@
 <body>
     <p><strong>Nombre:</strong>{{ $name }}</p>
     <p><strong>Correo:</strong> {{ $email }}</p>
-    <p><strong>Titulo:</strong>{{ $subject }}</p>
     <p><strong>Mensaje:</strong>{{ $mensaje }}</p>
 </body>
 </html>

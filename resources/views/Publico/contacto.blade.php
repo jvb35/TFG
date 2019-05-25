@@ -9,6 +9,11 @@
             <div class="mapBox">
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d779.5031621694233!2d-0.045941670779341574!3d38.60257909872608!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd6201050d1369eb%3A0x6e53dd378c5a8a34!2sN-332%2C+56-58%2C+03590+Altea%2C+Alicante!5e0!3m2!1ses!2ses!4v1557733462498!5m2!1ses!2ses" width="1100" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
             </div>
+            @if(\Session::has('success'))
+                    <div class="alert alert-success">
+                        <p>{{ \Session::get('success')}}</p>
+                    </div>
+                @endif
             <div class="row">
                 <div class="col-lg-3">
                     <div class="contact_info">
@@ -27,14 +32,17 @@
                         <div class="info_item">
                             <i class="lnr lnr-envelope"></i>
                             <h6>
-                                <a href="#">clinicaveter@hotmail.com</a>
+                                <a href="#">clinicaveter3@gmail.com</a>
                             </h6>
                             <p>Consultar sin compromiso</p>
                         </div>
                     </div>
                 </div>
+
                 <div class="col-lg-9">
-                    <form class="row contact_form" action="{{action('AdminController@sendmail')}}" method="post" id="contactForm" novalidate="novalidate">
+                    <form class="row contact_form" action="{{url('/mail')}}" method="post" id="contactForm" novalidate="novalidate">
+                    {{ csrf_field()}}
+                    {{ method_field('POST')}}
                         <div class="col-md-6">
                             <div class="form-group">
                                 <input type="text" class="form-control" id="name" name="name" placeholder="Escribe tu nombre">
@@ -48,7 +56,7 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <textarea class="form-control" name="message" id="message" rows="1" placeholder="Escribe un mensaje"></textarea>
+                                <textarea class="form-control" type="text" name="mensaje" id="mensaje" rows="10" placeholder="Escribe un mensaje"></textarea>
                             </div>
                         </div>
                         <div class="col-md-12 text-right">

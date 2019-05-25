@@ -169,17 +169,27 @@ html, body {
   </div>
 </nav>
 
+@if(\Session::has('success'))
+    <div class="alert alert-success">
+        <p>{{ \Session::get('success')}}</p>
+    </div>
+@endif
+
 <div class="container" style="margin-top:100px;">
     <div class="row">
         <div class="col-md-8">
             <div class="well well-sm">
-                <form>
+
                 <div class="row">
+
                     <div class="col-md-6">
+                    <form class="row contact_form" action="{{url('/mailCliente')}}" method="post" id="contactForm" novalidate="novalidate">
+                    {{ csrf_field()}}
+                    {{ method_field('POST')}}
                         <div class="form-group">
                             <label for="name">
                                 Nombre</label>
-                            <input type="text" class="form-control" id="name" placeholder="Introduzca el nombre" required="required" />
+                            <input type="text" class="form-control" name="name" id="name" placeholder="Introduzca el nombre" required="required" />
                         </div>
                         <div class="form-group">
                             <label for="email">
@@ -187,13 +197,13 @@ html, body {
                             <div class="input-group">
                                 <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span>
                                 </span>
-                                <input type="email" class="form-control" id="email" placeholder="Introduzca el correo" required="required" /></div>
+                                <input type="email" class="form-control" name="email" id="email" placeholder="Introduzca el correo" required="required" /></div>
                         </div>
                         <div class="form-group">
                             <label for="subject">
                                 Veterinario</label>
-                            <select id="subject" name="subject" class="form-control" required="required">
-                                <option value="na" selected="">Elige uno:</option>
+                            <select id="subject" name="veterinario" class="form-control" required="required">
+                                <option value="" selected="">Elige uno:</option>
                                 @foreach ($personals as $personal)
                                     <option value="{{$personal->nombre}}">{{$personal->nombre}}</option>
                                 @endforeach
@@ -204,7 +214,7 @@ html, body {
                         <div class="form-group">
                             <label for="name">
                                 Mensaje</label>
-                            <textarea name="message" id="message" class="form-control" rows="11" cols="25" required="required"
+                            <textarea name="mensaje" id="mensaje" class="form-control" rows="11" cols="25" required="required"
                                 placeholder="Introduzca un mensaje"></textarea>
                         </div>
                     </div>

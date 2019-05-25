@@ -6,5 +6,6 @@
 </head>
 <body>
     <p><strong>Nombre:</strong>{{!!$name !!}}</p>
+
 </body>
 </html>

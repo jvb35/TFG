@@ -72,6 +72,10 @@
             </tr>
             @endforeach
             </tbody>
+            
+        <div class="paginate" style="">
+            {{$personals->links()}}
+        </div>
         </table>
 
         

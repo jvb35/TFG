@@ -27,6 +27,11 @@
 @extends('panel-admin')
 @section('content')
 
+@if(\Session::has('success'))
+    <div class="alert alert-success">
+        <p>{{ \Session::get('success')}}</p>
+    </div>
+@endif
     <section class="content-header">
         <h1>
             Nuestros clientes
@@ -35,6 +40,9 @@
       
     <!-- Main content -->
     <section class="content">
+    <?php
+                $id = 0;
+            ?>
         <div class="form-group pull-left">
             <input type="text" class="search form-control" placeholder="Buscador">
         </div>
@@ -52,10 +60,9 @@
                 <td colspan="4"><i class="fa fa-warning"></i> No result</td>
             </tr>
             </thead>
+
             <tbody>
-            <?php
-                $id = 0;
-            ?>
+
             @foreach ($personas as $persona)
             <?php
                 $id++;
@@ -74,7 +81,10 @@
             </tbody>
         </table>
 
-        
+        <div class="paginate" style="">
+            {{$personas->links()}}
+        </div>
+
     </section>
 
     <script>

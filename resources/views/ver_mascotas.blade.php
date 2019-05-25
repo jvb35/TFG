@@ -76,7 +76,7 @@
             </tbody>
         </table>
 
-        <div class="paginate_films">
+        <div class="paginate">
             {{$mascotas->links()}}
         </div>
 

@@ -157,7 +157,7 @@ class AdminController extends Controller
     }
 
     function ver_personas(){
-        $personas = DB::table('personas')->paginate(10);
+        $personas = DB::table('personas')->paginate(5);
         return view('ver_personas', ['personas' => $personas]);
     }
 
@@ -334,7 +334,18 @@ class AdminController extends Controller
         $user->localizador = $persona->id;
         $user->save();
 
-        return Redirect::to('/admin-menu/personas/ver');
+        $data = array(
+            'name' => $request->input('nombre'),
+            'correo' => $request->input('correo'),
+            'contra' => $request->input('password'),
+        );
+
+        Mail::send('correo-new-user', $data, function ($message) use ($data){
+            $message->from('clinicaveter3@gmail.com', 'Clinica Veterinaria');
+            $message->to($data['correo'])->subject('Información');
+        });
+
+        return Redirect::to('/admin-menu/personas/ver')->with('success','Persona añadida correctamente');
     }
 
     function verCitas(){
@@ -610,12 +621,47 @@ class AdminController extends Controller
     }
 
     public function sendmail(Request $request){
-        Mail::send('Publico.correo', $request->all(), function($msj){
-            $msj->subject('Información');
-            $msj->to('jordivalls9610@gmail.com');
+
+        $data = array(
+            'name' => $request->input('name'),
+            'email' => $request->input('email'),
+            'subject' => $request->input('subject'),
+            'mensaje' => $request->input('mensaje'),
+        );
+
+        Mail::send('Publico.correo', $data, function ($message) use ($data){
+            $message->from($data['email'], $data['name']);
+            $message->to('clinicaveter3@gmail.com')->subject('Información');
         });
 
         return redirect('/contacto')->with('success', 'Mensaje enviado');
+    }
+
+    public function sendmailCliente(Request $request){
+
+        $valor = $request->input('veterinario');
+        $personals = DB::table('personals')->get();
+        $correo = "";
+        foreach($personals as $personal){
+            if($personal->nombre == $valor){
+                $correo = $personal->correo;
+            }
+        }
+
+        $data = array(
+            'name' => $request->input('name'),
+            'email' => $request->input('email'),
+            'correo' => $correo,
+            'mensaje' => $request->input('mensaje'),
+        );
+
+        Mail::send('Cliente.correo-cliente', $data, function ($message) use ($data){
+            $message->from($data['email'], $data['name']);
+            $message->to($data['correo'])->subject('Información');
+        });
+
+        return back()->with('success', 'Mensaje enviado');
+
     }
 
     public function verPerfil(){

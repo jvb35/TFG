@@ -80,14 +80,14 @@ Route::get('/servicios', 'AdminController@servicios');
 Route::get('/contacto', 'AdminController@contacto');
 Route::get('/hotel', 'AdminController@hotel');
 Route::post('/mail', 'AdminController@sendmail');
-
-Route::get('/email', function() {
+Route::post('/mailCliente', 'AdminController@sendmailCliente');
+Route::post('/email', function() {
     $data = array(
         'name' => "Curso laravel",
     );
 
     Mail::send('email', $data, function ($message){
-        $message->from('jordivalls9610@gmail.com', 'Curso Laravel');
+        $message->from('clinicaveter3@gmail.com', 'Curso Laravel');
         $message->to('jordivalls9610@gmail.com')->subject('Test');
     });
 
