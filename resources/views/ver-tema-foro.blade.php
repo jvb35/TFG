@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width-device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script>
@@ -222,7 +221,7 @@ Licensed under MIT
         <!--col-md-4 col-sm-4 col-xs-12 close-->
         <div class="col-md- col-sm-4 col-xs-12">
             <div class="container"style="margin-left: 90px;">
-              <img alt="User Pic" src="/images/Domino.png">
+              <img alt="User Pic" src="/images/temas/{{$tema->filename}}">
             </div>
         </div>
         <!--col-md-4 col-sm-4 col-xs-12 close-->
@@ -246,9 +245,9 @@ Licensed under MIT
 <br/>
 
 <div class="container">
-    <div class="col-sm-12">
+    <div class="col-sm-12" style="background-color: #FFFFFF;">
         <div class="maxwidth">
-            <p>{{$tema->descripcion}}</p>
+            <p><font size="4">{{$tema->descripcion}}</font></p>
         </div>
     </div>
 </div>

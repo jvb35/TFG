@@ -80,7 +80,7 @@
 
 <div class="container">
     <h1 class="titulo" style="margin-top: 150px;text-align: center;"> ¿Qué mascota desea consultar? </h1>
-	<div class="row" style="margin-top: 100px;justify-content:center;">
+	<div class="row" style="margin-top: 100px; margin-left: -30px;">
         @foreach($mascotas as $mascota)
 	    <div class="col-sm-3">
             <div class="profile-header-container">   

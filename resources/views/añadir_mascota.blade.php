@@ -30,7 +30,7 @@
       
 
     <section class="content">
-            <form class="form-horizontal" action="{{action('AdminController@addMascota')}}" method="POST" name="subida-imagenes" enctype="multipart/form-data">
+            <form class="form-horizontal" action="{{action('MascotaController@addMascota')}}" method="POST" name="subida-imagenes" enctype="multipart/form-data">
             {{ csrf_field()}}
             {{ method_field('POST')}}
 
@@ -81,8 +81,8 @@
                 <div class="form-group">
                     <label for="sexo" class="col-lg-1 control-label">Sexo</label>
                     <div class="col-lg-6" style="margin-left: 25px; magin-top: 15px;">
-                        <input type="radio" name="masc" id="masc"> Macho
-                        <input type="radio" name="fem" id="fem"> Hembra
+                        <input type="radio" name="masc" id="masc" value="macho"> Macho
+                        <input type="radio" name="fem" id="fem" value="hembra"> Hembra
                     </div>
                 </div>
 

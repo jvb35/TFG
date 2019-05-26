@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <title>PetZone</title>
+  <link rel="shortcut icon" href="/images/logo_mini.jpg">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
@@ -13,6 +15,7 @@
 
 html, body {
   font-family: 'Lato', serif;  
+  background-color: #D3E3F8; 
 }
 
 .navbar-default {
@@ -159,9 +162,9 @@ html, body {
     <table class="table table-striped">
         <thead>
           <tr>
-              <th>Temas</th>
-              <th>Fecha publicación</th>       
-            </tr>
+            <th>Temas</th>
+            <th>Fecha publicación</th>       
+          </tr>
           </thead>
           <tbody>
             @foreach ($temas as $tema)
@@ -170,17 +173,13 @@ html, body {
                 <td>{{$tema->fecha}}</td>
             </tr>
             @endforeach
-        </tbody>
-      </table>
-     </div>
+          </tbody>
+    </table>
+  </div>
 
-    </div>
+</div>
 
-   </div>
-
-
-
-
+</div>
 
 </body>
 </html>

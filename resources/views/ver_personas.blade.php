@@ -40,9 +40,9 @@
       
     <!-- Main content -->
     <section class="content">
-    <?php
-                $id = 0;
-            ?>
+        <?php
+            $id = 0;
+        ?>
         <div class="form-group pull-left">
             <input type="text" class="search form-control" placeholder="Buscador">
         </div>

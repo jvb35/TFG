@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <title>PetZone</title>
+  <link rel="shortcut icon" href="/images/logo_mini.jpg">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
@@ -12,7 +14,8 @@
   @import url('https://fonts.googleapis.com/css?family=Lato:300,400');
 
 html, body {
-  font-family: 'Lato', serif;  
+  font-family: 'Lato', serif;
+  background-color: #D3E3F8;  
 }
 
 .navbar-default {
@@ -302,76 +305,89 @@ html, body {
 			<div class="col-md-8 col-md-offset-2">
 				<div class="panel panel-default">
 					<div class="panel-body">
-                        <div class="pull-left">
-                        </div>
+            <div class="pull-left">
+            </div>
 						<div class="pull-right">
 
 						</div>
 						<div class="table-container">
 							<table class="table table-filter">
-                            <thead>
-                            <tr>
-                                <th></th>
-                                <th class="col-md-3 col-xs-3 text-center">Consulta</th>
-                                <th class="col-md-3 col-xs-3 text-center">Detalles</th>
-                                <th class="col-md-2 col-xs-2 text-center">Estado</th>
-                                <th class="col-md-3 col-xs-3 text-center">Fecha</th>
-                            </tr>
-                            </thead>
-								<tbody>
-                                <?php
-                                    $id1 = 0;
-                                ?>
-                                    @foreach ($consultas as $consulta)
-                                    <?php
-                                        $id1++;
-                                    ?>
-									<tr data-status="{{$consulta->estado}}">
-                                        <th scope="row">{{$id1}}</th>
-                                        <td class="text-center">{{$consulta->nombre}}</td>
-                                        <td class="text-center"><a  data-toggle="modal" data-target="#miModal">Ver</a></td>
-
-                                        <div class="modal fade" id="miModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog" role="document">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                            <span aria-hidden="true">&times;</span>
-                                                        </button>
-                                                        <h4 class="modal-title" id="myModalLabel">Detalles</h4>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        <label for="">Nombre mascota</label>
-                                                        <input type="text" class="form-control" name="nombre_mascota" value="{{$mascota->nombre}}" readonly="readonly" /><br /><br />
-                                                        <label for="">Consulta</label>
-                                                        <input type="text" class="form-control" name="nombre_mascota" value="{{$consulta->nombre}}" readonly="readonly" /><br /><br />
-                                                        <label for="">Descripcion</label>
-                                                        <input type="textarea" class="form-control" name="nombre_mascota" value="{{$consulta->descripcion}}" readonly="readonly" /><br /><br />
-                                                        <label for="">Estado</label>
-                                                        <input type="text" class="form-control" name="nombre_mascota" value="{{$consulta->estado}}" readonly="readonly" /><br /><br />
-                                                        <label for="">Propietario</label>
-                                                        <input type="text" class="form-control" name="propietario" value="{{$mascota->propietario}}" readonly="readonly" /><br /><br />
-                                                        <label for="">Fecha</label>
-                                                        <input type="date" class="form-control" name="start_date" value="{{$consulta->fecha}}" class="date" readonly="readonly" /><br /><br />
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <td class="text-center"><span class="{{$consulta->estado}}">{{$consulta->estado}}</span></td>
-                                        <td class="text-center"><span class="text-center">{{$consulta->fecha}}</span></td>
-									</tr>
-									@endforeach
+                <thead>
+                  <tr>
+                      <th></th>
+                      <th class="col-md-3 col-xs-3 text-center">Consulta</th>
+                      <th class="col-md-3 col-xs-3 text-center">Detalles</th>
+                      <th class="col-md-2 col-xs-2 text-center">Estado</th>
+                      <th class="col-md-3 col-xs-3 text-center">Fecha</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <?php
+                      $id1 = 0;
+                  ?>
+                      @foreach ($consultas as $consulta)
+                      <?php
+                          $id1++;
+                      ?>
+                          <tr data-status="{{$consulta->estado}}">
+                          <th scope="row">{{$id1}}</th>
+                          <td class="text-center">{{$consulta->nombre}}</td>
+                          <td class="text-center"><a class="open-Modal btn btn-primary" data-toggle="modal" data-nombre="{{$consulta->nombre}}" data-descripcion="{{$consulta->descripcion}}" data-fecha="{{$consulta->fecha}}" data-estado="{{$consulta->estado}}" href="#miModal">Ver</a></td>
+                          <td class="text-center"><span class="{{$consulta->estado}}">{{$consulta->estado}}</span></td>
+                          <td class="text-center"><span class="text-center">{{$consulta->fecha}}</span></td>
+									    </tr>
+									    @endforeach
 								</tbody>
 							</table>
 						</div>
 					</div>
 				</div>
 			</div>
+
+      <div class="modal fade" id="miModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                  <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                      </button>
+                      <h4 class="modal-title" id="myModalLabel">Detalles</h4>
+                  </div>
+                  <div class="modal-body">
+                      <label for="">Nombre mascota</label>
+                      <input type="text" class="form-control" id="nombre_mascota" name="nombre_mascota" value="{{$mascota->propietario}}" readonly="readonly" /><br /><br />
+                      <label for="">Consulta</label>
+                      <input type="text" class="form-control" id="nombre" name="nombre"  readonly="readonly" /><br /><br />
+                      <label for="">Descripcion</label>
+                      <input type="textarea" class="form-control" name="descripcion" id="descripcion"  readonly="readonly" /><br /><br />
+                      <label for="">Estado</label>
+                      <input type="text" class="form-control" id="estado" name="estado" readonly="readonly" /><br /><br />
+                      <label for="">Propietario</label>
+                      <input type="text" class="form-control" name="propietario" value="{{$mascota->propietario}}" readonly="readonly" /><br /><br />
+                      <label for="">Fecha</label>
+                      <input type="date" class="form-control" id="start_date" name="start_date" class="date" readonly="readonly" /><br /><br />
+                  </div>
+              </div>
+          </div>
+      </div>
 		</section>
 		
 	</div>
 </div>
 
 </body>
+
+<script>
+
+  $(document).on("click", ".open-Modal", function () {
+      var nombre = $(this).data('nombre');
+      var estado = $(this).data('estado');
+      var descripcion = $(this).data('descripcion');
+      var fecha = $(this).data('fecha');
+      $(".modal-body #nombre").val( nombre );
+      $(".modal-body #estado").val( estado );
+      $(".modal-body #descripcion").val( descripcion );
+      $(".modal-body #start_date").val( fecha );
+  });
+</script>
 </html>

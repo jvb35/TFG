@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <title>PetZone</title>
+  <link rel="shortcut icon" href="/images/logo_mini.jpg">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
@@ -12,7 +14,8 @@
   @import url('https://fonts.googleapis.com/css?family=Lato:300,400');
 
 html, body {
-  font-family: 'Lato', serif;  
+  font-family: 'Lato', serif;
+  background-color: #D3E3F8;  
 }
 
 .navbar-default {
@@ -170,7 +173,7 @@ html, body {
 </nav>
 
 
- <div class="container">
+ <div class="container" style="background-color: #FFFFFF;">
     <div class="row">
         <div class="col-md-6  offset-md-0  toppad" >
             <div class="card">
@@ -263,7 +266,7 @@ html, body {
           $hora = date('H:i:s',strtotime($dato));
           $horas = substr($hora,0,2); 
         ?>
-        <div class="col-md-3" style="margin-left:0px;">
+        <div class="col-md-3" style="margin-left:0px; margin-top: 10px;">
             <div class="text-center date-body" style="width:150px">
               <label for="" class="date-title">Próxima cita</label>
               <div class="date-content">

@@ -78,7 +78,7 @@
 
     <section class="content">
     <h1 class="title">Añadir personal</h1>
-        <form class="contact-form row" action="{{action('AdminController@addPersonal')}}" method="POST" name="subida-imagenes" enctype="multipart/form-data">
+        <form class="contact-form row" action="{{action('PersonalController@addPersonal')}}" method="POST" name="subida-imagenes" enctype="multipart/form-data">
             {{ csrf_field()}}
             {{ method_field('POST')}}
             <div class="col-md-6">
@@ -127,7 +127,7 @@
             <div class="col-md-6">
                 <div class="form-group col-xs-10 col-sm-4 col-md-4 col-lg-4">
                     <output id="list"></output>
-                    <img id="img" class="thumb" src="/images/foto-por-defecto.png" title="Foto" style="width: 250px; height: 250px;"/>
+                    <img id="img" class="thumb" src="/images/user.png" title="Foto" style="width: 250px; height: 250px;"/>
                     <input type="file" id="files" name="photo" />
 
                 </div>

@@ -62,7 +62,7 @@
           <label class="col-md-2 control-label"></label>
           <div class="col-md-8">
             <button id="enviar" name="enviar" class="btn btn-primary">Guardar</button>
-            <a data-original-title="Volver atrás" data-toggle="tooltip" type="button" class="btn btn-default" href="/admin-menu/mascotas/historial">Atrás</a>
+            <a data-original-title="Volver atrás" data-toggle="tooltip" type="button" class="btn btn-default" onclick="location.href='/admin-menu/mascotas/historial/{{$consulta->historial_id}}';">Atrás</a>
           </div>
         </div>
 

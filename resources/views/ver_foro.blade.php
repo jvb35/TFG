@@ -18,34 +18,35 @@
 @section('content')
 
 <div class="container">
-	<div class="row">   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+	<div class="row">   
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 
-    <table class="table table-striped">
-        <thead>
-          <tr>
-              <th>Temas</th>
-              <th>Fecha publicación</th>
-              <th>Editar-Eliminar</th>        
-            </tr>
-          </thead>
-          <tbody>
-            @foreach ($temas as $tema)
-            <tr>
-                <td><a href="/admin-menu/foro/ver/{{$tema->id}}">{{$tema->nombre}}</a><br/>{{$tema->autor}}<br/><i class="fa fa-map-marker"></i>{{$tema->direccion}}<br/><i class="fa fa-phone"></i>{{$tema->telefono}}<br/></td>
-                <td>{{$tema->fecha}}</td>
-                <td>
-                    <a class="btn btn-default" onclick="editarTema({{$tema->id}});"><em class="fa fa-pencil"></em></a>
-                    <a class="btn btn-danger" onclick="eliminarTema({{$tema->id}});"><em class="fa fa-trash"></em></a>
-                </td>
-            </tr>
-            @endforeach
-        </tbody>
-      </table>
-     </div>
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Temas</th>
+                    <th>Fecha publicación</th>
+                    <th>Editar-Eliminar</th>        
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($temas as $tema)
+                    <tr>
+                        <td><a href="/admin-menu/foro/ver/{{$tema->id}}">{{$tema->nombre}}</a><br/>{{$tema->autor}}<br/><i class="fa fa-map-marker"></i>{{$tema->direccion}}<br/><i class="fa fa-phone"></i>{{$tema->telefono}}<br/></td>
+                        <td>{{$tema->fecha}}</td>
+                        <td>
+                            <a class="btn btn-default" onclick="editarTema({{$tema->id}});"><em class="fa fa-pencil"></em></a>
+                            <a class="btn btn-danger" onclick="eliminarTema({{$tema->id}});"><em class="fa fa-trash"></em></a>
+                        </td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
 
     </div>
 
-   </div>
+</div>
 
     <script>
         function eliminarTema(id){

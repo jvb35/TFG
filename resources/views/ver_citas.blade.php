@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width-device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script>
@@ -66,43 +65,61 @@
 			</div>
 			<div class="modal-body">
                 <form method="POST" action="{{url('/admin-menu/citas/añadir')}}">
-                            {{ csrf_field() }}
-                            <label for="">Nombre mascota</label>
-                            <input type="text" class="form-control" name="nombre_mascota" placeholder="Introduza el nombre de la mascota" /><br /><br />
-                            <label for="">Tipo de consulta</label>
-                            <br>
-                            <div class="form-group">
-                            <select class="form-control" name="tipo_consulta">
-                                <option value="Consulta">Consulta</option>
-                                <option value="Peluqueria">Peluqueria</option>
-                                <option value="Operacion">Operacion</option>
-                            </select>
-                            </div>
-                            <br>
-                            <label for="">Fecha</label>
-                            <input type="date" class="form-control" name="fecha" class="date" placeholder="Enter start date" /><br /><br />
-                            <label for="">Hora</label>
-                            <div class="form-group">
-                                <div class='input-group date' id='datetimepicker3'>
-                                    <input type='text' class="form-control" name="hora" />
-                                    <span class="input-group-addon">
-                                        <span class="glyphicon glyphicon-time"></span>
-                                    </span>
-                                </div>
-                            </div>
-                            <br>
-                            <label for="">Propietario</label>
-                            <input type="text" class="form-control" name="propietario" placeholder="Introduza el propietario" /><br /><br />
-                            <label for="">Teléfono</label>
-                            <input type="number" class="form-control" name="telefono" placeholder="Introduza el telefono" /><br /><br />
+                    {{ csrf_field() }}
+                    <label for="">Nombre mascota</label>
+                    <input type="search" class="form-control" name="nombre_mascota" list="listamascotas" placeholder="Introduza el nombre de la mascota" /><br /><br />
+                    <label for="">Tipo de consulta</label>
+                    <br>
+                    <div class="form-group">
+                    <select class="form-control" name="tipo_consulta">
+                        <option value="Consulta">Consulta</option>
+                        <option value="Peluqueria">Peluqueria</option>
+                        <option value="Operacion">Operacion</option>
+                    </select>
+                    </div>
+                    <br>
+                    <label for="">Fecha</label>
+                    <input type="date" class="form-control" name="fecha" class="date" placeholder="Enter start date" /><br /><br />
+                    <label for="">Hora</label>
+                    <div class="form-group">
+                        <div class='input-group date' id='datetimepicker3'>
+                            <input type='text' class="form-control" name="hora" />
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-time"></span>
+                            </span>
+                        </div>
+                    </div>
+                    <br>
+                    <label for="">Propietario</label>
+                    <input type="search" class="form-control" name="propietario" list="listapersonas" placeholder="Introduza el propietario" /><br /><br />
+                    <label for="">Teléfono</label>
+                    <input type="number" class="form-control" name="telefono" placeholder="Introduza el telefono" /><br /><br />
 
 
-                            <input type="submit" name="submit" class="btn btn-primary" value="Guardar" />
+                    <input type="submit" name="submit" class="btn btn-primary" value="Guardar" />
 
                 </form>
 			</div>
 		</div>
 	</div>
+    <?php
+        $mascotas = DB::table('mascotas')->get();
+        $personas = DB::table('personas')->get();
+    ?>
+    <datalist id="listapersonas">
+        @foreach ($personas as $persona)
+            <option value="{{$persona->nombre}}">
+        @endforeach
+
+    </datalist>
+
+    <datalist id="listamascotas">
+        @foreach ($mascotas as $mascota)
+            <option value="{{$mascota->nombre}}">
+        @endforeach
+
+    </datalist>
+
 </div>
 
 <script >

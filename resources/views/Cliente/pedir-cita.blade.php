@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <title>PetZone</title>
+  <link rel="shortcut icon" href="/images/logo_mini.jpg">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
@@ -23,6 +25,7 @@
 
 html, body {
   font-family: 'Lato', serif;  
+  background-color: #D3E3F8; 
 }
 
 .navbar-default {
@@ -165,7 +168,7 @@ html, body {
 
 
 <div class="container">
-<form class="form-horizontal" action="{{action('AdminController@addCitaCliente')}}" method="POST">
+<form class="form-horizontal" action="{{action('CitaController@addCitaCliente')}}" method="POST">
 {{ csrf_field()}}
 {{ method_field('POST')}}
 
@@ -175,6 +178,7 @@ html, body {
     </div>
   @endif
   <h1> Gestor de citas </h1>
+  <div class="row" style="background-color: #FFFFFF">
   <div class="col-md-6" style="margin-top:30px; margin-right: -20px;">
     <div class="form-group col-xs-10 col-sm-4 col-md-4 col-lg-4">
         <img id="img" class="thumb" src="/images/cita-consulta.jpg" title="Foto" style="width: 350px; height: 250px;"/>
@@ -225,6 +229,7 @@ html, body {
         </div>       
             
     </div>
+  </div>
   </div>
   </form>
 </div>

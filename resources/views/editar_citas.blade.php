@@ -50,12 +50,15 @@
                 </tbody>
             @endforeach
         </table>
+        <div class="paginate">
+            {{$citas->links()}}
+        </div>
     </div>
 </div>
 
 <script>
         function eliminarMascota(id){
-            r= confirm('¿Esta seguro de desea elmininar esto?');
+            r= confirm('¿Esta seguro de desea eliminar esto?');
             if(r == true){
                 window.location.href="/admin-menu/mascotas/borrar/" + id;
             }else{

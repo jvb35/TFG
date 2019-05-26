@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <title>PetZone</title>
+  <link rel="shortcut icon" href="/images/logo_mini.jpg">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
@@ -360,7 +362,7 @@ Licensed under MIT
         <!--col-md-4 col-sm-4 col-xs-12 close-->
         <div class="col-md- col-sm-4 col-xs-12">
             <div class="container"style="margin-left: 90px;">
-              <img alt="User Pic" src="/images/Domino.png">
+              <img alt="User Pic" src="/images/temas/{{$tema->filename}}">
             </div>
         </div>
         <!--col-md-4 col-sm-4 col-xs-12 close-->
@@ -384,9 +386,9 @@ Licensed under MIT
 <br/>
 
 <div class="container">
-    <div class="col-sm-12">
+    <div class="col-sm-12" style="background-color: #FFFFFF;">
         <div class="maxwidth">
-            <p>{{$tema->descripcion}}</p>
+          <p><font size="4">{{$tema->descripcion}}</font></p>
         </div>
     </div>
 </div>

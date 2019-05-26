@@ -23,6 +23,7 @@ class CreateTemasTable extends Migration
             $table->date('fecha');
             $table->string('municipio');
             $table->string('correo');
+            $table->string('filename');
             $table->integer('personal_id')->unsigned();
             $table->foreign('personal_id')->references('id')->on('personals');
             $table->integer('foro_id')->unsigned();

@@ -57,7 +57,7 @@
 	<section class="content">
 
 	<div class="row" style="margin-left: 5px; margin-right: 5px;">
-	<form class="form-horizontal" action="{{action('AdminController@addPersona')}}" method="POST">
+	<form class="form-horizontal" action="{{action('PersonaController@addPersona')}}" method="POST">
 	{{ csrf_field()}}
 	{{ method_field('POST')}}
 		<div class="col-md-6">

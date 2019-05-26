@@ -88,7 +88,7 @@
                 height: 120px;
                 float: right;
                 margin-right: 200px;
-                margin-top: 18px;
+                margin-top: 9px;
             
             }
 
@@ -128,23 +128,21 @@
     {{ method_field('POST')}}
         <div class="foto"> <img src="/images/gato.png" class="gato"> </div>
         <div class="row" style="width: 1200px;">
-            <div class="col-md-12 col-md-offset-7">
+            <div class="col-md-11 col-md-offset-7">
                 <div class="panel panel-default" style="margin-left: 650px; margin-right: 100px; margin-bottom: 200px;">
                     <div class="panel-body">
                         <form class="form-horizontal" role="form">
-                        <div class="form-group">
-                            <label><strong>Enter Email</strong></label>
-                            <input type="email" name="email" class="form-control"/>
-                        </div>
+                            <div class="form-group">
+                                <input type="email" name="email" placeholder="Introduce un correo electrónico" class="form-control"/>
+                            </div>
 
-                        <div class="form-group">
-                            <label><strong>Enter Password</strong></label>
-                            <input type="password" name="password" class="form-control"/>
-                        </div>
+                            <div class="form-group">
+                                <input type="password" name="password" placeholder="Introduce una contraseña" class="form-control"/>
+                            </div>
 
-                        <div class="from-group">
-                            <input type="submit" name="login" class="btn btn-primary" value="Login" />
-                        </div>
+                            <div class="from-group">
+                                <input type="submit" name="login" class="btn btn-primary" value="Login" />
+                            </div>
                         </form>
                     </div>
                 </div>

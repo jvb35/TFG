@@ -28,14 +28,15 @@
 
         <div class="row">
 
-            <div class="col-md-8 offset-md-2">
+            <div class="col-md-12 offset-md-2">
 
                 <h1>Añadir tema</h1>
 
-                <form id="contact-form" method="POST" action="{{action('AdminController@addTema')}}">
+                <form id="contact-form" method="POST" action="{{action('ForoController@addTema')}}" enctype="multipart/form-data">
                 {{ csrf_field()}}
 	            {{ method_field('POST')}}
                     <div class="controls">
+                    <div class="col-xs-6">
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="form-group">
@@ -96,8 +97,19 @@
                         </div>
 
                         <input type="submit" class="btn btn-primary btn-send" value="Enviar">
-                        
                     </div>
+                    </div>
+                    <div class="col-xs-6">
+                        <div class="form-group col-xs-10 col-sm-4 col-md-4 col-lg-4">
+                            <output id="list"></output>
+                            <img id="img" class="thumb" src="/images/foto-por-defecto.png" title="Foto" style="width: 250px; height: 250px;"/>
+                            <input type="file" id="files" name="photo" />
+
+                        </div>
+
+                    </div>
+
+            </div>
                     
                 </form>
 
@@ -110,6 +122,35 @@
     </div>
     <!-- /.container-->
 
+<script>
+
+    function archivo(evt) {
+        var files = evt.target.files; // FileList object
+    
+        // Obtenemos la imagen del campo "file".
+        for (var i = 0, f; f = files[i]; i++) {
+            //Solo admitimos imágenes.
+            if (!f.type.match('image.*')) {
+                continue;
+            }
+    
+            var reader = new FileReader();
+    
+            reader.onload = (function(theFile) {
+                return function(e) {
+                // Insertamos la imagen
+                document.getElementById("img").remove();
+                document.getElementById("list").innerHTML = ['<img class="thumb" src="', e.target.result,'" title="', escape(theFile.name), '" style="width: 250px; height: 250px;"/>'].join('');
+                };
+            })(f);
+    
+            reader.readAsDataURL(f);
+        }
+    }
+    
+    document.getElementById('files').addEventListener('change', archivo, false);
+
+</script>
 
 
 

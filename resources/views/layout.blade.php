@@ -64,7 +64,7 @@
 						<li>
 							<a href="#">
 								<i class="lnr lnr-envelope"></i>
-								clinicaveter@hotmail.com
+								clinicaveter3@gmail.com
 							</a>
 						</li>
 					</ul>
@@ -151,7 +151,7 @@
 							</div>
 							<div style="border-bottom: 1px solid #45494f;padding: 7px 0;">
 								<strong>Correo electrónico:</strong>
-								clinicaveter@hotmail.com
+								clinicaveter3@gmail.com
 							</div>
 						</div>
 					</div>

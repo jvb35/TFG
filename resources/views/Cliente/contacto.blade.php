@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <title>PetZone</title>
+  <link rel="shortcut icon" href="/images/logo_mini.jpg">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
@@ -12,7 +14,8 @@
   @import url('https://fonts.googleapis.com/css?family=Lato:300,400');
 
 html, body {
-  font-family: 'Lato', serif;  
+  font-family: 'Lato', serif;
+  background-color: #D3E3F8;  
 }
 
 .navbar-default {
@@ -175,58 +178,58 @@ html, body {
     </div>
 @endif
 
-<div class="container" style="margin-top:100px;">
+<div class="container" style="margin-top:100px; background-color: #FFFFFF">
     <div class="row">
-        <div class="col-md-8">
-            <div class="well well-sm">
+        <div class="col-md-8" >
+            <div class="well well-sm" style="margin-left:-15px; margin-bottom: 0px;">
 
                 <div class="row">
 
-                    <div class="col-md-6">
-                    <form class="row contact_form" action="{{url('/mailCliente')}}" method="post" id="contactForm" novalidate="novalidate">
-                    {{ csrf_field()}}
-                    {{ method_field('POST')}}
-                        <div class="form-group">
-                            <label for="name">
-                                Nombre</label>
-                            <input type="text" class="form-control" name="name" id="name" placeholder="Introduzca el nombre" required="required" />
-                        </div>
-                        <div class="form-group">
-                            <label for="email">
-                                Correo</label>
-                            <div class="input-group">
-                                <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span>
-                                </span>
-                                <input type="email" class="form-control" name="email" id="email" placeholder="Introduzca el correo" required="required" /></div>
-                        </div>
-                        <div class="form-group">
-                            <label for="subject">
-                                Veterinario</label>
-                            <select id="subject" name="veterinario" class="form-control" required="required">
-                                <option value="" selected="">Elige uno:</option>
-                                @foreach ($personals as $personal)
-                                    <option value="{{$personal->nombre}}">{{$personal->nombre}}</option>
-                                @endforeach
-                            </select>
-                        </div>
+                    <div class="col-md-5" style="margin-left: 10px;">
+                      <form class="row contact_form" action="{{url('/mailCliente')}}" method="post" id="contactForm" novalidate="novalidate">
+                      {{ csrf_field()}}
+                      {{ method_field('POST')}}
+                          <div class="form-group">
+                              <label for="name">
+                                  Nombre</label>
+                              <input type="text" class="form-control" name="name" id="name" placeholder="Introduzca el nombre" required="required" />
+                          </div>
+                          <div class="form-group">
+                              <label for="email">
+                                  Correo</label>
+                              <div class="input-group">
+                                  <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span>
+                                  </span>
+                                  <input type="email" class="form-control" name="email" id="email" placeholder="Introduzca el correo" required="required" /></div>
+                          </div>
+                          <div class="form-group">
+                              <label for="subject">
+                                  Veterinario</label>
+                              <select id="subject" name="veterinario" class="form-control" required="required">
+                                  <option value="" selected="">Elige uno:</option>
+                                  @foreach ($personals as $personal)
+                                      <option value="{{$personal->nombre}}">{{$personal->nombre}}</option>
+                                  @endforeach
+                              </select>
+                          </div>
+                      </div>
+                      <div class="col-md-6">
+                          <div class="form-group">
+                              <label for="name">
+                                  Mensaje</label>
+                              <textarea name="mensaje" id="mensaje" class="form-control" rows="10" cols="10" required="required"
+                                  placeholder="Introduzca un mensaje"></textarea>
+                          </div>
+                      </div>
+                      <div class="col-md-12">
+                          <button type="submit" class="btn btn-primary pull-right" id="btnContactUs">
+                              Enviar</button>
+                      </div>
                     </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="name">
-                                Mensaje</label>
-                            <textarea name="mensaje" id="mensaje" class="form-control" rows="11" cols="25" required="required"
-                                placeholder="Introduzca un mensaje"></textarea>
-                        </div>
-                    </div>
-                    <div class="col-md-12">
-                        <button type="submit" class="btn btn-primary pull-right" id="btnContactUs">
-                            Enviar</button>
-                    </div>
-                </div>
-                </form>
+                  </form>
             </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-4" >
             <form>
             <legend><span class="glyphicon glyphicon-globe"></span> Nuestra oficina</legend>
             <address>

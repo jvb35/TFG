@@ -24,7 +24,7 @@
 <div class="container">
 	<div class="row">
   <br>
-    <form class="form-horizontal" action="{{action('AdminController@addConsulta')}}" method="POST">
+    <form class="form-horizontal" action="{{action('HistorialController@addConsulta')}}" method="POST">
       {{ csrf_field()}}
       {{ method_field('POST')}}
 
